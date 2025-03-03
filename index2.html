@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResearchSummits - Conference Hosting Company</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header/Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      color: white;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      padding: 1.5rem 0;
+    }
+
+    nav.scrolled {
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled .logo {
+      font-size: 1.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled .nav-links {
+      padding: 0.5rem;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #60A5FA;
+    }
+
+    .nav-links .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-links .dropdown > a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 1rem;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #1a1a1a !important;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s;
+      border-radius: 0.5rem;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f3f4f6;
+      color: #2563EB !important;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: calc(100vh - 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 3.75rem;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #E5E7EB;
+      max-width: 42rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #2563EB;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #1D4ED8;
+    }
+
+    /* Upcoming Events */
+    .upcoming-events {
+      padding: 5rem 0;
+      background-color: #1E293B;
+      color: white;
+    }
+
+    .events-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .event-content {
+      padding: 1.5rem;
+    }
+
+    .event-date {
+      display: inline-flex;
+      align-items: center;
+      background: #2563EB;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-date i {
+      margin-right: 0.5rem;
+    }
+
+    .event-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .event-description {
+      color: #E5E7EB;
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .event-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #60A5FA;
+      margin-bottom: 1rem;
+    }
+
+    .book-btn {
+      width: 100%;
+      background: #2563EB;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .book-btn:hover {
+      background: #1D4ED8;
+    }
+
+    .book-btn i {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    /* Features */
+    .features {
+      padding: 5rem 0;
+      background-color: #F9FAFB;
+    }
+
+    .section-title {
+      font-size: 1.875rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      color: #2563EB;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-text {
+      color: #4B5563;
+    }
+
+    /* Venues */
+    .venues {
+      padding: 5rem 0;
+    }
+
+    .venues-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .venues-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .venues-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .venue-card {
+      background: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .venue-image {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+    }
+
+    .venue-content {
+      padding: 1.5rem;
+    }
+
+    .venue-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .venue-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #4B5563;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact */
+    .contact {
+      padding: 5rem 0;
+      background-color: #2563EB;
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+      }
+    }
+
+    .contact-info {
+      margin-bottom: 2rem;
+    }
+
+    .contact-title {
+      font-size: 1.875rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #D1D5DB;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #D1D5DB;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #111827;
+      color: #9CA3AF;
+      padding: 3rem 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer-title {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #9CA3AF;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #374151;
+      border-radius: 0.375rem 0 0 0.375rem;
+    }
+
+    .newsletter-btn {
+      background-color: #2563EB;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0 0.375rem 0.375rem 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background-color: #1D4ED8;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&q=80" alt="Conference hall">
+    </div>
+    
+    <nav>
+      <div class="container nav-content">
+        <div class="logo">
+          <i data-lucide="building-2"></i>
+          <span>ResearchSummits</span>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <div class="dropdown">
+            <a href="#">
+              Membership
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </a>
+            <div class="dropdown-content">
+              <a href="membership.html">Join Membership</a>
+              <a href="members-area.html">Members Area</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#">
+              Collaborations
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </a>
+            <div class="dropdown-content">
+              <a href="sponsor.html">Become a Sponsor</a>
+              <a href="join-us.html">Join Us</a>
+            </div>
+          </div>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container hero-content">
+      <h1 class="hero-title">Elevate Your Events</h1>
+      <p class="hero-subtitle">Premium venues and world-class service for conferences that leave lasting impressions</p>
+      <a href="#venues" class="btn btn-primary">
+        Explore Conferences
+        <i data-lucide="chevron-right"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Upcoming Events Section -->
+  <section class="upcoming-events">
+    <div class="container">
+      <h2 class="section-title" style="color: white;">Upcoming Events</h2>
+      <div class="events-grid">
+        <div class="event-card">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80" alt="Tech Summit 2024" class="event-image">
+          <div class="event-content">
+            <span class="event-date">
+              <i data-lucide="calendar"></i>
+              March 15-17, 2024
+            </span>
+            <h3 class="event-title">Global Tech Summit 2024</h3>
+            <p class="event-description">Join industry leaders and innovators for three days of cutting-edge technology discussions and networking.</p>
+            <div class="event-price">$599</div>
+            <a href="conf1.html" class="book-btn">
+              Book Now
+              <i data-lucide="ticket"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80" alt="Marketing Conference" class="event-image">
+          <div class="event-content">
+            <span class="event-date">
+              <i data-lucide="calendar"></i>
+              April 5-6, 2024
+            </span>
+            <h3 class="event-title">Digital Marketing Summit</h3>
+            <p class="event-description">Discover the latest trends in digital marketing with expert speakers and hands-on workshops.</p>
+            <div class="event-price">$399</div>
+            <a href="conf1.html" class="book-btn">
+              Book Now
+              <i data-lucide="ticket"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Startup Conference" class="event-image">
+          <div class="event-content">
+            <span class="event-date">
+              <i data-lucide="calendar"></i>
+              May 20-22, 2024
+            </span>
+            <h3 class="event-title">Startup Innovation Conference</h3>
+            <p class="event-description">Connect with investors, entrepreneurs, and industry experts in this premier startup event.</p>
+            <div class="event-price">$499</div>
+            <a href="conf1.html" class="book-btn">
+              Book Now
+              <i data-lucide="ticket"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="services">
+    <div class="container">
+      <h2 class="section-title">Why Choose ResearchSummits</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i data-lucide="award" class="feature-icon"></i>
+          <h3 class="feature-title">Premium Venues</h3>
+          <p class="feature-text">Access to exclusive, state- <p class="feature-text">Access to exclusive, state-of-the-art conference facilities worldwide.</p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="clock" class="feature-icon"></i>
+          <h3 class="feature-title">24/7 Support</h3>
+          <p class="feature-text">Round-the-clock assistance for seamless event planning and execution.</p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="shield" class="feature-icon"></i>
+          <h3 class="feature-title">Guaranteed Success</h3>
+          <p class="feature-text">Our expertise ensures your conference exceeds expectations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venues Section -->
+  <section class="venues" id="venues">
+    <div class="container">
+      <h2 class="section-title">Featured Venues</h2>
+      <div class="venues-grid">
+        <div class="venue-card">
+          <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80" alt="Grand Plaza Convention Center" class="venue-image">
+          <div class="venue-content">
+            <h3 class="venue-title">Grand Plaza Convention Center</h3>
+            <div class="venue-detail">
+              <i data-lucide="map-pin"></i>
+              <span>New York, USA</span>
+            </div>
+            <div class="venue-detail">
+              <i data-lucide="users"></i>
+              <span>Up to 2000 guests</span>
+            </div>
+          </div>
+        </div>
+        <div class="venue-card">
+          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80" alt="Azure Bay Conference Hall" class="venue-image">
+          <div class="venue-content">
+            <h3 class="venue-title">Azure Bay Conference Hall</h3>
+            <div class="venue-detail">
+              <i data-lucide="map-pin"></i>
+              <span>Miami, USA</span>
+            </div>
+            <div class="venue-detail">
+              <i data-lucide="users"></i>
+              <span>Up to 1500 guests</span>
+            </div>
+          </div>
+        </div>
+        <div class="venue-card">
+          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80" alt="Tech Hub Arena" class="venue-image">
+          <div class="venue-content">
+            <h3 class="venue-title">Tech Hub Arena</h3>
+            <div class="venue-detail">
+              <i data-lucide="map-pin"></i>
+              <span>San Francisco, USA</span>
+            </div>
+            <div class="venue-detail">
+              <i data-lucide="users"></i>
+              <span>Up to 1000 guests</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 class="contact-title">Ready to Host Your Next Conference?</h2>
+          <p class="contact-text">Contact us today to discuss your requirements and let us help you create an unforgettable event.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <i data-lucide="phone"></i>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-detail">
+              <i data-lucide="mail"></i>
+              <span>contact@ResearchSummits.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" class="form-input">
+            <input type="email" placeholder="Email Address" class="form-input">
+            <textarea placeholder="Tell us about your event" rows="4" class="form-textarea"></textarea>
+            <button type="submit" class="btn btn-primary" style="width: 100%">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <i data-lucide="building-2"></i>
+            <span>ResearchSummits</span>
+          </div>
+          <p>Making your conferences memorable since 2010.</p>
+        </div>
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#venues">Venues</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-links">
+            <li>Venue Selection</li>
+            <li>Event Planning</li>
+            <li>Technical Support</li>
+            <li>Event Management Services</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Newsletter</h3>
+          <p>Subscribe to our newsletter for updates and special offers.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Email Address" class="newsletter-input">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 ResearchSummits. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      
+      const nav = document.querySelector('nav');
+      let lastScroll = 0;
+      
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+      });
+    });
+  </script>
+</body>
+</html>
