@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Online - Infectious Disease Conference 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style> 
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #f59e0b;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --background: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Navbar */
+.navbar {
+  background: var(--white);
+  box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+  background: var(--gradient);
+  color: var(--white);
+  padding: 8rem 0 4rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.event-details {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail strong {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+/* Main Content */
+.main-content {
+  padding: 4rem 0;
+}
+
+/* Info Cards */
+.info-cards {
+  margin-bottom: 4rem;
+}
+
+.highlight-card {
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.highlight-card h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.countdown-item {
+  text-align: center;
+}
+
+.countdown-item .number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+}
+
+.countdown-item .label {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Registration Options */
+.registration-options {
+  margin-bottom: 4rem;
+}
+
+.registration-options h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pricing-card {
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--primary);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+
+.currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  padding: 0.75rem 0;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+}
+
+/* Guidelines */
+.guidelines {
+  background: var(--white);
+  padding: 4rem 0;
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+}
+
+.guidelines h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.guideline-card {
+  padding: 2rem;
+  background: var(--background);
+  border-radius: 1rem;
+}
+
+.guideline-card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.guideline-card ul {
+  list-style: none;
+}
+
+.guideline-card ul li {
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.guideline-card ul li::before {
+  content: "•";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+}
+
+/* Footer */
+.footer {
+  background: var(--text);
+  color: var(--white);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-section a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: var(--white);
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+  background: #1f2937;
+  color: var(--white);
+}
+
+.newsletter-form button {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+  background: var(--primary-dark);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #374151;
+  color: #94a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 6rem 0 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .event-details {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .countdown {
+    gap: 1rem;
+  }
+
+  .countdown-item .number {
+    font-size: 2rem;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+ .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-radius: 0.5rem;
+      min-width: 200px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: var(--text-light);
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .nav-links a {
+      color: var(--primary);
+    }
+    </style>
+</head>
+<body>
+
+ <nav class="navbar">
+  <div class="container">
+    <a href="conf3.html" class="logo">
+      <img src="rsummits.png" alt="Artificial Intelligence 2025 Logo" width="60" height="60">
+      <img src="cmelogo.png" alt="Artificial Intelligence 2025 Logo" width="80" height="60">
+    
+      <span>Artificial Intelligence 2025</span>
+    </a>
+    <div class="nav-links">
+      <a href="conf3.html" >Home</a>
+      <a href="abstract_submit_conf3.html">Submit Abstract</a>
+      <a href="reg_conf3.html"class="active">Register</a>
+     <div class="dropdown">
+          <a href="#" class="dropbtn">Program</a>
+          <div class="dropdown-content">
+            <a href="sp.pdf" target="_blank">Scientific Program</a>
+            <a href="broch.pdf" target="_blank">Download Brochure</a>
+            <a href="final_prog.pdf" target="_blank">Final Program</a>
+          </div>
+        </div>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Register for Artificial Intelligence 2025</h1>
+      <p class="subtitle">Join us at the forefront of Artificial Intelligence research</p>
+      <div class="event-details">
+        <div class="detail">
+          <strong>Date:</strong>
+          <span>November 15-17, 2025</span>
+        </div>
+        <div class="detail">
+          <strong>Location:</strong>
+          <span>Virtual Conference</span>
+        </div>
+        <div class="detail">
+          <strong>Registration Deadline:</strong>
+          <span>October 31, 2025</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="info-cards">
+        <div class="card highlight-card">
+          <h2>Early Bird Registration Now Open</h2>
+          <p>Register before September 30th to get 20% off on all categories!</p>
+          <div class="countdown">
+            <div class="countdown-item">
+              <span class="number">30</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="countdown-item">
+              <span class="number">12</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="number">45</span>
+              <span class="label">Minutes</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="registration-options">
+        <h2>Registration Categories</h2>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3>Speaker</h3>
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">199</span>
+              </div>
+            </div>
+            <ul class="features">
+              <li>Keynote Speaking Opportunity</li>
+              <li>Full Conference Access</li>
+              <li>Digital Certificate</li>
+              <li>Proceedings Access</li>
+              <li>Networking Sessions</li>
+            </ul>
+            <button class="btn-register">Register as Speaker</button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="card-header">
+              <span class="badge">Most Popular</span>
+              <h3>Professional</h3>
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">249</span>
+              </div>
+            </div>
+            <ul class="features">
+              <li>All Speaker Benefits</li>
+              <li>Priority Q&A Access</li>
+              <li>1-Year Journal Access</li>
+              <li>Workshop Access</li>
+              <li>Research Presentation</li>
+            </ul>
+            <button class="btn-register">Register as Professional</button>
+          </div>
+
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3>Student</h3>
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">149</span>
+              </div>
+            </div>
+            <ul class="features">
+              <li>Full Conference Access</li>
+              <li>Digital Certificate</li>
+              <li>Student Networking</li>
+              <li>Poster Presentation</li>
+              <li>Career Guidance</li>
+            </ul>
+            <button class="btn-register">Register as Student</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="guidelines">
+        <h2>Registration Guidelines</h2>
+        <div class="guidelines-grid">
+          <div class="guideline-card">
+            <h3>Before Registration</h3>
+            <ul>
+              <li>Prepare your professional bio</li>
+              <li>Have your abstract ready (if presenting)</li>
+              <li>Check eligibility requirements</li>
+            </ul>
+          </div>
+          <div class="guideline-card">
+            <h3>During Registration</h3>
+            <ul>
+              <li>Fill all required fields</li>
+              <li>Upload necessary documents</li>
+              <li>Review your information</li>
+            </ul>
+          </div>
+          <div class="guideline-card">
+            <h3>After Registration</h3>
+            <ul>
+              <li>Check confirmation email</li>
+              <li>Save registration ID</li>
+              <li>Join orientation session</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Artificial Intelligence 2025</h3>
+          <p>Leading the way in AI research since 2015.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/program">Conference Program</a></li>
+            <li><a href="/speakers">Speakers</a></li>
+            <li><a href="/venue">Venue</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <ul class="contact-info">
+            <li>Email: </li>
+            <li>Phone: +1 (555) 123-4567</li>
+            <li>Support: 24/7 Available</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Artificial Intelligence Conference. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
