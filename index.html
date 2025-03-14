@@ -3,9 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ResearchSummits - Conference Hosting Company</title>
+  <title>ResearchSummits - Global Conference Platform</title>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #f59e0b;
+      --text: #0f172a;
+      --text-light: #475569;
+      --background: #ffffff;
+      --background-alt: #f8fafc;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -13,517 +26,422 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
+      color: var(--text);
+      background: var(--background);
     }
 
     .container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 2rem;
     }
 
-    /* Header/Hero */
-    .hero {
-      position: relative;
-      height: 100vh;
-      color: white;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      transition: all 0.3s ease;
-      padding: 1.5rem 0;
-    }
-
-    nav.scrolled {
-      background: rgba(30, 41, 59, 0.95);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
-      padding: 0.75rem 0;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
     }
 
     .nav-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.3s ease;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      color: var(--text);
+      font-weight: 700;
       font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
     }
 
-    nav.scrolled .logo {
-      font-size: 1.25rem;
+    .logo-image {
+      height: 60px;
+      width: auto;
     }
 
     .nav-links {
       display: flex;
-      gap: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 0.75rem;
-      border-radius: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    nav.scrolled .nav-links {
-      padding: 0.5rem;
-      gap: 0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-      }
+      gap: 2.5rem;
     }
 
     .nav-links a {
-      color: white;
+      color: var(--text);
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      transition: all 0.3s;
+      font-weight: 500;
+      font-size: 1.125rem;
+      transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: #60A5FA;
+      color: var(--primary);
     }
 
-    .nav-links .dropdown {
+    /* Hero Section */
+    .hero {
       position: relative;
-      display: inline-block;
-    }
-
-    .nav-links .dropdown > a {
+      min-height: 100vh;
+      padding: 8rem 0;
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
+                  url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80') center/cover;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      min-width: 200px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      border-radius: 1rem;
-      z-index: 1000;
-      top: 100%;
-      left: 0;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content a {
-      color: #1a1a1a !important;
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s;
-      border-radius: 0.5rem;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f3f4f6;
-      color: #2563EB !important;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 10;
-      height: calc(100vh - 5rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
+      max-width: 800px;
+      color: white;
+      animation: fadeIn 1s ease-out;
     }
 
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: bold;
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.2;
       margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    @media (min-width: 768px) {
-      .hero-title {
-        font-size: 3.75rem;
-      }
-    }
-
-    .hero-subtitle {
+    .hero p {
       font-size: 1.25rem;
-      color: #E5E7EB;
-      max-width: 42rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      color: #e2e8f0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 2rem;
-      border-radius: 9999px;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
       font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.3s ease;
       text-decoration: none;
-      transition: background-color 0.3s;
     }
 
     .btn-primary {
-      background-color: #2563EB;
+      background: var(--primary);
       color: white;
     }
 
     .btn-primary:hover {
-      background-color: #1D4ED8;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
-    /* Upcoming Events */
-    .upcoming-events {
-      padding: 5rem 0;
-      background-color: #1E293B;
+    .btn-outline {
+      border: 2px solid white;
       color: white;
     }
 
-    .events-grid {
+    .btn-outline:hover {
+      background: white;
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    /* About Us Section */
+    .about-us {
+      padding: 6rem 0;
+      background: var(--background-alt);
+    }
+
+    .about-content {
       display: grid;
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      align-items: center;
     }
 
-    @media (min-width: 768px) {
-      .events-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
-    .event-card {
-      background: rgba(255, 255, 255, 0.1);
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+    }
+
+    .about-image img {
+      width: 100%;
       border-radius: 1rem;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s;
     }
 
-    .event-card:hover {
+    /* Stats Section */
+    .stats {
+      padding: 6rem 0;
+      background: var(--background);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
       transform: translateY(-5px);
     }
 
-    .event-image {
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* Featured Conferences */
+    .conferences {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      font-size: 1.25rem;
+    }
+
+    .conference-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .conference-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .conference-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .conference-image {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .conference-image img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
 
-    .event-content {
-      padding: 1.5rem;
+    .conference-card:hover .conference-image img {
+      transform: scale(1.1);
     }
 
-    .event-date {
-      display: inline-flex;
-      align-items: center;
-      background: #2563EB;
+    .conference-date {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--primary);
       color: white;
       padding: 0.5rem 1rem;
-      border-radius: 9999px;
+      border-radius: 2rem;
       font-size: 0.875rem;
-      margin-bottom: 1rem;
-    }
-
-    .event-date i {
-      margin-right: 0.5rem;
-    }
-
-    .event-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-
-    .event-description {
-      color: #E5E7EB;
-      margin-bottom: 1.5rem;
-      font-size: 0.875rem;
-    }
-
-    .event-price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #60A5FA;
-      margin-bottom: 1rem;
-    }
-
-    .book-btn {
-      width: 100%;
-      background: #2563EB;
-      color: white;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      display: inline-flex;
+      font-weight: 500;
+      display: flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      text-decoration: none;
     }
 
-    .book-btn:hover {
-      background: #1D4ED8;
+    .conference-content {
+      padding: 2rem;
     }
 
-    .book-btn i {
-      width: 1.25rem;
-      height: 1.25rem;
+    .conference-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
     }
 
-    /* Features */
-    .features {
-      padding: 5rem 0;
-      background-color: #F9FAFB;
+    .conference-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
     }
 
-    .section-title {
-      font-size: 1.875rem;
-      font-weight: bold;
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+    }
+
+    .conference-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .conference-button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
       text-align: center;
-      margin-bottom: 3rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .conference-button:hover {
+      background: var(--primary-dark);
+    }
+
+    .explore-more {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 0;
+      background: var(--background-alt);
     }
 
     .features-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .features-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
 
     .feature-card {
       background: white;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
     }
 
     .feature-icon {
-      color: #2563EB;
-      margin-bottom: 1rem;
+      width: 4rem;
+      height: 4rem;
+      color: var(--primary);
+      margin: 0 auto 1.5rem;
     }
 
     .feature-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-text {
-      color: #4B5563;
-    }
-
-    /* Venues */
-    .venues {
-      padding: 5rem 0;
-    }
-
-    .venues-grid {
-      display: grid;
-      gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .venues-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .venues-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .venue-card {
-      background: white;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    .venue-image {
-      width: 100%;
-      height: 12rem;
-      object-fit: cover;
-    }
-
-    .venue-content {
-      padding: 1.5rem;
-    }
-
-    .venue-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .venue-detail {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #4B5563;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Contact */
-    .contact {
-      padding: 5rem 0;
-      background-color: #2563EB;
-      color: white;
-    }
-
-    .contact-grid {
-      display: grid;
-      gap: 3rem;
-    }
-
-    @media (min-width: 768px) {
-      .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-      }
-    }
-
-    .contact-info {
-      margin-bottom: 2rem;
-    }
-
-    .contact-title {
-      font-size: 1.875rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-bottom: 1rem;
     }
 
-    .contact-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 0.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #D1D5DB;
-      border-radius: 0.375rem;
-      margin-bottom: 1rem;
-    }
-
-    .form-textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #D1D5DB;
-      border-radius: 0.375rem;
-      margin-bottom: 1rem;
-      resize: vertical;
+    .feature-description {
+      color: var(--text-light);
     }
 
     /* Footer */
     .footer {
-      background-color: #111827;
-      color: #9CA3AF;
-      padding: 3rem 0;
+      background: var(--text);
+      color: #94a3b8;
+      padding: 6rem 0 2rem;
     }
 
     .footer-grid {
       display: grid;
-      gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 4rem;
+      margin-bottom: 4rem;
     }
 
     .footer-logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
       color: white;
-      font-weight: bold;
-      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .footer-title {
+    .footer-links h3 {
       color: white;
-      font-weight: 600;
-      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
-    .footer-links {
+    .footer-links ul {
       list-style: none;
     }
 
     .footer-links li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .footer-links a {
-      color: #9CA3AF;
+      color: #94a3b8;
       text-decoration: none;
       transition: color 0.3s;
     }
@@ -539,245 +457,526 @@
 
     .newsletter-input {
       flex: 1;
-      padding: 0.5rem;
-      border: 1px solid #374151;
-      border-radius: 0.375rem 0 0 0.375rem;
+      padding: 1rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
     }
 
     .newsletter-btn {
-      background-color: #2563EB;
+      padding: 1rem 2rem;
+      background: var(--primary);
       color: white;
-      padding: 0.5rem 1rem;
       border: none;
-      border-radius: 0 0.375rem 0.375rem 0;
+      border-radius: 0.5rem;
+      font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
     .newsletter-btn:hover {
-      background-color: #1D4ED8;
+      background: var(--primary-dark);
     }
 
     .footer-bottom {
       text-align: center;
-      margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid #374151;
+      border-top: 1px solid #334155;
     }
-  </style>
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #ffffff; /* Solid white background */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 0.5rem; /* Rounded corners */
+  min-width: 220px; /* Slightly wider for better readability */
+  z-index: 1000; /* Ensure it appears above other content */
+  padding: 0.5rem 0; /* Add some padding */
+  border: 1px solid #e2e8f0; /* Light gray border */
+  margin-top: 0.5rem; /* Add space between the dropdown button and the menu */
+}
+
+.dropdown-content a {
+  color: #475569; /* Use the light text color */
+  padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
+  text-decoration: none;
+  display: block;
+  font-size: 1rem; /* Match the font size of the nav links */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: #3b82f6; /* Use the primary color for hover */
+  color: #ffffff; /* White text on hover */
+  border-radius: 0.25rem; /* Slightly rounded corners on hover */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+.dropdown:hover .dropbtn {
+  color: #3b82f6; /* Change text color of the dropdown button on hover */
+}
+.hero {
+  padding: 6rem 0; /* Reduced padding for a tighter layout */
+}
+
+/* About Us Section */
+.about-us {
+  padding: 4rem 0; /* Reduced padding */
+}
+
+/* Features Section */
+.features {
+  padding: 4rem 0; /* Reduced padding */
+}
+
+/* Stats Section */
+.stats {
+  padding: 4rem 0; /* Reduced padding */
+}
+
+/* Featured Conferences Section */
+.conferences {
+  padding: 4rem 0; /* Reduced padding */
+}
+
+/* Footer Section */
+.footer {
+  padding: 4rem 0 2rem; /* Reduced padding */
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: 2rem; /* Reduced margin */
+}
+
+/* Feature Cards */
+.feature-card {
+  margin-bottom: 1rem; /* Added margin between feature cards */
+}
+
+/* Conference Cards */
+.conference-card {
+  margin-bottom: 1rem; /* Added margin between conference cards */
+}
+
+/* Stats Grid */
+.stats-grid {
+  gap: 1.5rem; /* Reduced gap between stat cards */
+}
+
+/* Conference Grid */
+.conference-grid {
+  gap: 1.5rem; /* Reduced gap between conference cards */
+}
+
+/* Footer Grid */
+.footer-grid {
+  gap: 2rem; /* Reduced gap between footer columns */
+}
+
+    </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&q=80" alt="Conference hall">
-    </div>
-    
-    <nav>
-      <div class="container nav-content">
-        <div class="logo">
-          <i data-lucide="building-2"></i>
-          <span>ResearchSummits</span>
-        </div>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="conferences.html">Conferences</a>
-          <div class="dropdown">
-            <a href="#">
-              Membership
-              <i data-lucide="chevron-down" class="w-4 h-4"></i>
-            </a>
-            <div class="dropdown-content">
-              <a href="membership.html">Join Membership</a>
-              <a href="members-area.html">Members Area</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <a href="#">
-              Collaborations
-              <i data-lucide="chevron-down" class="w-4 h-4"></i>
-            </a>
-            <div class="dropdown-content">
-              <a href="sponsor.html">Become a Sponsor</a>
-              <a href="join-us.html">Join Us</a>
-            </div>
-          </div>
-          <a href="contact.html">Contact Us</a>
+  <!-- Navigation -->
+  <nav>
+  <div class="container nav-content">
+    <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+    <div class="nav-links">
+      <a href="index.html">
+        <i data-lucide="home"></i>
+        Home
+      </a>
+      <a href="about.html">
+        <i data-lucide="info"></i>
+        About
+      </a>
+      <a href="conferences.html">
+        <i data-lucide="calendar-days"></i>
+        Conferences
+      </a>
+      <a href="members-area.html">
+        <i data-lucide="users"></i>
+        Membership
+      </a>
+      <a href="deals.html">
+        <i data-lucide="badge-percent"></i>
+        Deals
+      </a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">
+          <i data-lucide="clipboard-list"></i>
+          Registration
+        </a>
+        <div class="dropdown-content">
+          <a href="reg_conf1.html">Neurophysiology</a>
+          <a href="reg_conf2.html">Infectious Diseases</a>
+          <a href="reg_conf3.html">Artificial Intelligence</a>
+          <a href="reg_conf4.html">Oil and Gas</a>
         </div>
       </div>
-    </nav>
-
-    <div class="container hero-content">
-      <h1 class="hero-title">Elevate Your Events</h1>
-      <p class="hero-subtitle">Premium venues and world-class service for conferences that leave lasting impressions</p>
-      <a href="#venues" class="btn btn-primary">
-        Explore Conferences
-        <i data-lucide="chevron-right"></i>
+      <a href="contact.html">
+        <i data-lucide="mail"></i>
+        Contact
       </a>
     </div>
-  </header>
-
-  <!-- Upcoming Events Section -->
-  <section class="upcoming-events">
+  </div>
+</nav>
+  <!-- Hero Section -->
+  <section class="hero">
     <div class="container">
-      <h2 class="section-title" style="color: white;">Upcoming Events</h2>
-      <div class="events-grid">
-        <div class="event-card">
-          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80" alt="Tech Summit 2024" class="event-image">
-          <div class="event-content">
-            <span class="event-date">
-              <i data-lucide="calendar"></i>
-              March 15-17, 2024
-            </span>
-            <h3 class="event-title">Global Tech Summit 2024</h3>
-            <p class="event-description">Join industry leaders and innovators for three days of cutting-edge technology discussions and networking.</p>
-            <div class="event-price">$599</div>
-            <a href="conf1.html" class="book-btn">
-              Book Now
-              <i data-lucide="ticket"></i>
-            </a>
-          </div>
+      <div class="hero-content">
+        <h1>Where Great Minds Connect & Ideas Flourish</h1>
+        <p>Join the world's premier platform for academic conferences and research collaboration. Experience knowledge sharing at its finest with cutting-edge presentations and networking opportunities.</p>
+        <div class="hero-buttons">
+          <a href="conferences.html" class="btn btn-primary">
+            Browse Conferences
+            <i data-lucide="arrow-right"></i>
+          </a>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="event-card">
-          <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80" alt="Marketing Conference" class="event-image">
-          <div class="event-content">
-            <span class="event-date">
-              <i data-lucide="calendar"></i>
-              April 5-6, 2024
-            </span>
-            <h3 class="event-title">Digital Marketing Summit</h3>
-            <p class="event-description">Discover the latest trends in digital marketing with expert speakers and hands-on workshops.</p>
-            <div class="event-price">$399</div>
-            <a href="conf1.html" class="book-btn">
-              Book Now
-              <i data-lucide="ticket"></i>
-            </a>
-          </div>
+  <!-- About Us Section -->
+  <section class="about-us">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Research Summits</h2>
+          <p>Research Summits is a global leader in organizing academic and professional conferences. Since our inception in 2010, we have been dedicated to fostering collaboration and innovation by bringing together researchers, industry experts, and thought leaders from around the world.</p>
+          <p>Our mission is to create a platform where groundbreaking ideas are shared, and meaningful connections are made. With a focus on excellence, we ensure every event is a unique and enriching experience for all participants.</p>
         </div>
-
-        <div class="event-card">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Startup Conference" class="event-image">
-          <div class="event-content">
-            <span class="event-date">
-              <i data-lucide="calendar"></i>
-              May 20-22, 2024
-            </span>
-            <h3 class="event-title">Startup Innovation Conference</h3>
-            <p class="event-description">Connect with investors, entrepreneurs, and industry experts in this premier startup event.</p>
-            <div class="event-price">$499</div>
-            <a href="conf1.html" class="book-btn">
-              Book Now
-              <i data-lucide="ticket"></i>
-            </a>
-          </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="About Us">
         </div>
       </div>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section class="features" id="services">
+  <section class="features">
     <div class="container">
-      <h2 class="section-title">Why Choose ResearchSummits</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <i data-lucide="award" class="feature-icon"></i>
-          <h3 class="feature-title">Premium Venues</h3>
-          <p class="feature-text">Access to exclusive, state- <p class="feature-text">Access to exclusive, state-of-the-art conference facilities worldwide.</p>
+      <div class="section-header">
+        <h2>Why Choose Research Summits</h2>
+        <p>Research Summits is your trusted partner for organizing impactful conferences worldwide. With global expertise, tailored solutions, and a strong network of professionals, we ensure every event is innovative, seamless, and meaningful. From cutting-edge technology to sustainable practices, we prioritize excellence and collaboration to help you create a legacy of knowledge.</p>
+      </div>
+    </div>
+  </section>
+
+<section class="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Benefits of Attending “Research Summits 2025”</h2>
+      <p>Discover the exclusive advantages of joining the premier research conference of the year.</p>
+    </div>
+    <div class="features-grid">
+      <!-- Benefit 1 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="badge-percent"></i>
         </div>
-        <div class="feature-card">
-          <i data-lucide="clock" class="feature-icon"></i>
-          <h3 class="feature-title">24/7 Support</h3>
-          <p class="feature-text">Round-the-clock assistance for seamless event planning and execution.</p>
+        <h3 class="feature-title">Early Bird Discounts</h3>
+        <p class="feature-description">Exclusive registration discounts for early participants.</p>
+      </div>
+
+      <!-- Benefit 2 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="certificate"></i>
         </div>
-        <div class="feature-card">
-          <i data-lucide="shield" class="feature-icon"></i>
-          <h3 class="feature-title">Guaranteed Success</h3>
-          <p class="feature-text">Our expertise ensures your conference exceeds expectations.</p>
+        <h3 class="feature-title">E-Certification</h3>
+        <p class="feature-description">All attendees receive an e-certificate of participation.</p>
+      </div>
+
+      <!-- Benefit 3 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="book-open"></i>
+        </div>
+        <h3 class="feature-title">Book of Abstracts</h3>
+        <p class="feature-description">Access to the conference book of abstracts.</p>
+      </div>
+
+      <!-- Benefit 4 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="mic"></i>
+        </div>
+        <h3 class="feature-title">Keynote Presentations</h3>
+        <p class="feature-description">Insights from distinguished experts in the field.</p>
+      </div>
+
+      <!-- Benefit 5 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="presentation"></i>
+        </div>
+        <h3 class="feature-title">Oral Presentations</h3>
+        <p class="feature-description">Showcase groundbreaking research findings.</p>
+      </div>
+
+      <!-- Benefit 6 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="image"></i>
+        </div>
+        <h3 class="feature-title">Poster Presentations</h3>
+        <p class="feature-description">Highlight innovative research through posters.</p>
+      </div>
+
+      <!-- Benefit 7 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="users"></i>
+        </div>
+        <h3 class="feature-title">Networking Sessions</h3>
+        <p class="feature-description">Foster meaningful connections with peers.</p>
+      </div>
+
+      <!-- Benefit 8 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="video"></i>
+        </div>
+        <h3 class="feature-title">On-Demand Recordings</h3>
+        <p class="feature-description">Access presentations anytime, anywhere.</p>
+      </div>
+
+      <!-- Benefit 9 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="film"></i>
+        </div>
+        <h3 class="feature-title">Conference Videos</h3>
+        <p class="feature-description">Seamless delivery of conference content.</p>
+      </div>
+
+      <!-- Benefit 10 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="calendar"></i>
+        </div>
+        <h3 class="feature-title">Pre-conference Demo</h3>
+        <p class="feature-description">Exclusive early insights for attendees.</p>
+      </div>
+
+      <!-- Benefit 11 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="message-square"></i>
+        </div>
+        <h3 class="feature-title">Live Q&A Sessions</h3>
+        <p class="feature-description">Engage with renowned presenters in real-time.</p>
+      </div>
+
+      <!-- Benefit 12 -->
+      <div class="feature-card animate">
+        <div class="feature-icon">
+          <i data-lucide="award"></i>
+        </div>
+        <h3 class="feature-title">Best Speaker Award</h3>
+        <p class="feature-description">Recognition for exceptional engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card animate">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">Annual Conferences</div>
+        </div>
+        <div class="stat-card animate">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-card animate">
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Researchers</div>
+        </div>
+        <div class="stat-card animate">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Satisfaction Rate</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Venues Section -->
-  <section class="venues" id="venues">
+  <!-- Featured Conferences -->
+  <section class="conferences">
     <div class="container">
-      <h2 class="section-title">Featured Venues</h2>
-      <div class="venues-grid">
-        <div class="venue-card">
-          <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80" alt="Grand Plaza Convention Center" class="venue-image">
-          <div class="venue-content">
-            <h3 class="venue-title">Grand Plaza Convention Center</h3>
-            <div class="venue-detail">
-              <i data-lucide="map-pin"></i>
-              <span>New York, USA</span>
-            </div>
-            <div class="venue-detail">
-              <i data-lucide="users"></i>
-              <span>Up to 2000 guests</span>
+      <div class="section-header">
+        <h2>Featured Conferences</h2>
+        <p>Discover upcoming events that shape the future of research and innovation</p>
+      </div>
+      <div class="conference-grid">
+        <div class="conference-card animate">
+          <div class="conference-image">
+            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80" alt="Medical Conference">
+            <div class="conference-date">
+              <i data-lucide="calendar"></i>
+              March 15-17, 2025
             </div>
           </div>
-        </div>
-        <div class="venue-card">
-          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80" alt="Azure Bay Conference Hall" class="venue-image">
-          <div class="venue-content">
-            <h3 class="venue-title">Azure Bay Conference Hall</h3>
-            <div class="venue-detail">
-              <i data-lucide="map-pin"></i>
-              <span>Miami, USA</span>
+          <div class="conference-content">
+            <h3 class="conference-title">Neurophysiology Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Virtual
+              </div>
+              <div class="detail-item">
+                <i data-lucide="users"></i>
+                500+ Attendees
+              </div>
             </div>
-            <div class="venue-detail">
-              <i data-lucide="users"></i>
-              <span>Up to 1500 guests</span>
-            </div>
+            <div class="conference-price">€199</div>
+            <a href="conf1.html" class="conference-button">Learn More</a>
           </div>
         </div>
-        <div class="venue-card">
-          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80" alt="Tech Hub Arena" class="venue-image">
-          <div class="venue-content">
-            <h3 class="venue-title">Tech Hub Arena</h3>
-            <div class="venue-detail">
-              <i data-lucide="map-pin"></i>
-              <span>San Francisco, USA</span>
+
+        <div class="conference-card animate">
+          <div class="conference-image">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80" alt="AI Conference">
+            <div class="conference-date">
+              <i data-lucide="calendar"></i>
+              April 5-7, 2025
             </div>
-            <div class="venue-detail">
-              <i data-lucide="users"></i>
-              <span>Up to 1000 guests</span>
+          </div>
+          <div class="conference-content">
+            <h3 class="conference-title">Infectious Disease Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Virtual
+              </div>
+              <div class="detail-item">
+                <i data-lucide="users"></i>
+                1000+ Attendees
+              </div>
             </div>
+            <div class="conference-price">€199</div>
+            <a href="conf2.html" class="conference-button">Learn More</a>
+          </div>
+        </div>
+
+        <div class="conference-card animate">
+          <div class="conference-image">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Climate Conference">
+            <div class="conference-date">
+              <i data-lucide="calendar"></i>
+              May 20-22, 2025
+            </div>
+          </div>
+          <div class="conference-content">
+            <h3 class="conference-title">Artificial Intelligence Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Virtual
+              </div>
+              <div class="detail-item">
+                <i data-lucide="users"></i>
+                750+ Attendees
+              </div>
+            </div>
+            <div class="conference-price">€199</div>
+            <a href="conf1.html" class="conference-button">Learn More</a>
+          </div>
+        </div>
+
+        <div class="conference-card animate">
+          <div class="conference-image">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80" alt="Engineering Conference">
+            <div class="conference-date">
+              <i data-lucide="calendar"></i>
+              June 10-12, 2025
+            </div>
+          </div>
+          <div class="conference-content">
+            <h3 class="conference-title">Oil and Gas Confernece</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+               Virtual
+              </div>
+              <div class="detail-item">
+                <i data-lucide="users"></i>
+                1200+ Attendees
+              </div>
+            </div>
+            <div class="conference-price">€199</div>
+            <a href="conf1.html" class="conference-button">Learn More</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h2 class="contact-title">Ready to Host Your Next Conference?</h2>
-          <p class="contact-text">Contact us today to discuss your requirements and let us help you create an unforgettable event.</p>
-          <div class="contact-details">
-            <div class="contact-detail">
-              <i data-lucide="phone"></i>
-              <span>+1 (555) 123-4567</span>
-            </div>
-            <div class="contact-detail">
-              <i data-lucide="mail"></i>
-              <span>contact@ResearchSummits.com</span>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <input type="text" placeholder="Your Name" class="form-input">
-            <input type="email" placeholder="Email Address" class="form-input">
-            <textarea placeholder="Tell us about your event" rows="4" class="form-textarea"></textarea>
-            <button type="submit" class="btn btn-primary" style="width: 100%">Send Message</button>
-          </div>
-        </form>
+      <!-- Explore More Conferences Button -->
+      <div class="explore-more">
+        <a href="conferences.html" class="btn btn-primary">
+          Explore More Conferences
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -788,61 +987,78 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <i data-lucide="building-2"></i>
-            <span>ResearchSummits</span>
+            <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+             <span>Research Summits</span>
           </div>
-          <p>Making your conferences memorable since 2010.</p>
+          <p>Advancing research through global collaboration since 2010.</p>
         </div>
-        <div>
-          <h3 class="footer-title">Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#venues">Venues</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="conferences.html">Conferences</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Guidelines</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-title">Services</h3>
-          <ul class="footer-links">
-            <li>Venue Selection</li>
-            <li>Event Planning</li>
-            <li>Technical Support</li>
-            <li>Event Management Services</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-title">Newsletter</h3>
-          <p>Subscribe to our newsletter for updates and special offers.</p>
-          <div class="newsletter-form">
-            <input type="email" placeholder="Email Address" class="newsletter-input">
-            <button class="newsletter-btn">Subscribe</button>
-          </div>
+          <h3>Newsletter</h3>
+          <p>Stay updated with our latest conferences and research opportunities.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="newsletter-input">
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 ResearchSummits. All rights reserved.</p>
+        <p>&copy; 2025 Research Summits. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Tawk.to Live Chat -->
+  <!--Start of Tawk.to Script-->
+ <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+  <!--End of Tawk.to Script-->
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       lucide.createIcons();
-      
-      const nav = document.querySelector('nav');
-      let lastScroll = 0;
-      
-      window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-          nav.classList.add('scrolled');
-        } else {
-          nav.classList.remove('scrolled');
-        }
-        
-        lastScroll = currentScroll;
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.animate').forEach(el => {
+        observer.observe(el);
       });
     });
   </script>

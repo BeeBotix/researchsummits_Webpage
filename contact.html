@@ -67,6 +67,11 @@
       color: var(--text);
       text-decoration: none;
     }
+     .logo-image {
+      height: 60px;
+      width: auto;
+    }
+
 
     .logo i {
       color: var(--primary);
@@ -380,59 +385,94 @@
         padding: 1.5rem;
       }
     }
-   .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+   /* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: var(--white);
-      box-shadow: var(--shadow);
-      border-radius: 0.5rem;
-      min-width: 200px;
-      z-index: 1;
-    }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #ffffff; /* Solid white background */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 0.5rem; /* Rounded corners */
+  min-width: 220px; /* Slightly wider for better readability */
+  z-index: 1000; /* Ensure it appears above other content */
+  padding: 0.5rem 0; /* Add some padding */
+  border: 1px solid #e2e8f0; /* Light gray border */
+  margin-top: 0.5rem; /* Add space between the dropdown button and the menu */
+}
 
-    .dropdown-content a {
-      color: var(--text-light);
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      display: block;
-      transition: background-color 0.3s, color 0.3s;
-    }
+.dropdown-content a {
+  color: #475569; /* Use the light text color */
+  padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
+  text-decoration: none;
+  display: block;
+  font-size: 1rem; /* Match the font size of the nav links */
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    .dropdown-content a:hover {
-      background: var(--primary);
-      color: var(--white);
-    }
+.dropdown-content a:hover {
+  background: #3b82f6; /* Use the primary color for hover */
+  color: #ffffff; /* White text on hover */
+  border-radius: 0.25rem; /* Slightly rounded corners on hover */
+}
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
 
-    .dropdown:hover .nav-links a {
-      color: var(--primary);
-    }
+.dropdown:hover .dropbtn {
+  color: #3b82f6; /* Change text color of the dropdown button on hover */
+}
     </style>
 </head>
 <body>
   <!-- Navigation -->
-  <nav>
-    <div class="container nav-content">
-      <a href="index.html" class="logo">
-        <i data-lucide="book"></i>
-        <span>Research Summits</span>
+<nav>
+  <div class="container nav-content">
+    <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+    <div class="nav-links">
+      <a href="index.html">
+        <i data-lucide="home"></i>
+        Home
       </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="conferences.html">Conferences</a>
-        <a href="contact.html">Contact</a>
+      <a href="about.html">
+        <i data-lucide="info"></i>
+        About
+      </a>
+      <a href="conferences.html">
+        <i data-lucide="calendar-days"></i>
+        Conferences
+      </a>
+      <a href="members-area.html">
+        <i data-lucide="users"></i>
+        Membership
+      </a>
+      <a href="deals.html">
+        <i data-lucide="badge-percent"></i>
+        Deals
+      </a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">
+          <i data-lucide="clipboard-list"></i>
+          Registration
+        </a>
+        <div class="dropdown-content">
+          <a href="reg_conf1.html">Neurophysiology</a>
+          <a href="reg_conf2.html">Infectious Diseases</a>
+          <a href="reg_conf3.html">Artificial Intelligence</a>
+          <a href="reg_conf4.html">Oil and Gas</a>
+        </div>
       </div>
+      <a href="contact.html">
+        <i data-lucide="mail"></i>
+        Contact
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Contact Hero Section -->
   <section class="contact-hero">
