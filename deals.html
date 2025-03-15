@@ -112,6 +112,8 @@
     .deals-content p {
       color: var(--text-light);
       margin-bottom: 2rem;
+      font-size: 1.25rem;
+      font-weight: 600;
     }
 
     .deals-form {
@@ -124,24 +126,30 @@
     }
 
     .form-group {
+      position: relative;
       margin-bottom: 1.5rem;
     }
 
     .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: var(--text);
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-size: 1rem;
+      color: var(--text-light);
+      transition: all 0.3s ease;
+      pointer-events: none;
     }
 
     .form-group input,
     .form-group select {
       width: 100%;
       padding: 0.75rem;
-      border: 1px solid var(--border);
+      border: 1px solid #e2e8f0;
       border-radius: 0.5rem;
       font-size: 1rem;
       font-family: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background: var(--background);
     }
 
     .form-group input:focus,
@@ -151,61 +159,94 @@
       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }
 
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group select:focus + label,
+    .form-group select:not([value=""]) + label {
+      top: -0.5rem;
+      left: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--primary);
+      background: var(--background);
+      padding: 0 0.25rem;
+    }
+
     .btn-submit {
       width: 100%;
       padding: 1rem;
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       border: none;
       border-radius: 0.5rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .btn-submit:hover {
-      background: var(--primary-dark);
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: translateY(-2px);
     }
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #ffffff; /* Solid white background */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 0.5rem; /* Rounded corners */
-  min-width: 220px; /* Slightly wider for better readability */
-  z-index: 1000; /* Ensure it appears above other content */
-  padding: 0.5rem 0; /* Add some padding */
-  border: 1px solid #e2e8f0; /* Light gray border */
-  margin-top: 0.5rem; /* Add space between the dropdown button and the menu */
-}
+    .btn-submit:active {
+      transform: translateY(0);
+    }
 
-.dropdown-content a {
-  color: #475569; /* Use the light text color */
-  padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
-  text-decoration: none;
-  display: block;
-  font-size: 1rem; /* Match the font size of the nav links */
-  transition: background-color 0.3s, color 0.3s;
-}
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
 
-.dropdown-content a:hover {
-  background: #3b82f6; /* Use the primary color for hover */
-  color: #ffffff; /* White text on hover */
-  border-radius: 0.25rem; /* Slightly rounded corners on hover */
-}
+      .deals-content h1 {
+        font-size: 2rem;
+      }
 
-.dropdown:hover .dropdown-content {
-  display: block; /* Show dropdown on hover */
-}
+      .deals-content p {
+        font-size: 1rem;
+      }
+    }
+/* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-.dropdown:hover .dropbtn {
-  color: #3b82f6; /* Change text color of the dropdown button on hover */
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #ffffff; /* Solid white background */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      border-radius: 0.5rem; /* Rounded corners */
+      min-width: 220px; /* Slightly wider for better readability */
+      z-index: 1000; /* Ensure it appears above other content */
+      padding: 0.5rem 0; /* Add some padding */
+      border: 1px solid #e2e8f0; /* Light gray border */
+      margin-top: 0.5rem; /* Add space between the dropdown button and the menu */
+    }
+
+    .dropdown-content a {
+      color: #475569; /* Use the light text color */
+      padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
+      text-decoration: none;
+      display: block;
+      font-size: 1rem; /* Match the font size of the nav links */
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: #3b82f6; /* Use the primary color for hover */
+      color: #ffffff; /* White text on hover */
+      border-radius: 0.25rem; /* Slightly rounded corners on hover */
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block; /* Show dropdown on hover */
+    }
+
+    .dropdown:hover .dropbtn {
+      color: #3b82f6; /* Change text color of the dropdown button on hover */
+    }
 
     /* Footer */
     .footer {
@@ -300,17 +341,6 @@
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .deals-content h1 {
-        font-size: 2rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -364,32 +394,31 @@
     <div class="container">
       <div class="deals-content">
         <h1>Unlock the Best Offers</h1>
-        <p>Please complete the form below to unlock exclusive deals and discounts for Research Summits conferences.</p>
+        <p><strong>Please complete the form below to unlock exclusive deals and discounts for Research Summits conferences.</strong></p>
         <div class="deals-form">
           <form action="#" method="post">
             <div class="form-group">
+              <input type="text" id="name" name="name" placeholder=" " required>
               <label for="name">Full Name*</label>
-              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
             </div>
             <div class="form-group">
+              <input type="email" id="email" name="email" placeholder=" " required>
               <label for="email">Email Address*</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
             </div>
             <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder=" ">
               <label for="phone">Contact Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="Enter your contact number">
             </div>
             <div class="form-group">
-              <label for="country">Country*</label>
               <select id="country" name="country" required>
-                <option value="" disabled selected>Select your country</option>
+                <option value="" disabled selected></option>
                 <option value="USA">United States</option>
                 <option value="UK">United Kingdom</option>
                 <option value="Canada">Canada</option>
                 <option value="India">India</option>
                 <option value="Germany">Germany</option>
-                <!-- Add more countries as needed -->
               </select>
+              <label for="country">Country*</label>
             </div>
             <button type="submit" class="btn-submit">Unlock Offers</button>
           </form>

@@ -67,11 +67,11 @@
       color: var(--text);
       text-decoration: none;
     }
-     .logo-image {
+
+    .logo-image {
       height: 60px;
       width: auto;
     }
-
 
     .logo i {
       color: var(--primary);
@@ -173,6 +173,11 @@
 
     .info-content p {
       color: var(--text-light);
+    }
+
+    .bold-large {
+      font-weight: bold;
+      font-size: 1.25rem; /* Larger font size */
     }
 
     .contact-form {
@@ -356,8 +361,8 @@
     }
 
     .animate {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1; /* Ensure content is visible by default */
+      transform: translateY(0);
       transition: all 0.6s ease-out;
     }
 
@@ -385,94 +390,95 @@
         padding: 1.5rem;
       }
     }
-   /* Dropdown Styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #ffffff; /* Solid white background */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 0.5rem; /* Rounded corners */
-  min-width: 220px; /* Slightly wider for better readability */
-  z-index: 1000; /* Ensure it appears above other content */
-  padding: 0.5rem 0; /* Add some padding */
-  border: 1px solid #e2e8f0; /* Light gray border */
-  margin-top: 0.5rem; /* Add space between the dropdown button and the menu */
-}
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-.dropdown-content a {
-  color: #475569; /* Use the light text color */
-  padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
-  text-decoration: none;
-  display: block;
-  font-size: 1rem; /* Match the font size of the nav links */
-  transition: background-color 0.3s, color 0.3s;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      min-width: 220px;
+      z-index: 1000;
+      padding: 0.5rem 0;
+      border: 1px solid #e2e8f0;
+      margin-top: 0.5rem;
+    }
 
-.dropdown-content a:hover {
-  background: #3b82f6; /* Use the primary color for hover */
-  color: #ffffff; /* White text on hover */
-  border-radius: 0.25rem; /* Slightly rounded corners on hover */
-}
+    .dropdown-content a {
+      color: #475569;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-.dropdown:hover .dropdown-content {
-  display: block; /* Show dropdown on hover */
-}
+    .dropdown-content a:hover {
+      background: #3b82f6;
+      color: #ffffff;
+      border-radius: 0.25rem;
+    }
 
-.dropdown:hover .dropbtn {
-  color: #3b82f6; /* Change text color of the dropdown button on hover */
-}
-    </style>
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      color: #3b82f6;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
-<nav>
-  <div class="container nav-content">
-    <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-    <div class="nav-links">
-      <a href="index.html">
-        <i data-lucide="home"></i>
-        Home
-      </a>
-      <a href="about.html">
-        <i data-lucide="info"></i>
-        About
-      </a>
-      <a href="conferences.html">
-        <i data-lucide="calendar-days"></i>
-        Conferences
-      </a>
-      <a href="members-area.html">
-        <i data-lucide="users"></i>
-        Membership
-      </a>
-      <a href="deals.html">
-        <i data-lucide="badge-percent"></i>
-        Deals
-      </a>
-      <div class="dropdown">
-        <a href="#" class="dropbtn">
-          <i data-lucide="clipboard-list"></i>
-          Registration
+  <nav>
+    <div class="container nav-content">
+      <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+      <div class="nav-links">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          Home
         </a>
-        <div class="dropdown-content">
-          <a href="reg_conf1.html">Neurophysiology</a>
-          <a href="reg_conf2.html">Infectious Diseases</a>
-          <a href="reg_conf3.html">Artificial Intelligence</a>
-          <a href="reg_conf4.html">Oil and Gas</a>
+        <a href="about.html">
+          <i data-lucide="info"></i>
+          About
+        </a>
+        <a href="conferences.html">
+          <i data-lucide="calendar-days"></i>
+          Conferences
+        </a>
+        <a href="members-area.html">
+          <i data-lucide="users"></i>
+          Membership
+        </a>
+        <a href="deals.html">
+          <i data-lucide="badge-percent"></i>
+          Deals
+        </a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            <i data-lucide="clipboard-list"></i>
+            Registration
+          </a>
+          <div class="dropdown-content">
+            <a href="reg_conf1.html">Neurophysiology</a>
+            <a href="reg_conf2.html">Infectious Diseases</a>
+            <a href="reg_conf3.html">Artificial Intelligence</a>
+            <a href="reg_conf4.html">Oil and Gas</a>
+          </div>
         </div>
+        <a href="contact.html">
+          <i data-lucide="mail"></i>
+          Contact
+        </a>
       </div>
-      <a href="contact.html">
-        <i data-lucide="mail"></i>
-        Contact
-      </a>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- Contact Hero Section -->
   <section class="contact-hero">
@@ -493,24 +499,23 @@
               <i data-lucide="map-pin"></i>
               <div class="info-content">
                 <h3>Location</h3>
-                <p>128 CITY ROAD, <br>LONDON, UNITED KINGDOM<br>EC1V 2NX</p>
+                <p class="bold-large">128 CITY ROAD, <br>LONDON, UNITED KINGDOM<br>EC1V 2NX</p>
               </div>
             </div>
             <div class="info-item">
               <i data-lucide="phone"></i>
               <div class="info-content">
                 <h3>Phone</h3>
-                <p>+442081913434</p>
+                <p class="bold-large">+442081913434</p>
               </div>
             </div>
             <div class="info-item">
               <i data-lucide="mail"></i>
               <div class="info-content">
                 <h3>Email</h3>
-                <p>support@researchsummits.com</p>
+                <p class="bold-large">support@researchsummits.com</p>
               </div>
             </div>
-            
           </div>
         </div>
 
@@ -529,11 +534,10 @@
               <label for="phone">Phone</label>
               <input type="text" id="phone" name="phone" required>
             </div>
-             <div class="form-group">
+            <div class="form-group">
               <label for="country">Country</label>
               <input type="text" id="country" name="country" required>
             </div>
-
             <div class="form-group">
               <label for="message">Message</label>
               <textarea id="message" name="message" required></textarea>

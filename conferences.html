@@ -98,7 +98,7 @@
     /* Conferences Hero Section */
     .conferences-hero {
       background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
-                  url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80') center/cover;
+                  url('https://images.unsplash.com/photo-1550177977-ad69e8f3cae0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover;
       color: white;
       padding: 8rem 0;
       text-align: center;
@@ -435,6 +435,13 @@
         align-items: center;
       }
     }
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+    }
+
    /* Dropdown Styles */
 .dropdown {
   position: relative;
@@ -547,17 +554,50 @@
         <p class="section-subtitle">Secure your spot at our upcoming industry-leading events</p>
         
         <div class="conferences-grid">
+
+          <!-- Upcoming Event 4 -->
+          <div class="event-card">
+            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80" alt="Healthcare Innovation" class="event-image">
+            <div class="event-content">
+              <span class="event-date">
+                <i data-lucide="calendar"></i>
+               15 June, 2025
+              </span>
+              <h3 class="event-title">Healthcare Innovation Forum</h3>
+              <p class="event-description">Explore the future of healthcare with leading medical professionals and technology innovators.</p>
+                 <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+               Serial – 101
+              </div>
+              <a href="conf4.html" class="book-btn">
+                Book Now
+                <i data-lucide="ticket"></i>
+              </a>
+            </div>
+          </div>
+    
           <!-- Upcoming Event 1 -->
           <div class="event-card">
             <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80" alt="Tech Summit 2025" class="event-image">
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-                March 15-17, 2025
+                21 & 22 June, 2025
               </span>
-              <h3 class="event-title">Neurophysiology Conference 2025</h3>
+              <h3 class="event-title">Neurophysiology Conference</h3>
               <p class="event-description">Join industry leaders and innovators for three days of cutting-edge technology discussions and networking.</p>
-              <div class="event-price">€199</div>
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+               Serial – 102 
+              </div>
               <a href="conf1.html" class="book-btn">
                 Book Now
                 <i data-lucide="ticket"></i>
@@ -571,11 +611,18 @@
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-                April 5-6, 2025
+                29 June, 2025
               </span>
               <h3 class="event-title">Infectious Disease</h3>
               <p class="event-description">Discover the latest trends in digital marketing with expert speakers and hands-on workshops.</p>
-              <div class="event-price">€199</div>
+                  <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+               Serial – 103 
+              </div>
               <a href="conf2.html" class="book-btn">
                 Book Now
                 <i data-lucide="ticket"></i>
@@ -589,36 +636,24 @@
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-                May 20-22, 2025
+              06 July, 2025
               </span>
               <h3 class="event-title">Artificial Intelligence</h3>
               <p class="event-description">Connect with investors, entrepreneurs, and industry experts in this premier startup event.</p>
-              <div class="event-price">€199</div>
+                  <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+               Serial – 104
+              </div>
               <a href="conf3.html" class="book-btn">
                 Book Now
                 <i data-lucide="ticket"></i>
               </a>
             </div>
           </div>
-
-          <!-- Upcoming Event 4 -->
-          <div class="event-card">
-            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80" alt="Healthcare Innovation" class="event-image">
-            <div class="event-content">
-              <span class="event-date">
-                <i data-lucide="calendar"></i>
-                June 12-14, 2025
-              </span>
-              <h3 class="event-title">Healthcare Innovation Forum</h3>
-              <p class="event-description">Explore the future of healthcare with leading medical professionals and technology innovators.</p>
-              <div class="event-price">€199</div>
-              <a href="conf4.html" class="book-btn">
-                Book Now
-                <i data-lucide="ticket"></i>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Completed Conferences Tab -->
