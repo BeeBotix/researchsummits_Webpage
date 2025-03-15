@@ -503,7 +503,7 @@
       transform: translateY(20px);
       transition: all 0.6s ease-out;
     }
-    
+
     .animate.active {
       opacity: 1;
       transform: translateY(0);
@@ -532,169 +532,101 @@
       }
     }
 
-    .features-grid, .conference-grid {
-  display: grid; /* Ensure grid layout */
-  visibility: visible; /* Ensure visibility */
-  opacity: 1; /* Ensure full opacity */
-}
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-/* Dropdown Styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      min-width: 220px;
+      z-index: 1000;
+      padding: 0.5rem 0;
+      border: 1px solid #e2e8f0;
+      margin-top: 0.5rem;
+    }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #ffffff; /* Solid white background */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 0.5rem; /* Rounded corners */
-  min-width: 220px; /* Slightly wider for better readability */
-  z-index: 1000; /* Ensure it appears above other content */
-  padding: 0.5rem 0; /* Add some padding */
-  border: 1px solid #e2e8f0; /* Light gray border */
-  margin-top: 0.5rem; /* Add space between the dropdown button and the menu */
-}
+    .dropdown-content a {
+      color: #475569;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-.dropdown-content a {
-  color: #475569; /* Use the light text color */
-  padding: 0.75rem 1.5rem; /* Increase padding for better spacing */
-  text-decoration: none;
-  display: block;
-  font-size: 1rem; /* Match the font size of the nav links */
-  transition: background-color 0.3s, color 0.3s;
-}
+    .dropdown-content a:hover {
+      background: #3b82f6;
+      color: #ffffff;
+      border-radius: 0.25rem;
+    }
 
-.dropdown-content a:hover {
-  background: #3b82f6; /* Use the primary color for hover */
-  color: #ffffff; /* White text on hover */
-  border-radius: 0.25rem; /* Slightly rounded corners on hover */
-}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-.dropdown:hover .dropdown-content {
-  display: block; /* Show dropdown on hover */
-}
-
-.dropdown:hover .dropbtn {
-  color: #3b82f6; /* Change text color of the dropdown button on hover */
-}
-.hero {
-  padding: 6rem 0; /* Reduced padding for a tighter layout */
-}
-
-/* About Us Section */
-.about-us {
-  padding: 4rem 0; /* Reduced padding */
-}
-
-/* Features Section */
-.features {
-  padding: 4rem 0; /* Reduced padding */
-}
-
-/* Stats Section */
-.stats {
-  padding: 4rem 0; /* Reduced padding */
-}
-
-/* Featured Conferences Section */
-.conferences {
-  padding: 4rem 0; /* Reduced padding */
-}
-
-/* Footer Section */
-.footer {
-  padding: 4rem 0 2rem; /* Reduced padding */
-}
-
-/* Section Header */
-.section-header {
-  margin-bottom: 2rem; /* Reduced margin */
-}
-
-/* Feature Cards */
-.feature-card {
-  margin-bottom: 1rem; /* Added margin between feature cards */
-}
-
-/* Conference Cards */
-.conference-card {
-  margin-bottom: 1rem; /* Added margin between conference cards */
-}
-
-/* Stats Grid */
-.stats-grid {
-  gap: 1.5rem; /* Reduced gap between stat cards */
-}
-
-/* Conference Grid */
-.conference-grid {
-  gap: 1.5rem; /* Reduced gap between conference cards */
-}
-
-/* Footer Grid */
-.footer-grid {
-  gap: 2rem; /* Reduced gap between footer columns */
-}
-
-    </style>
+    .dropdown:hover .dropbtn {
+      color: #3b82f6;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav>
-  <div class="container nav-content">
-    <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-    <div class="nav-links">
-      <a href="index.html">
-        <i data-lucide="home"></i>
-        Home
-      </a>
-      <a href="about.html">
-        <i data-lucide="info"></i>
-        About
-      </a>
-      <a href="conferences.html">
-        <i data-lucide="calendar-days"></i>
-        Conferences
-      </a>
-      <a href="members-area.html">
-        <i data-lucide="users"></i>
-        Membership
-      </a>
-      <a href="deals.html">
-        <i data-lucide="badge-percent"></i>
-        Deals
-      </a>
-      <div class="dropdown">
-        <a href="#" class="dropbtn">
-          <i data-lucide="clipboard-list"></i>
-          Registration
+    <div class="container nav-content">
+      <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+      <div class="nav-links">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          Home
         </a>
-        <div class="dropdown-content">
-          <a href="reg_conf1.html">Neurophysiology</a>
-          <a href="reg_conf2.html">Infectious Diseases</a>
-          <a href="reg_conf3.html">Artificial Intelligence</a>
-          <a href="reg_conf4.html">Oil and Gas</a>
+        <a href="about.html">
+          <i data-lucide="info"></i>
+          About
+        </a>
+        <a href="conferences.html">
+          <i data-lucide="calendar-days"></i>
+          Conferences
+        </a>
+        <a href="members-area.html">
+          <i data-lucide="users"></i>
+          Membership
+        </a>
+        <a href="deals.html">
+          <i data-lucide="badge-percent"></i>
+          Deals
+        </a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn">
+            <i data-lucide="clipboard-list"></i>
+            Registration
+          </a>
+          <div class="dropdown-content">
+            <a href="reg_conf1.html">Neurophysiology</a>
+            <a href="reg_conf2.html">Infectious Diseases</a>
+            <a href="reg_conf3.html">Artificial Intelligence</a>
+            <a href="reg_conf4.html">Oil and Gas</a>
+          </div>
         </div>
+        <a href="contact.html">
+          <i data-lucide="mail"></i>
+          Contact
+        </a>
       </div>
-      <a href="contact.html">
-        <i data-lucide="mail"></i>
-        Contact
-      </a>
     </div>
-  </div>
-</nav>
+  </nav>
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
         <h1>Welcome to Research Summits! ✨</h1>
-        <p>We bring the world closer by organizing impactful global medical &amp; engineering conferences. Our
-mission is to connect intellectuals and aspiring talents. With our passionate team of professionals
-and expertise, we ensure that your vision becomes a reality. Headquartered in London, United
-Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference.
-Join us to embark on a journey of unparalleled success and shining recognition!</p>
+        <p>We bring the world closer by organizing impactful global medical &amp; engineering conferences. Our mission is to connect intellectuals and aspiring talents. With our passionate team of professionals and expertise, we ensure that your vision becomes a reality. Headquartered in London, United Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference. Join us to embark on a journey of unparalleled success and shining recognition!</p>
         <div class="hero-buttons">
           <a href="conferences.html" class="btn btn-primary">
             Browse Conferences
@@ -731,141 +663,142 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
     </div>
   </section>
 
-<section class="features">
-  <div class="container">
-    <div class="section-header">
-      <h2>Benefits of Attending “Research Summits 2025”</h2>
-      <p>Discover the exclusive advantages of joining the premier research conference of the year.</p>
+  <!-- Benefits Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Benefits of Attending “Research Summits 2025”</h2>
+        <p>Discover the exclusive advantages of joining the premier research conference of the year.</p>
+      </div>
+      <div class="features-grid">
+        <!-- Benefit 1 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="badge-percent"></i>
+          </div>
+          <h3 class="feature-title">Early Bird Discounts</h3>
+          <p class="feature-description">Exclusive registration discounts for early participants.</p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="file-badge"></i>
+          </div>
+          <h3 class="feature-title">E-Certification</h3>
+          <p class="feature-description">All attendees receive an e-certificate of participation.</p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="book-open"></i>
+          </div>
+          <h3 class="feature-title">Book of Abstracts</h3>
+          <p class="feature-description">Access to the conference book of abstracts.</p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="mic"></i>
+          </div>
+          <h3 class="feature-title">Keynote Presentations</h3>
+          <p class="feature-description">Insights from distinguished experts in the field.</p>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="presentation"></i>
+          </div>
+          <h3 class="feature-title">Oral Presentations</h3>
+          <p class="feature-description">Showcase groundbreaking research findings.</p>
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="image"></i>
+          </div>
+          <h3 class="feature-title">Poster Presentations</h3>
+          <p class="feature-description">Highlight innovative research through posters.</p>
+        </div>
+
+        <!-- Benefit 7 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="users"></i>
+          </div>
+          <h3 class="feature-title">Networking Sessions</h3>
+          <p class="feature-description">Foster meaningful connections with peers.</p>
+        </div>
+
+        <!-- Benefit 8 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="video"></i>
+          </div>
+          <h3 class="feature-title">On-Demand Recordings</h3>
+          <p class="feature-description">Access presentations anytime, anywhere.</p>
+        </div>
+
+        <!-- Benefit 9 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="film"></i>
+          </div>
+          <h3 class="feature-title">Conference Videos</h3>
+          <p class="feature-description">Seamless delivery of conference content.</p>
+        </div>
+
+        <!-- Benefit 10 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="calendar"></i>
+          </div>
+          <h3 class="feature-title">Pre-conference Demo</h3>
+          <p class="feature-description">Exclusive early insights for attendees.</p>
+        </div>
+
+        <!-- Benefit 11 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="message-square"></i>
+          </div>
+          <h3 class="feature-title">Live Q&A Sessions</h3>
+          <p class="feature-description">Engage with renowned presenters in real-time.</p>
+        </div>
+
+        <!-- Benefit 12 -->
+        <div class="feature-card animate active">
+          <div class="feature-icon">
+            <i data-lucide="award"></i>
+          </div>
+          <h3 class="feature-title">Best Speaker Award</h3>
+          <p class="feature-description">Recognition for exceptional engagement.</p>
+        </div>
+      </div>
     </div>
-    <div class="features-grid">
-      <!-- Benefit 1 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="badge-percent"></i>
-        </div>
-        <h3 class="feature-title">Early Bird Discounts</h3>
-        <p class="feature-description">Exclusive registration discounts for early participants.</p>
-      </div>
-
-      <!-- Benefit 2 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="file-badge"></i>
-        </div>
-        <h3 class="feature-title">E-Certification</h3>
-        <p class="feature-description">All attendees receive an e-certificate of participation.</p>
-      </div>
-
-      <!-- Benefit 3 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="book-open"></i>
-        </div>
-        <h3 class="feature-title">Book of Abstracts</h3>
-        <p class="feature-description">Access to the conference book of abstracts.</p>
-      </div>
-
-      <!-- Benefit 4 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="mic"></i>
-        </div>
-        <h3 class="feature-title">Keynote Presentations</h3>
-        <p class="feature-description">Insights from distinguished experts in the field.</p>
-      </div>
-
-      <!-- Benefit 5 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="presentation"></i>
-        </div>
-        <h3 class="feature-title">Oral Presentations</h3>
-        <p class="feature-description">Showcase groundbreaking research findings.</p>
-      </div>
-
-      <!-- Benefit 6 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="image"></i>
-        </div>
-        <h3 class="feature-title">Poster Presentations</h3>
-        <p class="feature-description">Highlight innovative research through posters.</p>
-      </div>
-
-      <!-- Benefit 7 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="users"></i>
-        </div>
-        <h3 class="feature-title">Networking Sessions</h3>
-        <p class="feature-description">Foster meaningful connections with peers.</p>
-      </div>
-
-      <!-- Benefit 8 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="video"></i>
-        </div>
-        <h3 class="feature-title">On-Demand Recordings</h3>
-        <p class="feature-description">Access presentations anytime, anywhere.</p>
-      </div>
-
-      <!-- Benefit 9 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="film"></i>
-        </div>
-        <h3 class="feature-title">Conference Videos</h3>
-        <p class="feature-description">Seamless delivery of conference content.</p>
-      </div>
-
-      <!-- Benefit 10 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="calendar"></i>
-        </div>
-        <h3 class="feature-title">Pre-conference Demo</h3>
-        <p class="feature-description">Exclusive early insights for attendees.</p>
-      </div>
-
-      <!-- Benefit 11 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="message-square"></i>
-        </div>
-        <h3 class="feature-title">Live Q&A Sessions</h3>
-        <p class="feature-description">Engage with renowned presenters in real-time.</p>
-      </div>
-
-      <!-- Benefit 12 -->
-      <div class="feature-card animate active">
-        <div class="feature-icon">
-          <i data-lucide="award"></i>
-        </div>
-        <h3 class="feature-title">Best Speaker Award</h3>
-        <p class="feature-description">Recognition for exceptional engagement.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Stats Section -->
   <section class="stats">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-card animate activate">
+        <div class="stat-card animate active">
           <div class="stat-number">150+</div>
           <div class="stat-label">Annual Conferences</div>
         </div>
-        <div class="stat-card animate activate">
+        <div class="stat-card animate active">
           <div class="stat-number">50+</div>
           <div class="stat-label">Countries</div>
         </div>
-        <div class="stat-card animate activate">
+        <div class="stat-card animate active">
           <div class="stat-number">10K+</div>
           <div class="stat-label">Researchers</div>
         </div>
-        <div class="stat-card animate activate">
+        <div class="stat-card animate active">
           <div class="stat-number">95%</div>
           <div class="stat-label">Satisfaction Rate</div>
         </div>
@@ -881,8 +814,8 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
         <p>Discover upcoming events that shape the future of research and innovation</p>
       </div>
       <div class="conference-grid">
-
-           <div class="conference-card animate">
+        <!-- Conference 1 -->
+        <div class="conference-card animate active">
           <div class="conference-image">
             <img src="https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Engineering Conference">
             <div class="conference-date">
@@ -891,24 +824,23 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
             </div>
           </div>
           <div class="conference-content">
-            <h3 class="conference-title">International Conference on Oil and Gas Confernece</h3>
+            <h3 class="conference-title">International Conference on Oil and Gas Conference</h3>
             <div class="conference-details">
               <div class="detail-item">
                 <i data-lucide="map-pin"></i>
-               Zoom Meeting
+                Zoom Meeting
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-               Serial – 101
+                Serial – 101
               </div>
             </div>
-            
             <a href="conf4.html" class="conference-button">Visit Website</a>
           </div>
         </div>
 
-
-        <div class="conference-card animate">
+        <!-- Conference 2 -->
+        <div class="conference-card animate active">
           <div class="conference-image">
             <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80" alt="Medical Conference">
             <div class="conference-date">
@@ -925,20 +857,20 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-               Serial – 102 
+                Serial – 102
               </div>
             </div>
-            
             <a href="conf1.html" class="conference-button">Visit Website</a>
           </div>
         </div>
 
-        <div class="conference-card animate">
+        <!-- Conference 3 -->
+        <div class="conference-card animate active">
           <div class="conference-image">
-            <img src=https://images.unsplash.com/photo-1579544787614-fa683917e045?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Conference">
+            <img src="https://images.unsplash.com/photo-1579544787614-fa683917e045?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Conference">
             <div class="conference-date">
               <i data-lucide="calendar"></i>
-             Saturday &amp; Sunday, 28 &amp; 29 June, 2025
+              Saturday &amp; Sunday, 28 &amp; 29 June, 2025
             </div>
           </div>
           <div class="conference-content">
@@ -953,17 +885,17 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
                 Serial – 103
               </div>
             </div>
-            
             <a href="conf2.html" class="conference-button">Visit Website</a>
           </div>
         </div>
 
-        <div class="conference-card animate">
+        <!-- Conference 4 -->
+        <div class="conference-card animate active">
           <div class="conference-image">
             <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1106&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Climate Conference">
             <div class="conference-date">
               <i data-lucide="calendar"></i>
-             Saturday &amp; Sunday, 05 &amp; 06 July, 2025
+              Saturday &amp; Sunday, 05 &amp; 06 July, 2025
             </div>
           </div>
           <div class="conference-content">
@@ -978,12 +910,9 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
                 Serial – 104
               </div>
             </div>
-            
             <a href="conf1.html" class="conference-button">Visit Website</a>
           </div>
         </div>
-
-     
       </div>
       <!-- Explore More Conferences Button -->
       <div class="explore-more">
@@ -995,8 +924,6 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
     </div>
   </section>
 
-
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -1004,7 +931,7 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
         <div>
           <div class="footer-logo">
             <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-             <span>Research Summits</span>
+            <span>Research Summits</span>
           </div>
           <p>Advancing research through global collaboration since 2010.</p>
         </div>
@@ -1042,29 +969,27 @@ Join us to embark on a journey of unparalleled success and shining recognition!<
   </footer>
 
   <!-- Tawk.to Live Chat -->
-  <!--Start of Tawk.to Script-->
- <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-  <!--End of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log("Lucide icons initialized"); // Debugging
       lucide.createIcons();
 
       // Intersection Observer for animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+          console.log("Intersection observed:", entry); // Debugging
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
           }
