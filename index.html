@@ -4,11 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ResearchSummits - Global Conference Platform</title>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Updated Lucide Script -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Add this CSS to ensure icons are visible */
+    [data-lucide] {
+      width: 1em;
+      height: 1em;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    /* Your existing CSS styles */
     :root {
       --primary: #3b82f6;
       --primary-dark: #2563eb;
@@ -983,13 +996,13 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      console.log("Lucide icons initialized"); // Debugging
+      console.log("Initializing Lucide icons...");
       lucide.createIcons();
 
       // Intersection Observer for animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          console.log("Intersection observed:", entry); // Debugging
+          console.log("Intersection observed:", entry);
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
           }
