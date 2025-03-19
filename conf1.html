@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infectious Disease Conference 2025</title>
+  <title>Neurophysiology Conference 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/png" href="./Logo.png">
   <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
   <style>
     :root {
@@ -15,7 +16,7 @@
       --primary-dark: #1d4ed8;
       --secondary: #f59e0b;
       --text: #1e293b;
-      --text-light: #64748b;
+      --text-light: #000000;
       --background: #f8fafc;
       --white: #ffffff;
       --border: #e2e8f0;
@@ -65,7 +66,7 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+  
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--text);
@@ -182,6 +183,15 @@
       color: var(--primary);
     }
 
+    .section-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+       text-align: center;
+
+    }
+
     .section-content ul {
       list-style: disc;
       padding-left: 2rem;
@@ -206,6 +216,12 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
+    }
+    
+    .countdown-section{
+       color: var(--primary);
+      text-align: center;
+        gap: 2rem;
     }
 
     .pricing-card {
@@ -371,38 +387,70 @@
       }
     }
 
-  .countdown-section {
-    background: var(--white);
-    padding: 4rem 0;
-    text-align: center;
-  }
+    /* New Countdown Styles */
+    .countdown {
+      --number-color: hsl(0 0% 25%);
+      --text-color: hsl(0 0% 25%);
+     --dot-color: hsl(0, 0%, 10%); /* Dark gray for inactive dots */
+  --dot-color-remaining: hsl(240, 100%, 50%); /* Blue for remaining dots */
+  --dot-color-active: hsl(0, 100%, 50%);
+      font-family: system-ui, sans-serif;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: min(60rem, 100%);
+      margin-inline: auto;
+      container: inline-size;
+      margin-bottom: 4rem;
+    }
 
-  .countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+    .countdown > .part {
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+    }
 
-  .countdown-card {
-    background: var(--background);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
-  }
+    .countdown > .part > .remaining {
+      grid-area: 1/1;
+      color: hsl(0 0% 100%);
+      display: grid;
+      text-align: center;
+      font-size: 4cqi;
+    }
 
-  .countdown-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-  }
+    .countdown > .part > .remaining > .number {
+      color: var(--number-color);
+    }
 
-  .countdown-label {
-    font-size: 1rem;
-    color: var(--text-light);
-  }
+    .countdown > .part > .remaining > .text {
+      color: var(--text-color);
+      text-transform: uppercase;
+      font-size: 0.5em;
+    }
 
+    .countdown > .part > .dot-container {
+      grid-area: 1/1;
+      height: 100%;
+      width: 4%;
+      rotate: calc(360deg / var(--dots) * var(--dot-idx));
+    }
+
+    .countdown > .part > .dot-container > .dot {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      transition: background-color 0.25s;
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"] {
+      background-color: var(--dot-color-remaining);
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+      background-color: var(--dot-color-active);
+    }
+ 
    .dropdown {
       position: relative;
       display: inline-block;
@@ -438,16 +486,70 @@
     .dropdown:hover .nav-links a {
       color: var(--primary);
     }
+
+    <style>
+  .pricing-table {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  .pricing-table th {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .pricing-table td {
+    background: var(--background);
+    color: var(--text);
+  }
+
+  .pricing-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .pricing-table ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+  }
+
+  .pricing-table ul li::before {
+    content: "•";
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+
     </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="abstract_submit_conf1.html" class="logo">
+      <a href="index.html" class="logo">
         <img src="rsummits.png" alt="Neurophysiology 2025 Logo" width="60" height="60">
+         </a>
+          <a href="abstract_submit_conf1.html" class="logo">
         <img src="cmelogo.png" alt="Neurophysiology 2025 Logo" width="80" height="60">
         <span>Neurophysiology 2025</span>
       </a>
+     
       <div class="nav-links">
         <a href="conf1.html" class="active">Home</a>
         <a href="abstract_submit_conf1.html">Submit Abstract</a>
@@ -472,11 +574,11 @@
       <div class="event-details">
         <div class="detail">
           <strong>Submission Deadline</strong>
-          <span>October 15, 2025</span>
+          <span>June 6, 2025</span>
         </div>
         <div class="detail">
           <strong>Conference Dates</strong>
-          <span>November 15-17, 2025</span>
+          <span>June 21-17, 2025</span>
         </div>
         <div class="detail">
           <strong>Location</strong>
@@ -494,25 +596,8 @@
     <div class="container">
       <!-- Countdown Section -->
       <section class="countdown-section">
-        <h2 class="section-title">Countdown to the Conference</h2>
-        <div class="countdown-grid">
-          <div class="countdown-card">
-            <div class="countdown-number" id="days">00</div>
-            <div class="countdown-label">Days</div>
-          </div>
-          <div class="countdown-card">
-            <div class="countdown-number" id="hours">00</div>
-            <div class="countdown-label">Hours</div>
-          </div>
-          <div class="countdown-card">
-            <div class="countdown-number" id="minutes">00</div>
-            <div class="countdown-label">Minutes</div>
-          </div>
-          <div class="countdown-card">
-            <div class="countdown-number" id="seconds">00</div>
-            <div class="countdown-label">Seconds</div>
-          </div>
-        </div>
+        <h1>Countdown to Neurophysiology 2025</span></h1>
+        <div class="countdown" data-target-date="2025-11-15 00:00:00"></div>
       </section>
 
       <!-- Introduction to Neurology Section -->
@@ -687,38 +772,53 @@
       <!-- Pricing Section -->
       <section class="pricing-section">
         <h2 class="section-title">Pricing</h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <h3>Early Bird</h3>
-            <div class="price">€199</div>
-            <ul>
-              <li>Access to all sessions</li>
-              <li>Conference materials</li>
-              <li>Networking opportunities</li>
-            </ul>
-            <a href="reg_conf1.html" class="btn">Register Now</a>
-          </div>
-          <div class="pricing-card">
-            <h3>Regular</h3>
-            <div class="price">€299</div>
-            <ul>
-              <li>Access to all sessions</li>
-              <li>Conference materials</li>
-              <li>Networking opportunities</li>
-            </ul>
-            <a href="reg_conf1.html" class="btn">Register Now</a>
-          </div>
-          <div class="pricing-card">
-            <h3>Student</h3>
-            <div class="price">€99</div>
-            <ul>
-              <li>Access to all sessions</li>
-              <li>Conference materials</li>
-              <li>Networking opportunities</li>
-            </ul>
-            <a href="reg_conf1.html" class="btn">Register Now</a>
-          </div>
-        </div>
+        <div class="pricing-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Exclusive Offers</th>
+        <th>Early Bird Deadline<br>Valid till 20-Mar-25</th>
+        <th>Standard Offer<br>Valid from 21-Mar-25 till 20-May-25</th>
+        <th>Last Call Price<br>Valid from 21-May-25 till 06-Jun-25</th>
+        <th>Key Benefits for all!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Speaker / Presenter Benefits</td>
+        <td>£399</td>
+        <td>£499</td>
+        <td>£599</td>
+        <td rowspan="4">
+          <ul>
+            <li>Access to all sessions</li>
+            <li>Conference materials</li>
+            <li>Networking opportunities</li>
+            <li>Certificate of participation</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Listener / Delegate Benefits</td>
+        <td>£199</td>
+        <td>£299</td>
+        <td>£399</td>
+      </tr>
+      <tr>
+        <td>Student Benefits</td>
+        <td>£99</td>
+        <td>£199</td>
+        <td>£299</td>
+      </tr>
+      <tr>
+        <td>Poster Benefits</td>
+        <td>£449</td>
+        <td>£549</td>
+        <td>£649</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
       </section>
     </div>
   </main>
@@ -754,29 +854,80 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const conferenceDate = new Date("November 15, 2024 00:00:00");
+    const countdownEls = document.querySelectorAll(".countdown");
+    countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
 
-      const updateCountdown = () => {
-        const timeRemaining = countdown(conferenceDate);
-
-        if (timeRemaining.value > 0) {
-          document.getElementById("days").textContent = String(timeRemaining.days).padStart(2, "0");
-          document.getElementById("hours").textContent = String(timeRemaining.hours).padStart(2, "0");
-          document.getElementById("minutes").textContent = String(timeRemaining.minutes).padStart(2, "0");
-          document.getElementById("seconds").textContent = String(timeRemaining.seconds).padStart(2, "0");
-        } else {
-          document.querySelector(".countdown-grid").innerHTML =
-            "<p>The conference has started!</p>";
-          clearInterval(countdownInterval);
-        }
+    function createCountdown(countdownEl) {
+      const target = new Date(
+        new Date(countdownEl.dataset.targetDate).toLocaleString("en")
+      );
+      const parts = {
+        days: { text: ["days", "day"], dots: 30 },
+        hours: { text: ["hours", "hour"], dots: 24 },
+        minutes: { text: ["minutes", "minute"], dots: 60 },
+        seconds: { text: ["seconds", "second"], dots: 60 },
       };
 
-      const countdownInterval = setInterval(updateCountdown, 1000);
-      updateCountdown();
-    });
+      Object.entries(parts).forEach(([key, value]) => {
+        const partEl = document.createElement("div");
+        partEl.classList.add("part", key);
+        partEl.style.setProperty("--dots", value.dots);
+        value.element = partEl;
+
+        const remainingEl = document.createElement("div");
+        remainingEl.classList.add("remaining");
+        remainingEl.innerHTML = `
+          <span class="number"></span>
+          <span class="text"></span>
+        `;
+        partEl.append(remainingEl);
+
+        for (let i = 0; i < value.dots; i++) {
+          const dotContainerEl = document.createElement("div");
+          dotContainerEl.style.setProperty("--dot-idx", i);
+          dotContainerEl.classList.add("dot-container");
+          const dotEl = document.createElement("div");
+          dotEl.classList.add("dot");
+          dotContainerEl.append(dotEl);
+          partEl.append(dotContainerEl);
+        }
+        countdownEl.append(partEl);
+      });
+
+      getRemainingTime(target, parts);
+    }
+
+    function getRemainingTime(target, parts, first = true) {
+      const now = new Date();
+      if (first) console.log({ target, now });
+      const remaining = {};
+      let seconds = Math.floor((target - now) / 1000);
+      let minutes = Math.floor(seconds / 60);
+      let hours = Math.floor(minutes / 60);
+      let days = Math.floor(hours / 24);
+      hours = hours - days * 24;
+      minutes = minutes - days * 24 * 60 - hours * 60;
+      seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+
+      Object.entries({ days, hours, minutes, seconds }).forEach(([key, value]) => {
+        const remaining = parts[key].element.querySelector(".number");
+        const text = parts[key].element.querySelector(".text");
+        remaining.innerText = value;
+        text.innerText = parts[key].text[Number(value == 1)];
+        const dots = parts[key].element.querySelectorAll(".dot");
+        dots.forEach((dot, idx) => {
+          dot.dataset.active = idx <= value;
+          dot.dataset.lastactive = idx == value;
+        });
+      });
+
+      if (now <= target) {
+        window.requestAnimationFrame(() => {
+          getRemainingTime(target, parts, false);
+        });
+      }
+    }
   </script>
 </body>
 </html>

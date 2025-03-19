@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conferences - ResearchSummits</title>
+  <title>Conferences - Research Summits</title>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="./Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -295,18 +296,22 @@
       color: var(--text-light);
     }
 
-    /* Footer */
+       /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
-      padding: 6rem 0 2rem;
+      padding: 4rem 0 2rem;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 4rem;
-      margin-bottom: 4rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
     }
 
     .footer-logo {
@@ -319,27 +324,32 @@
       margin-bottom: 1.5rem;
     }
 
-    .footer-links h3 {
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .footer-section h3 {
       color: white;
       font-size: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
-    .footer-links ul {
+    .footer-section ul {
       list-style: none;
     }
 
-    .footer-links li {
+    .footer-section ul li {
       margin-bottom: 0.75rem;
     }
 
-    .footer-links a {
+    .footer-section ul li a {
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-links a:hover {
+    .footer-section ul li a:hover {
       color: white;
     }
 
@@ -350,7 +360,7 @@
 
     .newsletter-input {
       flex: 1;
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #334155;
       border-radius: 0.5rem;
       background: #1e293b;
@@ -359,7 +369,7 @@
     }
 
     .newsletter-btn {
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       background: var(--primary);
       color: white;
       border: none;
@@ -377,6 +387,7 @@
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #334155;
+      color: #94a3b8;
     }
 
     /* Tab Navigation */
@@ -535,8 +546,8 @@
   <!-- Conferences Hero -->
   <section class="conferences-hero">
     <div class="container">
-      <h1>ResearchSummits Conferences</h1>
-      <p>Discover our upcoming events and explore the success of our past conferences</p>
+      <h1>Research Summits Conferences</h1>
+      <p>Discover our upcoming events.</p>
     </div>
   </section>
 
@@ -551,7 +562,7 @@
       <!-- Upcoming Conferences Tab -->
       <div id="upcoming" class="tab-content active">
         <h2 class="section-title">Upcoming Conferences</h2>
-        <p class="section-subtitle">Secure your spot at our upcoming industry-leading events</p>
+        <p class="section-subtitle">Don't miss out—reserve your place at our upcoming conferences today!</p>
         
         <div class="conferences-grid">
 
@@ -564,14 +575,13 @@
                15 June, 2025
               </span>
               <h3 class="event-title">International Oil and Gas Conference</h3>
-              <p class="event-description">Explore the future of Oil and Gas.</p>
-                 <div class="detail-item">
+               <div class="detail-item">
                 <i data-lucide="map-pin"></i>
                 Zoom Meeting
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-               Serial – 101
+               Serial – 201
               </div>
               <a href="conf4.html" class="book-btn">
                 Book Now
@@ -582,21 +592,20 @@
     
           <!-- Upcoming Event 1 -->
           <div class="event-card">
-            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80" alt="Tech Summit 2025" class="event-image">
+            <img src="data:image/jpeg;base64,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" alt="Tech Summit 2025" class="event-image">
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
                 21 & 22 June, 2025
               </span>
               <h3 class="event-title">Neurophysiology Conference</h3>
-              <p class="event-description">Join industry leaders and innovators for three days of cutting-edge technology discussions and networking.</p>
-              <div class="detail-item">
+                <div class="detail-item">
                 <i data-lucide="map-pin"></i>
                 Zoom Meeting
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-               Serial – 102 
+               Serial – 202 
               </div>
               <a href="conf1.html" class="book-btn">
                 Book Now
@@ -613,15 +622,15 @@
                 <i data-lucide="calendar"></i>
                 29 June, 2025
               </span>
-              <h3 class="event-title">Infectious Disease</h3>
-              <p class="event-description">Discover the latest trends in digital marketing with expert speakers and hands-on workshops.</p>
+              <h3 class="event-title">Infectious Disease Conference</h3>
+          
                   <div class="detail-item">
                 <i data-lucide="map-pin"></i>
                 Zoom Meeting
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-               Serial – 103 
+               Serial – 203 
               </div>
               <a href="conf2.html" class="book-btn">
                 Book Now
@@ -638,15 +647,15 @@
                 <i data-lucide="calendar"></i>
               06 July, 2025
               </span>
-              <h3 class="event-title">Artificial Intelligence</h3>
-              <p class="event-description">Connect with investors, entrepreneurs, and industry experts in this premier startup event.</p>
+              <h3 class="event-title">Artificial Intelligence Conference</h3>
+          
                   <div class="detail-item">
                 <i data-lucide="map-pin"></i>
                 Zoom Meeting
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-               Serial – 104
+               Serial – 204
               </div>
               <a href="conf3.html" class="book-btn">
                 Book Now
@@ -660,167 +669,83 @@
       <div id="completed" class="tab-content">
         <h2 class="section-title">Completed Conferences</h2>
         <p class="section-subtitle">Explore our past successful events and their impact</p>
-        
-        <div class="conferences-grid">
-          <!-- Completed Event 1 -->
-          <div class="completed-card">
-            <h3 class="completed-title">AI & Machine Learning Summit</h3>
-            <div class="completed-date">
-              <i data-lucide="calendar"></i>
-              November 10-12, 2023
-            </div>
-            <p>A groundbreaking event that brought together AI researchers and industry leaders to discuss the future of machine learning.</p>
-            <div class="stats-grid">
-              <div class="stat-item">
-                <div class="stat-value">1,200+</div>
-                <div class="stat-label">Attendees</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">45</div>
-                <div class="stat-label">Speakers</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">20</div>
-                <div class="stat-label">Countries</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">98%</div>
-                <div class="stat-label">Satisfaction</div>
-              </div>
-            </div>
           </div>
-
-          <!-- Completed Event 2 -->
-          <div class="completed-card">
-            <h3 class="completed-title">Global Finance Forum</h3>
-            <div class="completed-date">
-              <i data-lucide="calendar"></i>
-              September 5-7, 2023
-            </div>
-            <p>An exclusive gathering of financial leaders discussing emerging trends and challenges in global finance.</p>
-            <div class="stats-grid">
-              <div class="stat-item">
-                <div class="stat-value">850+</div>
-                <div class="stat-label">Attendees</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">32</div>
-                <div class="stat-label">Speakers</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">15</div>
-                <div class="stat-label">Countries</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">96%</div>
-                <div class="stat-label">Satisfaction</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Completed Event 3 -->
-          <div class="completed-card">
-            <h3 class="completed-title">Sustainable Business Conference</h3>
-            <div class="completed-date">
-              <i data-lucide="calendar"></i>
-              July 18-20, 2023
-            </div>
-            <p>A pioneering event focused on sustainable business practices and environmental responsibility in corporate settings.</p>
-            <div class="stats-grid">
-              <div class="stat-item">
-                <div class="stat-value">950+</div>
-                <div class="stat-label">Attendees</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">38</div>
-                <div class="stat-label">Speakers</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">18</div>
-                <div class="stat-label">Countries</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">97%</div>
-                <div class="stat-label">Satisfaction</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Completed Event 4 -->
-          <div class="completed-card">
-            <h3 class="completed-title">Digital Transformation Summit</h3>
-            <div class="completed-date">
-              <i data-lucide="calendar"></i>
-              May 3-5, 2023
-            </div>
-            <p>An insightful conference on how businesses can navigate and thrive in the digital age through strategic transformation.</p>
-            <div class="stats-grid">
-              <div class="stat-item">
-                <div class="stat-value">1,100+</div>
-                <div class="stat-label">Attendees</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">42</div>
-                <div class="stat-label">Speakers</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">22</div>
-                <div class="stat-label">Countries</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-value">99%</div>
-                <div class="stat-label">Satisfaction</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-             <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-            <span>Research Summits</span>
-          </div>
-          <p>Advancing research through global collaboration since 2010.</p>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="conferences.html">Conferences</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Guidelines</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Newsletter</h3>
-          <p>Stay updated with our latest conferences and research opportunities.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" class="newsletter-input">
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </form>
-        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Research Summits. All rights reserved.</p>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

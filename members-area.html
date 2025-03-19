@@ -7,6 +7,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="./Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* Reuse existing styles from your main CSS */
@@ -116,14 +117,14 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
-    .form-image {
-      width: 100%; /* Make the image responsive */
-      max-width: 300px; /* Limit the maximum width */
-      height: auto; /* Maintain aspect ratio */
-      display: block; /* Center the image */
-      margin: 0 auto 1.5rem; /* Add spacing below the image */
-      border-radius: 0.5rem; /* Optional: Add rounded corners */
-    }
+   .form-image {
+  width: 100%; /* Make the image responsive */
+  max-width: 400px; /* Increase the maximum width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Center the image */
+  margin: 0 auto 1.5rem; /* Add spacing below the image */
+  border-radius: 0.5rem; /* Optional: Add rounded corners */
+}
 
     .membership-form h2 {
       font-size: 2rem;
@@ -289,7 +290,7 @@
       }
 
       .form-image {
-        max-width: 200px; /* Reduce image size for smaller screens */
+         /* Reduce image size for smaller screens */
       }
 
       .benefits-grid,
@@ -433,6 +434,27 @@
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    
   </style>
 </head>
 <body>
@@ -670,58 +692,77 @@
   </section>
 
 <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <!-- Footer Logo and Description -->
-        <div class="footer-section">
-          <div class="footer-logo">
-            <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-            <span>Research Summits</span>
-          </div>
-          <p>Advancing research through global collaboration since 2010.</p>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-
-        <!-- Quick Links -->
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="conferences.html">Conferences</a></li>
-            <li><a href="membership.html">Membership</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Resources -->
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Guidelines</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-          </ul>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="footer-section">
-          <h3>Newsletter</h3>
-          <p>Stay updated with our latest conferences and research opportunities.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" class="newsletter-input">
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </form>
-        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
 
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p>&copy; 2025 Research Summits. All rights reserved.</p>
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
   <!-- Tawk.to Live Chat -->
   <script type="text/javascript">

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./Logo.png">
   <style>
     /* Add this CSS to ensure icons are visible */
     [data-lucide] {
@@ -104,39 +105,74 @@
     }
 
     /* Hero Section */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      padding: 8rem 0;
-      background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
-                  url('https://plus.unsplash.com/premium_photo-1679547202671-f9dbbf466db4?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover;
-      display: flex;
-      align-items: center;
-    }
+ .hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 8rem 0;
+  background: url('bglnp.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.hero-content {
+  text-align: left;
+  max-width: 800px;
+  margin-left: 0;
+  padding-left: 2rem; /* Ensure some padding from the left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+}
 
-    .hero-content {
-      max-width: 800px;
-      color: white;
-      animation: fadeIn 1s ease-out;
-    }
+.hero-text {
+  flex: 1; /* Allow text content to take up remaining space */
+  max-width: 800px; /* Limit text width for better readability */
+}
 
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(to right, #fff, #94a3b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.hero-logo {
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
 
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2.5rem;
-      color: #e2e8f0;
-    }
 
-    .hero-buttons {
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column; /* Stack logo below text on smaller screens */
+    text-align: center; /* Center-align text */
+  }
+
+  .hero-logo {
+    margin-top: 2rem; /* Add spacing between text and logo */
+  }
+
+  .hero-logo-image {
+    width: 150px; /* Reduce logo size for smaller screens */
+  }
+}
+
+
+
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: left; /* Align heading to the left */
+  margin-left: 0; /* Remove default margin */
+  white-space: nowrap; /* Ensure the heading stays in one line */
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  text-align: left; /* Align paragraph to the left */
+  color: #e2e8f0;
+  margin-left: 0; /* Remove default margin */
+}  .hero-buttons {
       display: flex;
       gap: 1rem;
     }
@@ -415,18 +451,22 @@
       color: var(--text-light);
     }
 
-    /* Footer */
+       /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
-      padding: 6rem 0 2rem;
+      padding: 4rem 0 2rem;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 4rem;
-      margin-bottom: 4rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
     }
 
     .footer-logo {
@@ -439,27 +479,32 @@
       margin-bottom: 1.5rem;
     }
 
-    .footer-links h3 {
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .footer-section h3 {
       color: white;
       font-size: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
-    .footer-links ul {
+    .footer-section ul {
       list-style: none;
     }
 
-    .footer-links li {
+    .footer-section ul li {
       margin-bottom: 0.75rem;
     }
 
-    .footer-links a {
+    .footer-section ul li a {
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-links a:hover {
+    .footer-section ul li a:hover {
       color: white;
     }
 
@@ -470,7 +515,7 @@
 
     .newsletter-input {
       flex: 1;
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #334155;
       border-radius: 0.5rem;
       background: #1e293b;
@@ -479,7 +524,7 @@
     }
 
     .newsletter-btn {
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       background: var(--primary);
       color: white;
       border: none;
@@ -497,6 +542,7 @@
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #334155;
+      color: #94a3b8;
     }
 
     /* Animations */
@@ -531,7 +577,9 @@
       .hero h1 {
         font-size: 2.5rem;
       }
-
+.herp p{
+  text-align: justify;
+}
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -586,6 +634,27 @@
     .dropdown:hover .dropbtn {
       color: #3b82f6;
     }
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    
   </style>
 </head>
 <body>
@@ -634,12 +703,16 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Welcome to Research Summits! ✨</h1>
-        <p>We bring the world closer by organizing impactful global medical &amp; engineering conferences. Our mission is to connect intellectuals and aspiring talents. With our passionate team of professionals and expertise, we ensure that your vision becomes a reality. Headquartered in London, United Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference. Join us to embark on a journey of unparalleled success and shining recognition!</p>
+ <!-- Hero Section -->
+<section class="hero">
+  <div class="container" style="margin-left: 5%;">
+    <img src="./Logo.png" alt="" style="height: 50vh; width: auto; float: right; margin: 5%;">
+    <div class="hero-content">
+      <!-- Text Content -->
+      <div class="hero-text">
+        <h1>Welcome to <br>Research Summits!</h1>
+        <p>We bring the world closer by organizing impactful global medical &amp; engineering conferences. Our mission is to connect intellectuals and aspiring talents. With our passionate team of professionals and expertise, we ensure that your vision becomes a reality. Headquartered in London, United Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference. </p>
+        <p>Join us to embark on a journey of unparalleled success and shining recognition!</p>
         <div class="hero-buttons">
           <a href="conferences.html" class="btn btn-primary">
             Browse Conferences
@@ -647,8 +720,11 @@
           </a>
         </div>
       </div>
+
+ 
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- About Us Section -->
   <section class="about-us">
@@ -680,13 +756,13 @@
   <section class="features">
     <div class="container">
       <div class="section-header">
-        <h2>Benefits of Attending “Research Summits 2025”</h2>
+        <h2>Benefits of Attending “Research Summits"</h2>
         <p>Discover the exclusive advantages of joining the premier research conference of the year.</p>
       </div>
       <div class="features-grid">
         <!-- Benefit 1 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="badge-percent"></i>
           </div>
           <h3 class="feature-title">Early Bird Discounts</h3>
@@ -695,7 +771,7 @@
 
         <!-- Benefit 2 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="file-badge"></i>
           </div>
           <h3 class="feature-title">E-Certification</h3>
@@ -704,7 +780,7 @@
 
         <!-- Benefit 3 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon"  style="font-size: 50px;">
             <i data-lucide="book-open"></i>
           </div>
           <h3 class="feature-title">Book of Abstracts</h3>
@@ -713,7 +789,7 @@
 
         <!-- Benefit 4 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon"  style="font-size: 50px;">
             <i data-lucide="mic"></i>
           </div>
           <h3 class="feature-title">Keynote Presentations</h3>
@@ -722,7 +798,7 @@
 
         <!-- Benefit 5 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon"  style="font-size: 50px;">
             <i data-lucide="presentation"></i>
           </div>
           <h3 class="feature-title">Oral Presentations</h3>
@@ -731,7 +807,7 @@
 
         <!-- Benefit 6 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon"  style="font-size: 50px;">
             <i data-lucide="image"></i>
           </div>
           <h3 class="feature-title">Poster Presentations</h3>
@@ -740,7 +816,7 @@
 
         <!-- Benefit 7 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon"  style="font-size: 50px;">
             <i data-lucide="users"></i>
           </div>
           <h3 class="feature-title">Networking Sessions</h3>
@@ -749,7 +825,7 @@
 
         <!-- Benefit 8 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="video"></i>
           </div>
           <h3 class="feature-title">On-Demand Recordings</h3>
@@ -758,7 +834,7 @@
 
         <!-- Benefit 9 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="film"></i>
           </div>
           <h3 class="feature-title">Conference Videos</h3>
@@ -767,7 +843,7 @@
 
         <!-- Benefit 10 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="calendar"></i>
           </div>
           <h3 class="feature-title">Pre-conference Demo</h3>
@@ -776,7 +852,7 @@
 
         <!-- Benefit 11 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="message-square"></i>
           </div>
           <h3 class="feature-title">Live Q&A Sessions</h3>
@@ -785,7 +861,7 @@
 
         <!-- Benefit 12 -->
         <div class="feature-card animate active">
-          <div class="feature-icon">
+          <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="award"></i>
           </div>
           <h3 class="feature-title">Best Speaker Award</h3>
@@ -801,7 +877,7 @@
       <div class="stats-grid">
         <div class="stat-card animate active">
           <div class="stat-number">150+</div>
-          <div class="stat-label">Annual Conferences</div>
+          <div class="stat-label">Conferences</div>
         </div>
         <div class="stat-card animate active">
           <div class="stat-number">50+</div>
@@ -812,7 +888,7 @@
           <div class="stat-label">Researchers</div>
         </div>
         <div class="stat-card animate active">
-          <div class="stat-number">95%</div>
+          <div class="stat-number">99%</div>
           <div class="stat-label">Satisfaction Rate</div>
         </div>
       </div>
@@ -937,50 +1013,78 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-            <span>Research Summits</span>
-          </div>
-          <p>Advancing research through global collaboration since 2010.</p>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="conferences.html">Conferences</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Guidelines</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Newsletter</h3>
-          <p>Stay updated with our latest conferences and research opportunities.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" class="newsletter-input">
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </form>
-        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Research Summits. All rights reserved.</p>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
 
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
   <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
