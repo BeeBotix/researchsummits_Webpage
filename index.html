@@ -151,20 +151,19 @@
 }
 
 
-
-
-.hero h1 {
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(to right, #fff, #94a3b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: left; /* Align heading to the left */
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white; /* Set text color to white */
+    -webkit-background-clip: unset; /* Remove background clipping */
+    -webkit-text-fill-color: unset; /* Reset text fill */
+     text-align: left; /* Align heading to the left */
   margin-left: 0; /* Remove default margin */
   white-space: nowrap; /* Ensure the heading stays in one line */
 }
+
 
 .hero p {
   font-size: 1.25rem;
@@ -172,7 +171,8 @@
   text-align: left; /* Align paragraph to the left */
   color: #e2e8f0;
   margin-left: 0; /* Remove default margin */
-}  .hero-buttons {
+} 
+ .hero-buttons {
       display: flex;
       gap: 1rem;
     }
@@ -227,7 +227,7 @@
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
-      color: var(--text);
+      color: var(--primary);
     }
 
     .about-text p {
@@ -293,10 +293,12 @@
     .section-header h2 {
       font-size: 3rem;
       font-weight: 800;
-      margin-bottom: 1rem;
       background: linear-gradient(to right, var(--primary), var(--primary-dark));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+       margin-left: 0; /* Remove default margin */
+      white-space: nowrap; /* Ensure the heading stays in one line */
+
     }
 
     .section-header p {
@@ -477,7 +479,8 @@
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
-    }
+    white-space: nowrap; /* Ensure text stays in one line */
+ }
 
     .footer-logo img {
       height: 50px;
@@ -661,7 +664,9 @@
   <!-- Navigation -->
   <nav>
     <div class="container nav-content">
-      <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+     <a href="index.html" class="logo">
+  <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+</a>
       <div class="nav-links">
         <a href="index.html">
           <i data-lucide="home"></i>
@@ -756,7 +761,8 @@
   <section class="features">
     <div class="container">
       <div class="section-header">
-        <h2>Benefits of Attending “Research Summits"</h2>
+        <h2>Benefits of Attending</h2> 
+          <h2>“Research Summits"</h2>
         <p>Discover the exclusive advantages of joining the premier research conference of the year.</p>
       </div>
       <div class="features-grid">
@@ -921,7 +927,7 @@
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-                Serial – 101
+                Serial – 201
               </div>
             </div>
             <a href="conf4.html" class="conference-button">Visit Website</a>
@@ -946,7 +952,7 @@
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-                Serial – 102
+                Serial – 202
               </div>
             </div>
             <a href="conf1.html" class="conference-button">Visit Website</a>
@@ -971,7 +977,7 @@
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-                Serial – 103
+                Serial – 203
               </div>
             </div>
             <a href="conf2.html" class="conference-button">Visit Website</a>
@@ -996,7 +1002,7 @@
               </div>
               <div class="detail-item">
                 <i data-lucide="hash"></i>
-                Serial – 104
+                Serial – 204
               </div>
             </div>
             <a href="conf1.html" class="conference-button">Visit Website</a>
@@ -1020,7 +1026,7 @@
       <!-- Footer Logo and Description -->
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
         <p>Advancing research through global collaboration since 2010.</p>
@@ -1060,7 +1066,7 @@
 
         <!-- Social Media Icons -->
         <div class="social-icons">
-          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
             <i data-lucide="linkedin"></i>
           </a>
           <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
@@ -1072,7 +1078,7 @@
           <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
             <i data-lucide="facebook"></i>
           </a>
-          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
             <i data-lucide="youtube"></i>
           </a>
         </div>

@@ -96,8 +96,7 @@
       position: relative;
       min-height: 100vh;
       padding: 8rem 0;
-      background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
-                  url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80') center/cover;
+background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80') center/cover;
       display: flex;
       align-items: center;
     }
@@ -108,15 +107,16 @@
       animation: fadeIn 1s ease-out;
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(to right, #fff, #94a3b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white; /* Set text color to white */
+    -webkit-background-clip: unset; /* Remove background clipping */
+    -webkit-text-fill-color: unset; /* Reset text fill */
+}
+
 
     .hero p {
       font-size: 1.25rem;

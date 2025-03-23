@@ -316,77 +316,131 @@ body {
   left: 0;
 }
 
-/* Footer */
-.footer {
-  background: var(--text);
-  color: var(--white);
-  padding: 4rem 0 2rem;
+       /* Footer */
+    .footer {
+      background: var(--text);
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    white-space: nowrap; /* Ensure text stays in one line */
+ }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .footer-section h3 {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+ 
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+    }
+
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.footer-section h3 {
-  color: var(--white);
-  margin-bottom: 1.5rem;
-}
-
-.footer-section ul {
-  list-style: none;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.75rem;
-}
-
-.footer-section a {
-  color: #94a3b8;
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-section a:hover {
-  color: var(--white);
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
 }
 
-.newsletter-form {
-  display: flex;
-  gap: 0.5rem;
+.social-icons i {
+  width: 24px;
+  height: 24px;
 }
+    
 
-.newsletter-form input {
-  flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #374151;
-  border-radius: 0.375rem;
-  background: #1f2937;
-  color: var(--white);
-}
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #94a3b8;
+    }
 
-.newsletter-form button {
-  padding: 0.75rem 1.5rem;
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.newsletter-form button:hover {
-  background: var(--primary-dark);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid #374151;
-  color: #94a3b8;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -462,6 +516,166 @@ body {
     .dropdown:hover .nav-links a {
       color: var(--primary);
     }
+
+
+ /*pricing*/
+
+  .pricing-table {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  .pricing-table th {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+
+  }
+
+  .pricing-table td {
+    background: var(--background);
+    color: var(--text);
+  }
+  .pricing-table th,
+.pricing-table td {
+  padding: 1rem;
+  border: 1px solid gray; /* Black borders */
+}
+
+  .pricing-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .pricing-table ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+  }
+
+  .pricing-table ul li::before {
+    content: "•";
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+
+  @keyframes flash {
+  0%, 100% {
+    background-color:gold;
+  }
+  50% {
+    background-color: darkgoldenrod;
+  }
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  animation: flash 1.5s infinite;
+}
+
+.register-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-register {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+     /* Countdown Timer Styles */
+.countdown {
+  --number-color: hsl(0 0% 25%);
+  --text-color: hsl(0 0% 25%);
+  --dot-color: hsl(0, 0%, 10%); /* Dark gray for inactive dots */
+  --dot-color-remaining: hsl(240, 100%, 50%); /* Blue for remaining dots */
+  --dot-color-active: hsl(0, 100%, 50%);
+  font-family: system-ui, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: min(60rem, 100%);
+  margin-inline: auto;
+  container: inline-size;
+  margin-bottom: 4rem;
+}
+
+.countdown > .part {
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+}
+
+.countdown > .part > .remaining {
+  grid-area: 1/1;
+  color: hsl(0 0% 100%);
+  display: grid;
+  text-align: center;
+  font-size: 4cqi;
+}
+
+.countdown > .part > .remaining > .number {
+  color: var(--number-color);
+}
+
+.countdown > .part > .remaining > .text {
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-size: 0.5em;
+}
+
+.countdown > .part > .dot-container {
+  grid-area: 1/1;
+  height: 100%;
+  width: 4%;
+  rotate: calc(360deg / var(--dots) * var(--dot-idx));
+}
+
+.countdown > .part > .dot-container > .dot {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--dot-color);
+  border-radius: 50%;
+  transition: background-color 0.25s;
+}
+
+.countdown > .part > .dot-container > .dot[data-active="true"] {
+  background-color: var(--dot-color-remaining);
+}
+
+.countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+  background-color: var(--dot-color-active);
+}
     </style>
 </head>
 <body>
@@ -494,12 +708,12 @@ body {
 
   <header class="hero">
     <div class="container">
-      <h1>Register for IDC 2025</h1>
-      <p class="subtitle">Join us at the forefront of Neurophysiology research</p>
+      <h1>Register for Neurophysiology 2025</h1>
+   
       <div class="event-details">
         <div class="detail">
           <strong>Date:</strong>
-          <span>November 15-17, 2025</span>
+          <span>June 21&22, 2025</span>
         </div>
         <div class="detail">
           <strong>Location:</strong>
@@ -507,7 +721,7 @@ body {
         </div>
         <div class="detail">
           <strong>Registration Deadline:</strong>
-          <span>October 31, 2025</span>
+          <span>June 15, 2025</span>
         </div>
       </div>
     </div>
@@ -515,86 +729,97 @@ body {
 
   <main class="main-content">
     <div class="container">
-      <section class="info-cards">
-        <div class="card highlight-card">
-          <h2>Early Bird Registration Now Open</h2>
-          <p>Register before September 30th to get 20% off on all categories!</p>
-          <div class="countdown">
-            <div class="countdown-item">
-              <span class="number">30</span>
-              <span class="label">Days</span>
-            </div>
-            <div class="countdown-item">
-              <span class="number">12</span>
-              <span class="label">Hours</span>
-            </div>
-            <div class="countdown-item">
-              <span class="number">45</span>
-              <span class="label">Minutes</span>
-            </div>
-          </div>
-        </div>
-      </section>
+       <section class="info-cards">
+  <div class="card highlight-card">
+    <h2>Early Bird Submission Open</h2>
+    <p>Submit before March 30th to get priority review and presentation slots!</p>
+    <!-- Countdown Timer -->
+    <div class="countdown" data-target-date="2025-03-30 00:00:00"></div>
+  </div>
+</section>
 
-      <section class="registration-options">
-        <h2>Registration Categories</h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <div class="card-header">
-              <h3>Speaker</h3>
-              <div class="price">
-                <span class="currency">€</span>
-                <span class="amount">199</span>
-              </div>
+     <!-- Pricing Section -->
+<section class="pricing-section">
+  <h2 class="section-title">Pricing</h2>
+  <div class="pricing-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Exclusive Offers</th>
+          <th>Early Bird Deadline<br>Valid till 20-Mar-25</th>
+          <th>Standard Offer<br>Valid from 21-Mar-25 till 20-May-25</th>
+          <th>Last Call Price<br>Valid from 21-May-25 till 06-Jun-25</th>
+          <th>Key Benefits for all!</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Speaker / Presenter Benefits</td>
+          <td>£399</td>
+          <td>£499</td>
+          <td>£599</td>
+          <td rowspan="4">
+          <ul>
+    <li>Access to all sessions</li>
+    <li>Conference materials</li>
+    <li>Networking opportunities</li>
+    <li>Certificate of participation</li>
+    <li>Early Bird Exclusive Registration Discounts for participants registering early</li>
+    <li>E-Certification for all attendees</li>
+    <li>Book of Abstracts access for all attendees</li>
+    <li>Keynote Presentations by distinguished experts</li>
+    <li>Oral Presentations to showcase ground-breaking insights</li>
+    <li>Poster Presentations for innovative research highlights</li>
+    <li>Interactive and Networking Sessions to foster meaningful connections</li>
+    <li>On-Demand Presentation Recording Features for flexible access</li>
+    <li>Conference Videos Powered by Research Summits LTD for seamless delivery</li>
+    <li>Exclusive Pre-conference Demo Session for early insights</li>
+    <li>Breakout Rooms available for all speakers to enhance collaboration</li>
+    <li>Complimentary Attendance for Up to Five Student Delegates with select packages</li>
+    <li>Special Sessions featuring focused discussions on trending topics</li>
+    <li>Best Interactive Speaker Award to honour exceptional engagement</li>
+    <li>Exciting Sponsorship Opportunities tailored to your needs (consult with the organizer)</li>
+    <li>Short Video Advertisement Option (consult with the organizer for details)</li>
+    <li>Live Q&A Sessions with renowned presenters</li>
+</ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Listener / Delegate Benefits</td>
+          <td>£199</td>
+          <td>£299</td>
+          <td>£399</td>
+        </tr>
+        <tr>
+          <td>Student Benefits</td>
+          <td>£99</td>
+          <td>£199</td>
+          <td>£299</td>
+        </tr>
+        <tr>
+          <td>Poster Benefits</td>
+          <td>£449</td>
+          <td>£549</td>
+          <td>£649</td>
+        </tr>
+        <!-- Add Register Now Buttons in the Last Row -->
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 1rem;">
+            <div class="register-buttons">
+              <a href="register.html" class="btn btn-register">Register Now (Early Bird)</a>
+              <a href="register.html" class="btn btn-register">Register Now (Standard)</a>
+              <a href="register.html" class="btn btn-register">Register Now (Last Call)</a>
             </div>
-            <ul class="features">
-              <li>Keynote Speaking Opportunity</li>
-              <li>Full Conference Access</li>
-              <li>Digital Certificate</li>
-              <li>Proceedings Access</li>
-              <li>Networking Sessions</li>
-            </ul>
-            <button class="btn-register">Register as Speaker</button>
-          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-          <div class="pricing-card featured">
-            <div class="card-header">
-              <span class="badge">Most Popular</span>
-              <h3>Professional</h3>
-              <div class="price">
-                <span class="currency">€</span>
-                <span class="amount">249</span>
-              </div>
-            </div>
-            <ul class="features">
-              <li>All Speaker Benefits</li>
-              <li>Priority Q&A Access</li>
-              <li>1-Year Journal Access</li>
-              <li>Workshop Access</li>
-              <li>Research Presentation</li>
-            </ul>
-            <button class="btn-register">Register as Professional</button>
-          </div>
+    </div>
+  </main>
 
-          <div class="pricing-card">
-            <div class="card-header">
-              <h3>Student</h3>
-              <div class="price">
-                <span class="currency">€</span>
-                <span class="amount">149</span>
-              </div>
-            </div>
-            <ul class="features">
-              <li>Full Conference Access</li>
-              <li>Digital Certificate</li>
-              <li>Student Networking</li>
-              <li>Poster Presentation</li>
-              <li>Career Guidance</li>
-            </ul>
-            <button class="btn-register">Register as Student</button>
-          </div>
-        </div>
-      </section>
 
       <section class="guidelines">
         <h2>Registration Guidelines</h2>
@@ -628,42 +853,153 @@ body {
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>About Neurophysiology Conference 2025</h3>
-          <p>Leading the way in Neurophysiology research since 2015.</p>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/program">Conference Program</a></li>
-            <li><a href="/speakers">Speakers</a></li>
-            <li><a href="/venue">Venue</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact Info</h3>
+        <p>Advancing research through global collaboration since 2010.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+       <h3>Contact Info</h3>
           <ul class="contact-info">
-            <li>Email: contact@idc2025.com</li>
-            <li>Phone: +1 (555) 123-4567</li>
+            <li>Email: richard@researchsummits.com</li>
+            <li>Phone: +442081913434</li>
             <li>Support: 24/7 Available</li>
           </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Newsletter</h3>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address">
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Neurophysiology Conference. All rights reserved.</p>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+    </footer>
+
+  <script>
+  const countdownEls = document.querySelectorAll(".countdown");
+  countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
+
+  function createCountdown(countdownEl) {
+    const target = new Date(
+      new Date(countdownEl.dataset.targetDate).toLocaleString("en")
+    );
+    const parts = {
+      days: { text: ["days", "day"], dots: 30 },
+      hours: { text: ["hours", "hour"], dots: 24 },
+      minutes: { text: ["minutes", "minute"], dots: 60 },
+      seconds: { text: ["seconds", "second"], dots: 60 },
+    };
+
+    Object.entries(parts).forEach(([key, value]) => {
+      const partEl = document.createElement("div");
+      partEl.classList.add("part", key);
+      partEl.style.setProperty("--dots", value.dots);
+      value.element = partEl;
+
+      const remainingEl = document.createElement("div");
+      remainingEl.classList.add("remaining");
+      remainingEl.innerHTML = `
+        <span class="number"></span>
+        <span class="text"></span>
+      `;
+      partEl.append(remainingEl);
+
+      for (let i = 0; i < value.dots; i++) {
+        const dotContainerEl = document.createElement("div");
+        dotContainerEl.style.setProperty("--dot-idx", i);
+        dotContainerEl.classList.add("dot-container");
+        const dotEl = document.createElement("div");
+        dotEl.classList.add("dot");
+        dotContainerEl.append(dotEl);
+        partEl.append(dotContainerEl);
+      }
+      countdownEl.append(partEl);
+    });
+
+    getRemainingTime(target, parts);
+  }
+
+  function getRemainingTime(target, parts, first = true) {
+    const now = new Date();
+    if (first) console.log({ target, now });
+    const remaining = {};
+    let seconds = Math.floor((target - now) / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    hours = hours - days * 24;
+    minutes = minutes - days * 24 * 60 - hours * 60;
+    seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+
+    Object.entries({ days, hours, minutes, seconds }).forEach(([key, value]) => {
+      const remaining = parts[key].element.querySelector(".number");
+      const text = parts[key].element.querySelector(".text");
+      remaining.innerText = value;
+      text.innerText = parts[key].text[Number(value == 1)];
+      const dots = parts[key].element.querySelectorAll(".dot");
+      dots.forEach((dot, idx) => {
+        dot.dataset.active = idx <= value;
+        dot.dataset.lastactive = idx == value;
+      });
+    });
+
+    if (now <= target) {
+      window.requestAnimationFrame(() => {
+        getRemainingTime(target, parts, false);
+      });
+    }
+  }
+</script>
+
 </body>
 </html>

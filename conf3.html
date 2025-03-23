@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artificial Intelligence Conference 2025</title>
+  <title>International Conference on Oil and Gas: Conference 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <link rel="icon" type="image/png" href="./Logo.png">
   <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
   <style>
@@ -198,65 +198,100 @@
       color: var(--text-light);
     }
 
-    /* Pricing Section */
-    .pricing-section {
-      margin-bottom: 4rem;
-    }
+ /*pricing*/
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
+  .pricing-table {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+  }
 
-    .pricing-card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
+  .pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
 
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
+  .pricing-table th,
+  .pricing-table td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
 
-    .pricing-card .price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
+  .pricing-table th {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
 
-    .pricing-card ul {
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
+  }
 
-    .pricing-card ul li {
-      margin-bottom: 0.5rem;
-      color: var(--text-light);
-    }
+  .pricing-table td {
+    background: var(--background);
+    color: var(--text);
+  }
+  .pricing-table th,
+.pricing-table td {
+  padding: 1rem;
+  border: 1px solid gray; /* Black borders */
+}
 
-    .pricing-card .btn {
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--primary);
-      color: var(--white);
-      border: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+  .pricing-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
 
-    .pricing-card .btn:hover {
-      background: var(--primary-dark);
-    }
+  .pricing-table ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+  }
 
+  .pricing-table ul li::before {
+    content: "•";
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+
+  @keyframes flash {
+  0%, 100% {
+    background-color:gold;
+  }
+  50% {
+    background-color: darkgoldenrod;
+  }
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  animation: flash 1.5s infinite;
+}
+
+.register-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-register {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
     /* Speakers Section */
     .speakers-section {
       margin-bottom: 4rem;
@@ -302,23 +337,43 @@
       color: var(--text);
       font-weight: 500;
     }
-
-    /* Footer */
+       /* Footer */
     .footer {
       background: var(--text);
-      color: var(--white);
+      color: #94a3b8;
       padding: 4rem 0 2rem;
     }
 
-    .footer-content {
+    .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 3rem;
       margin-bottom: 3rem;
     }
 
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    white-space: nowrap; /* Ensure text stays in one line */
+ }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+    }
+
     .footer-section h3 {
-      color: var(--white);
+      color: white;
+      font-size: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
@@ -330,22 +385,75 @@
       margin-bottom: 0.75rem;
     }
 
-    .footer-section a {
+    .footer-section ul li a {
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-section a:hover {
-      color: var(--white);
+    .footer-section ul li a:hover {
+      color: white;
     }
 
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+ 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
-      border-top: 1px solid #374151;
+      border-top: 1px solid #334155;
       color: #94a3b8;
     }
+
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -372,38 +480,70 @@
       }
     }
 
-  .countdown-section {
-    background: var(--white);
-    padding: 4rem 0;
-    text-align: center;
-  }
+  
+    /* New Countdown Styles */
+    .countdown {
+      --number-color: hsl(0 0% 25%);
+      --text-color: hsl(0 0% 25%);
+     --dot-color: hsl(0, 0%, 10%); /* Dark gray for inactive dots */
+  --dot-color-remaining: hsl(240, 100%, 50%); /* Blue for remaining dots */
+  --dot-color-active: hsl(0, 100%, 50%);
+      font-family: system-ui, sans-serif;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: min(60rem, 100%);
+      margin-inline: auto;
+      container: inline-size;
+      margin-bottom: 4rem;
+    }
 
-  .countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+    .countdown > .part {
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+    }
 
-  .countdown-card {
-    background: var(--background);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
-  }
+    .countdown > .part > .remaining {
+      grid-area: 1/1;
+      color: hsl(0 0% 100%);
+      display: grid;
+      text-align: center;
+      font-size: 4cqi;
+    }
 
-  .countdown-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-  }
+    .countdown > .part > .remaining > .number {
+      color: var(--number-color);
+    }
 
-  .countdown-label {
-    font-size: 1rem;
-    color: var(--text-light);
-  }
+    .countdown > .part > .remaining > .text {
+      color: var(--text-color);
+      text-transform: uppercase;
+      font-size: 0.5em;
+    }
 
+    .countdown > .part > .dot-container {
+      grid-area: 1/1;
+      height: 100%;
+      width: 4%;
+      rotate: calc(360deg / var(--dots) * var(--dot-idx));
+    }
+
+    .countdown > .part > .dot-container > .dot {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      transition: background-color 0.25s;
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"] {
+      background-color: var(--dot-color-remaining);
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+      background-color: var(--dot-color-active);
+    }
    .dropdown {
       position: relative;
       display: inline-block;
@@ -444,14 +584,15 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="abstract_submit_conf3.html" class="logo">
-        <img src="rsummits.png" alt="Artificial Intelligence 2025 Logo" width="60" height="60">
-        <img src="cmelogo.png" alt="Artificial Intelligence 2025 Logo" width="80" height="60">
-        <span>Artificial Intelligence 2025</span>
+      <a href="conf3.html" class="logo">
+        <img src="rsummits.png" alt="Infectious Disease Conference: 2025 Logo" width="60" height="60">
       </a>
+        <a href="abstract_submit_conf3.html" class="logo">
+        <img src="cmelogo.png" alt="2025 Logo" width="80" height="60">
+        <span>Artificial Intelligence Conference</span>
       <div class="nav-links">
         <a href="conf3.html" class="active">Home</a>
-        <a href="abstract_submit_conf3.html">Submit Abstract</a>
+        <a href="abstract_submit_conf.html">Submit Abstract</a>
         <a href="reg_conf3.html">Register</a>
         <div class="dropdown">
           <a href="#" class="dropbtn">Program</a>
@@ -468,16 +609,16 @@
 
   <header class="hero">
     <div class="container">
-      <h1>Artificial Intelligence Conference</h1>
-      <p class="subtitle">Advancing Research and Solutions for Global Health</p>
+      <h1>International Conference on Artificial Intelligence:</h1>
+     
       <div class="event-details">
         <div class="detail">
           <strong>Submission Deadline</strong>
-          <span>October 15, 2025</span>
+          <span>June 28, 2025</span>
         </div>
         <div class="detail">
           <strong>Conference Dates</strong>
-          <span>November 15-17, 2025</span>
+          <span>July 05 & 06, 2025</span>
         </div>
         <div class="detail">
           <strong>Location</strong>
@@ -485,8 +626,8 @@
         </div>
       </div>
       <div class="cta-buttons">
-        <a href="abstract_submit_conf1.html" class="btn">Submit Abstract</a>
-        <a href="reg_conf1.html" class="btn">Register Now</a>
+        <a href="abstract_submit_conf3.html" class="btn">Submit Abstract</a>
+        <a href="reg_conf3.html" class="btn">Register Now</a>
       </div>
     </div>
   </header>
@@ -495,288 +636,396 @@
     <div class="container">
       <!-- Countdown Section -->
       <section class="countdown-section">
-        <h2 class="section-title">Countdown to the Conference</h2>
-        <div class="countdown-grid">
-          <div class="countdown-card">
-            <div class="countdown-number" id="days">00</div>
-            <div class="countdown-label">Days</div>
-          </div>
-          <div class="countdown-card">
-            <div class="countdown-number" id="hours">00</div>
-            <div class="countdown-label">Hours</div>
-          </div>
-          <div class="countdown-card">
-            <div class="countdown-number" id="minutes">00</div>
-            <div class="countdown-label">Minutes</div>
-          </div>
-          <div class="countdown-card">
-            <div class="countdown-number" id="seconds">00</div>
-            <div class="countdown-label">Seconds</div>
-          </div>
-        </div>
+        <h1>Countdown to Artificial Intelligence Conference 2025</span></h1>
+        <div class="countdown" data-target-date="2025-11-15 00:00:00"></div>
       </section>
+
 
       <!-- Introduction to Neurology Section -->
       <section class="section-content">
-        <h2>Introduction to Neurology</h2>
-        <p>Neurology is the medical specialty dedicated to the diagnosis, treatment, and management of disorders involving the nervous system, encompassing the brain, spinal cord, and peripheral nerves. It plays a critical role in understanding and addressing a wide array of neurological conditions.</p>
+        <h2>Introduction to International Conference on Artificial Intelligence</h2>
+        <p>Artificial Intelligence (AI) is transforming how infectious diseases are diagnosed, treated, and prevented. It enhances surveillance systems, enables real-time predictions, and accelerates advancements in drug discovery and vaccine development. Below is a detailed look at AI's impact across these domains and the broader market trends.</p>
       </section>
 
       <!-- Key Areas of Neurology Section -->
       <section class="section-content">
-        <h2>Key Areas of Neurology</h2>
+             <h2>AI in Disease Diagnosis and Detection</h2>
         <ul>
-          <li><strong>Central Nervous System (CNS):</strong> Comprising the brain and spinal cord, which act as the command center of the body.</li>
-          <li><strong>Peripheral Nervous System (PNS):</strong> The network of nerves outside the brain and spinal cord, transmitting signals to and from the CNS.</li>
-          <li><strong>Autonomic Nervous System (ANS):</strong> Regulates involuntary functions like heart rate, digestion, and respiratory rate.</li>
+            <li><strong>Medical Imaging & AI Algorithms:</strong> AI-powered tools analyze X-rays, CT scans, and MRI scans for precise detection of infections like tuberculosis and pneumonia.</li>
+            <li><strong>AI in Pathogen Identification:</strong> Machine learning models interpret genetic sequences to identify bacteria and viruses, such as AI-driven PCR testing tools.</li>
+            <li><strong>Rapid Diagnostic Tools:</strong> Mobile apps powered by AI evaluate symptoms and deliver instant diagnoses for diseases like COVID-19 and malaria.</li>
         </ul>
       </section>
 
       <!-- Common Neurological Disorders Section -->
       <section class="section-content">
-        <h2>Common Neurological Disorders</h2>
+     <h2>AI in Predicting and Controlling Outbreaks</h2>
         <ul>
-          <li><strong>Stroke:</strong> Sudden loss of brain function due to interruption of blood flow.</li>
-          <li><strong>Epilepsy:</strong> Recurrent seizures caused by abnormal electrical activity in the brain.</li>
-          <li><strong>Parkinson’s Disease:</strong> A progressive movement disorder caused by the degeneration of dopamine-producing neurons.</li>
-          <li><strong>Multiple Sclerosis (MS):</strong> An autoimmune condition targeting the nervous system, leading to mobility and coordination issues.</li>
-          <li><strong>Alzheimer’s Disease & Dementia:</strong> Disorders causing cognitive and memory impairments.</li>
-          <li><strong>Migraine:</strong> Intense headaches often accompanied by neurological symptoms such as nausea and sensitivity to light.</li>
-          <li><strong>Neuropathy:</strong> Nerve damage resulting in pain, numbness, or muscle weakness.</li>
+            <li><strong>Epidemiological Forecasting:</strong> AI models process big data—such as social media trends and climate data—to predict outbreaks of diseases like influenza and dengue.</li>
+            <li><strong>Global Surveillance Systems:</strong> Organizations like the WHO and CDC use AI-powered systems for real-time monitoring of disease spread (e.g., pandemic modeling during COVID-19).</li>
+            <li><strong>AI in Contact Tracing:</strong> Apps leverage Bluetooth and geolocation data to track and limit the spread of infectious diseases.</li>
         </ul>
       </section>
 
       <!-- When to Consult a Neurologist Section -->
       <section class="section-content">
-        <h2>When to Consult a Neurologist</h2>
-        <p>Consider seeing a neurologist if you experience:</p>
+           <h2>AI in Antimicrobial Resistance (AMR) Research</h2>
         <ul>
-          <li>Persistent or chronic headaches/migraines.</li>
-          <li>Weakness, numbness, or tingling sensations in limbs.</li>
-          <li>Memory loss or difficulty concentrating.</li>
-          <li>Recurrent seizures or fainting episodes.</li>
-          <li>Issues with balance or coordination.</li>
+            <li><strong>Identifying New Antibiotics:</strong> AI helps discover novel compounds to combat antibiotic-resistant bacteria.</li>
+            <li><strong>Tracking Resistance Trends:</strong> Advanced AI models monitor bacterial and viral mutations to refine treatment strategies.</li>
         </ul>
       </section>
 
       <!-- Market Insights Section -->
       <section class="section-content">
-        <h2>Market Insights in Neurology</h2>
-        <p>The neurology sector is witnessing rapid growth due to the rising prevalence of neurological disorders and advancements in medical technology.</p>
-        <h3>Global Neurology Market</h3>
+       <h2>AI-Powered Chatbots and Virtual Healthcare</h2>
         <ul>
-          <li><strong>Market Value:</strong> Estimated at $67.3 billion in 2024; projected to reach $94.8 billion by 2029 with a CAGR of 7.0%.</li>
-          <li><strong>Key Growth Drivers:</strong>
-            <ul>
-              <li>Aging population, leading to higher incidences of neurological diseases.</li>
-              <li>Advancements in neuroimaging, neurostimulation, and minimally invasive techniques.</li>
-              <li>Increased global healthcare investments.</li>
-            </ul>
-          </li>
-        </ul>
-        <h3>Global Neurology Devices Market</h3>
-        <ul>
-          <li><strong>Market Value:</strong> Valued at $12.83 billion in 2024; anticipated CAGR of 8.90% (2025–2030).</li>
-          <li><strong>Drivers:</strong>
-            <ul>
-              <li>Rising occurrences of Alzheimer’s, Parkinson’s, and epilepsy.</li>
-              <li>Growing demand for innovative diagnostic and therapeutic devices.</li>
-            </ul>
-          </li>
-        </ul>
-        <h3>Neurology Market in India</h3>
-        <ul>
-          <li><strong>Market Value:</strong> Estimated at $272.5 million in 2024; projected to grow to $542.97 million by 2031 with a CAGR of 9.0%.</li>
-          <li><strong>Growth Factors:</strong>
-            <ul>
-              <li>Increasing cases of stroke, epilepsy, and other neurological conditions.</li>
-              <li>Expansion in healthcare infrastructure and accessibility.</li>
-              <li>Heightened awareness and earlier diagnosis of neurological issues.</li>
-            </ul>
-          </li>
+            <li><strong>AI Chatbots:</strong> Tools like IBM Watson assist with symptom assessment and provide healthcare recommendations.</li>
+            <li><strong>Telemedicine and AI:</strong> AI-driven platforms connect patients with doctors for remote consultations, improving accessibility.</li>
         </ul>
       </section>
 
-      <!-- Emerging Trends Section -->
+        <!-- Market Insights Section -->
       <section class="section-content">
-        <h2>Emerging Trends in Neurology</h2>
+     <h2>Future Prospects in Infectious Disease Management</h2>
         <ul>
-          <li><strong>Neuroplasticity Research:</strong> Focusing on brain adaptability and reorganization.</li>
-          <li><strong>Advanced MRI Technology:</strong> Introducing more accurate and efficient imaging methods.</li>
-          <li><strong>Digital Brain Models:</strong> Scaling computational brain simulations.</li>
-          <li><strong>AI in Neurology:</strong> Enhancing diagnostics and creating personalized treatment plans.</li>
-          <li><strong>Ethics in Neurology:</strong> Addressing ethical implications of emerging technologies.</li>
+            <li><strong>AI-Powered Robots:</strong> Deployed in hospitals for disinfection, these robots help reduce pathogen transmission.</li>
+            <li><strong>Genomic Analysis:</strong> AI aids in early detection of new disease strains through sophisticated genome interpretation.</li>
+            <li><strong>Blockchain Integration:</strong> Combined with AI, blockchain ensures secure data sharing for public health surveillance.</li>
         </ul>
       </section>
 
-      <!-- Key Topics Section -->
+        <!-- Market Insights Section -->
       <section class="section-content">
-        <h2>Key Topics & Tracks</h2>
-        <p>Explore the latest advancements and research in neurology through our comprehensive tracks:</p>
-        <h3>Neuroanatomy & Artificial Intelligence</h3>
+      <h2>Artificial Intelligence Market Overview</h2>
+        <p>The AI market is undergoing exceptional growth, bolstered by rapid technological innovations and increasing cross-industry adoption.</p>
+
+      </section>
+
+            <!-- Market Insights Section -->
+      <section class="section-content">
+    <h2>Market Size and Projections</h2>
         <ul>
-          <li>Structure and function of the nervous system.</li>
-          <li>Neural pathways and synaptic transmission.</li>
-        </ul>
-        <h3>Neurotransmitters & Synaptic Functions</h3>
-        <ul>
-          <li>Role of neurotransmitters in brain function.</li>
-          <li>Synaptic plasticity and neural communication.</li>
-        </ul>
-        <h3>Stroke & Cerebrovascular Diseases</h3>
-        <ul>
-          <li>Pathophysiology and treatment of stroke.</li>
-          <li>Advances in cerebrovascular imaging.</li>
-        </ul>
-        <h3>Epilepsy & Seizure Disorders</h3>
-        <ul>
-          <li>Mechanisms of epileptogenesis.</li>
-          <li>Innovative therapies for seizure control.</li>
-        </ul>
-        <h3>Parkinson’s Disease</h3>
-        <ul>
-          <li>Neurodegeneration and dopamine depletion.</li>
-          <li>Emerging treatments and deep brain stimulation.</li>
-        </ul>
-        <h3>Alzheimer’s Disease & Dementia</h3>
-        <ul>
-          <li>Pathogenesis and biomarkers.</li>
-          <li>Cognitive decline and therapeutic interventions.</li>
-        </ul>
-        <h3>Brain-Computer Interfaces (BCIs)</h3>
-        <ul>
-          <li>Applications in neuroprosthetics.</li>
-          <li>Ethical considerations in BCI technology.</li>
-        </ul>
-        <h3>Neuroplasticity & Adaptation</h3>
-        <ul>
-          <li>Mechanisms of brain plasticity.</li>
-          <li>Rehabilitation and recovery after injury.</li>
-        </ul>
-        <h3>Pediatric Neurology</h3>
-        <ul>
-          <li>Developmental disorders and neurogenetics.</li>
-          <li>Management of childhood epilepsy.</li>
-        </ul>
-        <h3>Neuro-Oncology & Brain Tumors</h3>
-        <ul>
-          <li>Advances in brain tumor diagnostics.</li>
-          <li>Targeted therapies and immunotherapy.</li>
-        </ul>
-        <h3>Sleep Neurology & Disorders</h3>
-        <ul>
-          <li>Sleep architecture and disorders.</li>
-          <li>Impact of sleep on neurological health.</li>
-        </ul>
-        <h3>Neurogenetics & Inherited Conditions</h3>
-        <ul>
-          <li>Genetic basis of neurological disorders.</li>
-          <li>Gene therapy and CRISPR applications.</li>
-        </ul>
-        <h3>Pain Management & Neuroinflammation</h3>
-        <ul>
-          <li>Chronic pain mechanisms.</li>
-          <li>Anti-inflammatory therapies.</li>
-        </ul>
-        <h3>Neuroethics & Privacy Concerns</h3>
-        <ul>
-          <li>Ethical implications of neurotechnology.</li>
-          <li>Data privacy in brain research.</li>
+            <li><strong>Global Market Growth:</strong> The AI market is projected to reach USD 757.58 billion in 2025 and surge to USD 3,680.47 billion by 2034, with a CAGR of 19.20%.</li>
+            <li><strong>Regional Insights:</strong>
+                <ul>
+                    <li>North America dominates the market, with a 36.92% share as of 2024.</li>
+                    <li>Asia-Pacific is expected to achieve the fastest growth at a CAGR of 19.8% between 2025 and 2034.</li>
+                </ul>
+            </li>
         </ul>
       </section>
 
-      <!-- Pricing Section -->
-      <section class="pricing-section">
-        <h2 class="section-title">Pricing</h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <h3>Early Bird</h3>
-            <div class="price">€199</div>
-            <ul>
-              <li>Access to all sessions</li>
-              <li>Conference materials</li>
-              <li>Networking opportunities</li>
-            </ul>
-            <a href="reg_conf1.html" class="btn">Register Now</a>
-          </div>
-          <div class="pricing-card">
-            <h3>Regular</h3>
-            <div class="price">€299</div>
-            <ul>
-              <li>Access to all sessions</li>
-              <li>Conference materials</li>
-              <li>Networking opportunities</li>
-            </ul>
-            <a href="reg_conf1.html" class="btn">Register Now</a>
-          </div>
-          <div class="pricing-card">
-            <h3>Student</h3>
-            <div class="price">€99</div>
-            <ul>
-              <li>Access to all sessions</li>
-              <li>Conference materials</li>
-              <li>Networking opportunities</li>
-            </ul>
-            <a href="reg_conf1.html" class="btn">Register Now</a>
-          </div>
-        </div>
+
+            <section class="section-content">
+    <h2>Market Size and Projections</h2>
+       <h2>Industry Adoption and Investments</h2>
+        <ul>
+            <li><strong>Big Tech Leadership:</strong> Companies like Amazon, Google, Microsoft, and Meta are set to invest over USD 320 billion in AI by 2025.</li>
+            <li><strong>Sector-Specific Growth:</strong>
+                <ul>
+                    <li>Healthcare: The AI healthcare market is projected to grow from USD 20.65 billion in 2023 to USD 38.66 billion in 2025.</li>
+                    <li>Digital Commerce: Businesses leveraging AI are expected to see a 25% increase in customer satisfaction.</li>
+                </ul>
+            </li>
+        </ul>
       </section>
+
+            <section class="section-content">
+    <h2>Market Size and Projections</h2>
+    <h2>Emerging Trends</h2>
+        <ul>
+            <li><strong>Generative AI:</strong> Tools like GPT-4 and DALL-E are reshaping industries by generating high-quality text and visuals, with AI projected to produce 10% of global data by 2025.</li>
+            <li><strong>Tailored AI Solutions:</strong> Customized AI applications are improving efficiency in healthcare, finance, and manufacturing.</li>
+        </ul>
+      </section>
+
+            <section class="section-content">
+    <h2>Market Size and Projections</h2>
+     <h2>Challenges and Considerations</h2>
+        <p>Despite widespread interest and investment, significant hurdles remain:</p>
+        <ul>
+            <li><strong>Workforce Readiness:</strong> A Pew Research survey revealed that most U.S. workers have yet to integrate AI tools into their daily tasks.</li>
+            <li><strong>Ethical Concerns:</strong> Robust governance frameworks are needed to address ethical issues and ensure responsible AI use.</li>
+        </ul>
+      </section>
+
+              <section class="section-content">
+    <h2>Market Size and Projections</h2>
+        <h2>Key Areas of AI Development</h2>
+        <ul>
+            <li>Machine Learning</li>
+            <li>Neural Networks</li>
+            <li>Generative AI</li>
+            <li>Natural Language Processing (NLP)</li>
+            <li>Computer Vision</li>
+            <li>Big Data and Predictive Analytics</li>
+            <li>AI Ethics and Regulation</li>
+            <li>Cloud Computing and Edge AI</li>
+            <li>Autonomous Systems</li>
+        </ul>
+      </section>
+
+              <section class="section-content">
+    <h2>Market Size and Projections</h2>
+        <h2>In Summary</h2>
+        <p>Artificial Intelligence is revolutionizing infectious disease management and propelling industries toward significant advancements. While there are challenges to adoption, its transformative potential, from healthcare innovation to global market expansion, is undeniable.</p>
+  
+      </section>
+
+
+
+<!-- Pricing Section -->
+<section class="pricing-section">
+  <h2 class="section-title">Pricing</h2>
+  <div class="pricing-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Exclusive Offers</th>
+          <th>Early Bird Deadline<br>Valid till 20-Mar-25</th>
+          <th>Standard Offer<br>Valid from 21-Mar-25 till 20-May-25</th>
+          <th>Last Call Price<br>Valid from 21-May-25 till 06-Jun-25</th>
+          <th>Key Benefits for all!</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Speaker / Presenter Benefits</td>
+          <td>£399</td>
+          <td>£499</td>
+          <td>£599</td>
+          <td rowspan="4">
+           <ul>
+    <li>Access to all sessions</li>
+    <li>Conference materials</li>
+    <li>Networking opportunities</li>
+    <li>Certificate of participation</li>
+    <li>Early Bird Exclusive Registration Discounts for participants registering early</li>
+    <li>E-Certification for all attendees</li>
+    <li>Book of Abstracts access for all attendees</li>
+    <li>Keynote Presentations by distinguished experts</li>
+    <li>Oral Presentations to showcase ground-breaking insights</li>
+    <li>Poster Presentations for innovative research highlights</li>
+    <li>Interactive and Networking Sessions to foster meaningful connections</li>
+    <li>On-Demand Presentation Recording Features for flexible access</li>
+    <li>Conference Videos Powered by Research Summits LTD for seamless delivery</li>
+    <li>Exclusive Pre-conference Demo Session for early insights</li>
+    <li>Breakout Rooms available for all speakers to enhance collaboration</li>
+    <li>Complimentary Attendance for Up to Five Student Delegates with select packages</li>
+    <li>Special Sessions featuring focused discussions on trending topics</li>
+    <li>Best Interactive Speaker Award to honour exceptional engagement</li>
+    <li>Exciting Sponsorship Opportunities tailored to your needs (consult with the organizer)</li>
+    <li>Short Video Advertisement Option (consult with the organizer for details)</li>
+    <li>Live Q&A Sessions with renowned presenters</li>
+</ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Listener / Delegate Benefits</td>
+          <td>£199</td>
+          <td>£299</td>
+          <td>£399</td>
+        </tr>
+        <tr>
+          <td>Student Benefits</td>
+          <td>£99</td>
+          <td>£199</td>
+          <td>£299</td>
+        </tr>
+        <tr>
+          <td>Poster Benefits</td>
+          <td>£449</td>
+          <td>£549</td>
+          <td>£649</td>
+        </tr>
+        <!-- Add Register Now Buttons in the Last Row -->
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 1rem;">
+            <div class="register-buttons">
+              <a href="reg_conf4.html" class="btn btn-register">Register Now (Early Bird)</a>
+              <a href="reg_conf4.html" class="btn btn-register">Register Now (Standard)</a>
+              <a href="reg_conf4.html" class="btn btn-register">Register Now (Last Call)</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>About Artificial Intelligence 2025</h3>
-          <p>Leading the way in neurology research and innovation since 2015.</p>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/program">Conference Program</a></li>
-            <li><a href="/speakers">Speakers</a></li>
-            <li><a href="/venue">Venue</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact Info</h3>
-          <ul class="contact-info">
-            <li>Email: contact@Artificial Intelligence2025.com</li>
-            <li>Phone: +1 (555) 123-4567</li>
-            <li>Support: 24/7 Available</li>
-          </ul>
-        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Artificial Intelligence Conference. All rights reserved.</p>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const conferenceDate = new Date("November 15, 2024 00:00:00");
+ <script>
+    const countdownEls = document.querySelectorAll(".countdown");
+    countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
 
-      const updateCountdown = () => {
-        const timeRemaining = countdown(conferenceDate);
-
-        if (timeRemaining.value > 0) {
-          document.getElementById("days").textContent = String(timeRemaining.days).padStart(2, "0");
-          document.getElementById("hours").textContent = String(timeRemaining.hours).padStart(2, "0");
-          document.getElementById("minutes").textContent = String(timeRemaining.minutes).padStart(2, "0");
-          document.getElementById("seconds").textContent = String(timeRemaining.seconds).padStart(2, "0");
-        } else {
-          document.querySelector(".countdown-grid").innerHTML =
-            "<p>The conference has started!</p>";
-          clearInterval(countdownInterval);
-        }
+    function createCountdown(countdownEl) {
+      const target = new Date(
+        new Date(countdownEl.dataset.targetDate).toLocaleString("en")
+      );
+      const parts = {
+        days: { text: ["days", "day"], dots: 30 },
+        hours: { text: ["hours", "hour"], dots: 24 },
+        minutes: { text: ["minutes", "minute"], dots: 60 },
+        seconds: { text: ["seconds", "second"], dots: 60 },
       };
 
-      const countdownInterval = setInterval(updateCountdown, 1000);
-      updateCountdown();
+      Object.entries(parts).forEach(([key, value]) => {
+        const partEl = document.createElement("div");
+        partEl.classList.add("part", key);
+        partEl.style.setProperty("--dots", value.dots);
+        value.element = partEl;
+
+        const remainingEl = document.createElement("div");
+        remainingEl.classList.add("remaining");
+        remainingEl.innerHTML = `
+          <span class="number"></span>
+          <span class="text"></span>
+        `;
+        partEl.append(remainingEl);
+
+        for (let i = 0; i < value.dots; i++) {
+          const dotContainerEl = document.createElement("div");
+          dotContainerEl.style.setProperty("--dot-idx", i);
+          dotContainerEl.classList.add("dot-container");
+          const dotEl = document.createElement("div");
+          dotEl.classList.add("dot");
+          dotContainerEl.append(dotEl);
+          partEl.append(dotContainerEl);
+        }
+        countdownEl.append(partEl);
+      });
+
+      getRemainingTime(target, parts);
+    }
+
+    function getRemainingTime(target, parts, first = true) {
+      const now = new Date();
+      if (first) console.log({ target, now });
+      const remaining = {};
+      let seconds = Math.floor((target - now) / 1000);
+      let minutes = Math.floor(seconds / 60);
+      let hours = Math.floor(minutes / 60);
+      let days = Math.floor(hours / 24);
+      hours = hours - days * 24;
+      minutes = minutes - days * 24 * 60 - hours * 60;
+      seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+
+      Object.entries({ days, hours, minutes, seconds }).forEach(([key, value]) => {
+        const remaining = parts[key].element.querySelector(".number");
+        const text = parts[key].element.querySelector(".text");
+        remaining.innerText = value;
+        text.innerText = parts[key].text[Number(value == 1)];
+        const dots = parts[key].element.querySelectorAll(".dot");
+        dots.forEach((dot, idx) => {
+          dot.dataset.active = idx <= value;
+          dot.dataset.lastactive = idx == value;
+        });
+      });
+
+      if (now <= target) {
+        window.requestAnimationFrame(() => {
+          getRemainingTime(target, parts, false);
+        });
+      }
+    }
+  </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log("Initializing Lucide icons...");
+      lucide.createIcons();
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          console.log("Intersection observed:", entry);
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.animate').forEach(el => {
+        observer.observe(el);
+      });
     });
   </script>
 </body>

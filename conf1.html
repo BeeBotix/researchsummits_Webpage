@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <link rel="icon" type="image/png" href="./Logo.png">
   <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
   <style>
@@ -207,70 +207,93 @@
       color: var(--text-light);
     }
 
-    /* Pricing Section */
-    .pricing-section {
-      margin-bottom: 4rem;
-    }
+ /*pricing*/
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    
-    .countdown-section{
-       color: var(--primary);
-      text-align: center;
-        gap: 2rem;
-    }
+  .pricing-table {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+  }
 
-    .pricing-card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
+  .pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
 
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
+  .pricing-table th,
+  .pricing-table td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
 
-    .pricing-card .price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
+  .pricing-table th {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
 
-    .pricing-card ul {
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
+  }
 
-    .pricing-card ul li {
-      margin-bottom: 0.5rem;
-      color: var(--text-light);
-    }
+  .pricing-table td {
+    background: var(--background);
+    color: var(--text);
+  }
+  .pricing-table th,
+.pricing-table td {
+  padding: 1rem;
+  border: 1px solid gray; /* Black borders */
+}
 
-    .pricing-card .btn {
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--primary);
-      color: var(--white);
-      border: none;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+  .pricing-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
 
-    .pricing-card .btn:hover {
-      background: var(--primary-dark);
-    }
+  .pricing-table ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+  }
+
+  .pricing-table ul li::before {
+    content: "•";
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+
+  @keyframes flash {
+  0%, 100% {
+    background-color:gold;
+  }
+  50% {
+    background-color: darkgoldenrod;
+  }
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  animation: flash 1.5s infinite;
+}
+
+.btn-register {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
 
     /* Speakers Section */
     .speakers-section {
@@ -317,23 +340,43 @@
       color: var(--text);
       font-weight: 500;
     }
-
-    /* Footer */
+       /* Footer */
     .footer {
       background: var(--text);
-      color: var(--white);
+      color: #94a3b8;
       padding: 4rem 0 2rem;
     }
 
-    .footer-content {
+    .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 3rem;
       margin-bottom: 3rem;
     }
 
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    white-space: nowrap; /* Ensure text stays in one line */
+ }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+    }
+
     .footer-section h3 {
-      color: var(--white);
+      color: white;
+      font-size: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
@@ -345,22 +388,75 @@
       margin-bottom: 0.75rem;
     }
 
-    .footer-section a {
+    .footer-section ul li a {
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-section a:hover {
-      color: var(--white);
+    .footer-section ul li a:hover {
+      color: white;
     }
 
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+ 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
-      border-top: 1px solid #374151;
+      border-top: 1px solid #334155;
       color: #94a3b8;
     }
+
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -402,6 +498,7 @@
       margin-inline: auto;
       container: inline-size;
       margin-bottom: 4rem;
+      text-align: center;
     }
 
     .countdown > .part {
@@ -487,68 +584,18 @@
       color: var(--primary);
     }
 
-    <style>
-  .pricing-table {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
-    margin-bottom: 2rem;
-  }
-
-  .pricing-table table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-  }
-
-  .pricing-table th,
-  .pricing-table td {
-    padding: 1rem;
-    border: 1px solid var(--border);
-  }
-
-  .pricing-table th {
-    background: var(--primary);
-    color: var(--white);
-    font-weight: 600;
-  }
-
-  .pricing-table td {
-    background: var(--background);
-    color: var(--text);
-  }
-
-  .pricing-table ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-  }
-
-  .pricing-table ul li {
-    margin-bottom: 0.5rem;
-    color: var(--text-light);
-  }
-
-  .pricing-table ul li::before {
-    content: "•";
-    color: var(--primary);
-    margin-right: 0.5rem;
-  }
-
+ 
     </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="logo">
-        <img src="rsummits.png" alt="Neurophysiology 2025 Logo" width="60" height="60">
-         </a>
-          <a href="abstract_submit_conf1.html" class="logo">
-        <img src="cmelogo.png" alt="Neurophysiology 2025 Logo" width="80" height="60">
-        <span>Neurophysiology 2025</span>
+      <a href="conf1.html" class="logo">
+        <img src="rsummits.png" alt="Infectious Disease Conference: 2025 Logo" width="60" height="60">
       </a>
+        <a href="abstract_submit_conf1.html" class="logo">
+        <img src="cmelogo.png" alt="Infectious Disease Conference: 2025 Logo" width="80" height="60">
+        <span>Neurophysiology Conference</span>
      
       <div class="nav-links">
         <a href="conf1.html" class="active">Home</a>
@@ -570,7 +617,7 @@
   <header class="hero">
     <div class="container">
       <h1>Neurophysiology Conference</h1>
-      <p class="subtitle">Advancing Research and Solutions for Global Health</p>
+    
       <div class="event-details">
         <div class="detail">
           <strong>Submission Deadline</strong>
@@ -578,7 +625,7 @@
         </div>
         <div class="detail">
           <strong>Conference Dates</strong>
-          <span>June 21-17, 2025</span>
+          <span>June 17-21, 2025</span>
         </div>
         <div class="detail">
           <strong>Location</strong>
@@ -769,90 +816,160 @@
         </ul>
       </section>
 
-      <!-- Pricing Section -->
-      <section class="pricing-section">
-        <h2 class="section-title">Pricing</h2>
-        <div class="pricing-table">
-  <table>
-    <thead>
-      <tr>
-        <th>Exclusive Offers</th>
-        <th>Early Bird Deadline<br>Valid till 20-Mar-25</th>
-        <th>Standard Offer<br>Valid from 21-Mar-25 till 20-May-25</th>
-        <th>Last Call Price<br>Valid from 21-May-25 till 06-Jun-25</th>
-        <th>Key Benefits for all!</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Speaker / Presenter Benefits</td>
-        <td>£399</td>
-        <td>£499</td>
-        <td>£599</td>
-        <td rowspan="4">
+<!-- Pricing Section -->
+<section class="pricing-section">
+  <h2 class="section-title">Pricing</h2>
+  <div class="pricing-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Exclusive Offers</th>
+          <th>Early Bird Deadline<br>Valid till 20-Mar-25</th>
+          <th>Standard Offer<br>Valid from 21-Mar-25 till 20-May-25</th>
+          <th>Last Call Price<br>Valid from 21-May-25 till 06-Jun-25</th>
+          <th>Key Benefits for all!</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Speaker / Presenter Benefits</td>
+          <td>£399</td>
+          <td>£499</td>
+          <td>£599</td>
+          <td rowspan="4">
           <ul>
-            <li>Access to all sessions</li>
-            <li>Conference materials</li>
-            <li>Networking opportunities</li>
-            <li>Certificate of participation</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>Listener / Delegate Benefits</td>
-        <td>£199</td>
-        <td>£299</td>
-        <td>£399</td>
-      </tr>
-      <tr>
-        <td>Student Benefits</td>
-        <td>£99</td>
-        <td>£199</td>
-        <td>£299</td>
-      </tr>
-      <tr>
-        <td>Poster Benefits</td>
-        <td>£449</td>
-        <td>£549</td>
-        <td>£649</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <li>Access to all sessions</li>
+    <li>Conference materials</li>
+    <li>Networking opportunities</li>
+    <li>Certificate of participation</li>
+    <li>Early Bird Exclusive Registration Discounts for participants registering early</li>
+    <li>E-Certification for all attendees</li>
+    <li>Book of Abstracts access for all attendees</li>
+    <li>Keynote Presentations by distinguished experts</li>
+    <li>Oral Presentations to showcase ground-breaking insights</li>
+    <li>Poster Presentations for innovative research highlights</li>
+    <li>Interactive and Networking Sessions to foster meaningful connections</li>
+    <li>On-Demand Presentation Recording Features for flexible access</li>
+    <li>Conference Videos Powered by Research Summits LTD for seamless delivery</li>
+    <li>Exclusive Pre-conference Demo Session for early insights</li>
+    <li>Breakout Rooms available for all speakers to enhance collaboration</li>
+    <li>Complimentary Attendance for Up to Five Student Delegates with select packages</li>
+    <li>Special Sessions featuring focused discussions on trending topics</li>
+    <li>Best Interactive Speaker Award to honour exceptional engagement</li>
+    <li>Exciting Sponsorship Opportunities tailored to your needs (consult with the organizer)</li>
+    <li>Short Video Advertisement Option (consult with the organizer for details)</li>
+    <li>Live Q&A Sessions with renowned presenters</li>
+</ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Listener / Delegate Benefits</td>
+          <td>£199</td>
+          <td>£299</td>
+          <td>£399</td>
+        </tr>
+        <tr>
+          <td>Student Benefits</td>
+          <td>£99</td>
+          <td>£199</td>
+          <td>£299</td>
+        </tr>
+        <tr>
+          <td>Poster Benefits</td>
+          <td>£449</td>
+          <td>£549</td>
+          <td>£649</td>
+        </tr>
+        <!-- Add Register Now Buttons in the Last Row -->
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 1rem;">
+            <div class="register-buttons">
+              <a href="register.html" class="btn btn-register">Register Now (Early Bird)</a>
+              <a href="register.html" class="btn btn-register">Register Now (Standard)</a>
+              <a href="register.html" class="btn btn-register">Register Now (Last Call)</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
       </section>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>About Neurophysiology 2025</h3>
-          <p>Leading the way in neurology research and innovation since 2015.</p>
+  
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/program">Conference Program</a></li>
-            <li><a href="/speakers">Speakers</a></li>
-            <li><a href="/venue">Venue</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact Info</h3>
-          <ul class="contact-info">
-            <li>Email: contact@neurophysiology2025.com</li>
-            <li>Phone: +1 (555) 123-4567</li>
-            <li>Support: 24/7 Available</li>
-          </ul>
-        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Neurophysiology Conference. All rights reserved.</p>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
 
   <script>
     const countdownEls = document.querySelectorAll(".countdown");

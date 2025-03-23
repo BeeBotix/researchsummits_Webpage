@@ -189,18 +189,23 @@
       font-weight: 500;
     }
 
-    /* Footer */
+
+       /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
-      padding: 6rem 0 2rem;
+      padding: 4rem 0 2rem;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 4rem;
-      margin-bottom: 4rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
     }
 
     .footer-logo {
@@ -211,29 +216,35 @@
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
+    white-space: nowrap; /* Ensure text stays in one line */
+ }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
     }
 
-    .footer-links h3 {
+    .footer-section h3 {
       color: white;
       font-size: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
-    .footer-links ul {
+    .footer-section ul {
       list-style: none;
     }
 
-    .footer-links li {
+    .footer-section ul li {
       margin-bottom: 0.75rem;
     }
 
-    .footer-links a {
+    .footer-section ul li a {
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-links a:hover {
+    .footer-section ul li a:hover {
       color: white;
     }
 
@@ -267,10 +278,12 @@
       background: var(--primary-dark);
     }
 
+ 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #334155;
+      color: #94a3b8;
     }
 
     /* Animations */
@@ -421,7 +434,7 @@
           <p>We host conferences across the globe with the support of distinguished scientists, thought leaders, and eminent personalities. Our conferences also provide a unique platform where seasoned experts can exchange their wealth of knowledge, fostering an environment that equally benefits the intellectual elite and aspiring talents, driving a collective pursuit of excellence.</p>
         </div>
         <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1424298397478-4bd87a6a0f0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Research Summits Team">
+          <img src="https://st.depositphotos.com/1038076/4870/i/380/depositphotos_48701865-stock-photo-about-us.jpg" alt="Research Summits Team">
         </div>
       </div>
     </div>
@@ -481,50 +494,89 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-             <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
-   
-            <span>Research Summits</span>
-          </div>
-          <p>Advancing research through global collaboration since 2010.</p>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
         </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="conferences.html">Conferences</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Guidelines</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Newsletter</h3>
-          <p>Stay updated with our latest conferences and research opportunities.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" class="newsletter-input">
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </form>
-        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Research Summits. All rights reserved.</p>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

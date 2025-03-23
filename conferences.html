@@ -568,11 +568,11 @@
 
           <!-- Upcoming Event 4 -->
           <div class="event-card">
-            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80" alt="Healthcare Innovation" class="event-image">
+            <img src="https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Healthcare Innovation" class="event-image">
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-               15 June, 2025
+              14 & 15 June, 2025
               </span>
               <h3 class="event-title">International Oil and Gas Conference</h3>
                <div class="detail-item">
@@ -596,7 +596,7 @@
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-                21 & 22 June, 2025
+                 21 &amp; 22 June, 2025
               </span>
               <h3 class="event-title">Neurophysiology Conference</h3>
                 <div class="detail-item">
@@ -616,11 +616,11 @@
 
           <!-- Upcoming Event 2 -->
           <div class="event-card">
-            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80" alt="Infectious Disease 2025" class="event-image">
+            <img src="https://www.yourgenome.org/wp-content/uploads/2023/11/1600-shutterstock_2112088307.jpg.webp" class="event-image">
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-                29 June, 2025
+                 28 &amp; 29 June, 2025
               </span>
               <h3 class="event-title">Infectious Disease Conference</h3>
           
@@ -641,11 +641,11 @@
 
           <!-- Upcoming Event 3 -->
           <div class="event-card">
-            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Startup Conference" class="event-image">
+            <img src="https://cdn.freepixel.com/preview/free-vector-graphics-artificial-intelligence-ai-concept-based-banner-or-poster-design-with-3d-illustration-of-robotic-han-preview-1101547147.jpg" alt="Startup Conference" class="event-image">
             <div class="event-content">
               <span class="event-date">
                 <i data-lucide="calendar"></i>
-              06 July, 2025
+              05 &amp; 06 July, 2025
               </span>
               <h3 class="event-title">Artificial Intelligence Conference</h3>
           
@@ -783,6 +783,28 @@
           btn.classList.add('active');
           document.getElementById(tabId).classList.add('active');
         });
+      });
+    });
+  </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log("Initializing Lucide icons...");
+      lucide.createIcons();
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          console.log("Intersection observed:", entry);
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.animate').forEach(el => {
+        observer.observe(el);
       });
     });
   </script>
