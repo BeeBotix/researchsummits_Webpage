@@ -53,7 +53,9 @@
       padding: 1rem 0;
       transition: all 0.3s ease;
     }
-
+       nav.scrolled {
+      padding: 0.75rem 0;
+    }
     .nav-content {
       display: flex;
       justify-content: space-between;
@@ -109,29 +111,41 @@
       border-radius: 1rem;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
-
-    .membership-form {
-      background: var(--background);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-   .form-image {
-  width: 100%; /* Make the image responsive */
-  max-width: 400px; /* Increase the maximum width */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Center the image */
-  margin: 0 auto 1.5rem; /* Add spacing below the image */
-  border-radius: 0.5rem; /* Optional: Add rounded corners */
+.membership-form {
+  background: var(--background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align all content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-    .membership-form h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
+.form-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto 2rem;
+  border-radius: 0.5rem;
+}
+
+.membership-form h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text);
+  width: 100%;
+}
+
+.membership-form p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
     .form-group {
       margin-bottom: 1.5rem;
@@ -341,7 +355,7 @@
       color: #3b82f6; /* Change text color of the dropdown button on hover */
     }
 
-    /* Footer */
+        /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
@@ -370,7 +384,7 @@
     }
 
     .footer-logo img {
-      height: 50px;
+      height: 100px;
       width: auto;
     }
 
@@ -434,7 +448,7 @@
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
-.social-icons {
+    .social-icons {
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
@@ -691,14 +705,15 @@
     </div>
   </section>
 
-<!-- Footer -->
+  <!-- Footer -->
+  <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <!-- Footer Logo and Description -->
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
         <p>Advancing research through global collaboration since 2010.</p>
@@ -738,7 +753,7 @@
 
         <!-- Social Media Icons -->
         <div class="social-icons">
-          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
             <i data-lucide="linkedin"></i>
           </a>
           <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
@@ -750,7 +765,7 @@
           <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
             <i data-lucide="facebook"></i>
           </a>
-          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
             <i data-lucide="youtube"></i>
           </a>
         </div>
@@ -782,5 +797,18 @@
       lucide.createIcons();
     });
   </script>
+    <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
 </body>
 </html>

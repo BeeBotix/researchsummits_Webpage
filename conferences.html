@@ -96,6 +96,10 @@
       color: var(--primary);
     }
 
+    nav.scrolled {
+      padding: 0.75rem 0;
+    }
+
     /* Conferences Hero Section */
     .conferences-hero {
       background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
@@ -165,7 +169,22 @@
       overflow: hidden;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+         position: relative;
+    cursor: pointer;
     }
+      .event-card > a {
+    position: relative;
+    z-index: 2; /* Ensure the button stays clickable */
+  }
+  .event-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
 
     .event-card:hover {
       transform: translateY(-5px);
@@ -296,7 +315,7 @@
       color: var(--text-light);
     }
 
-       /* Footer */
+    /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
@@ -325,7 +344,7 @@
     }
 
     .footer-logo img {
-      height: 50px;
+      height: 100px;
       width: auto;
     }
 
@@ -389,7 +408,26 @@
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
     /* Tab Navigation */
     .tab-nav {
       display: flex;
@@ -426,6 +464,7 @@
     .tab-content.active {
       display: block;
     }
+
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -501,6 +540,7 @@
   <!-- Navigation -->
 <nav>
   <div class="container nav-content">
+    <a href="index.html" class="logo">
     <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
     <div class="nav-links">
       <a href="index.html">
@@ -584,7 +624,7 @@
                Serial – 201
               </div>
               <a href="conf4.html" class="book-btn">
-                Book Now
+                Visit Website
                 <i data-lucide="ticket"></i>
               </a>
             </div>
@@ -608,7 +648,7 @@
                Serial – 202 
               </div>
               <a href="conf1.html" class="book-btn">
-                Book Now
+                Visit Website
                 <i data-lucide="ticket"></i>
               </a>
             </div>
@@ -633,7 +673,7 @@
                Serial – 203 
               </div>
               <a href="conf2.html" class="book-btn">
-                Book Now
+                Visit Website
                 <i data-lucide="ticket"></i>
               </a>
             </div>
@@ -658,7 +698,7 @@
                Serial – 204
               </div>
               <a href="conf3.html" class="book-btn">
-                Book Now
+                Visit Website
                 <i data-lucide="ticket"></i>
               </a>
             </div>
@@ -674,14 +714,14 @@
     </div>
   </section>
 
-<!-- Footer -->
+  <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <!-- Footer Logo and Description -->
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
         <p>Advancing research through global collaboration since 2010.</p>
@@ -721,7 +761,7 @@
 
         <!-- Social Media Icons -->
         <div class="social-icons">
-          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
             <i data-lucide="linkedin"></i>
           </a>
           <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
@@ -733,7 +773,7 @@
           <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
             <i data-lucide="facebook"></i>
           </a>
-          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
             <i data-lucide="youtube"></i>
           </a>
         </div>
@@ -808,5 +848,31 @@
       });
     });
   </script>
+    <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+ document.querySelectorAll('.event-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Don't trigger if clicking on the button itself to avoid double triggering
+        if (e.target.closest('.book-btn')) return;
+        
+        // Find the link in this card and navigate to it
+        const link = this.querySelector('.book-btn');
+        if (link && link.href) {
+          window.location.href = link.href;
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>

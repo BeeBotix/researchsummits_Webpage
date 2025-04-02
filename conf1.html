@@ -55,6 +55,9 @@
       right: 0;
       z-index: 1000;
     }
+         nav.scrolled {
+      padding: 0.75rem 0;
+    }
 
     .navbar .container {
       display: flex;
@@ -366,11 +369,10 @@
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
-    white-space: nowrap; /* Ensure text stays in one line */
- }
+    }
 
     .footer-logo img {
-      height: 50px;
+      height: 100px;
       width: auto;
     }
 
@@ -405,7 +407,7 @@
 
     .newsletter-input {
       flex: 1;
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #334155;
       border-radius: 0.5rem;
       background: #1e293b;
@@ -414,7 +416,7 @@
     }
 
     .newsletter-btn {
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       background: var(--primary);
       color: white;
       border: none;
@@ -428,14 +430,12 @@
       background: var(--primary-dark);
     }
 
- 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
-
     .social-icons {
   display: flex;
   gap: 1rem;
@@ -590,7 +590,7 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="conf1.html" class="logo">
+      <a href="index.html" class="logo">
         <img src="rsummits.png" alt="Infectious Disease Conference: 2025 Logo" width="60" height="60">
       </a>
         <a href="abstract_submit_conf1.html" class="logo">
@@ -899,7 +899,7 @@
   </main>
 
   
-<!-- Footer -->
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -926,13 +926,12 @@
 
       <!-- Resources -->
       <div class="footer-section">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="#">Guidelines</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-        </ul>
+       <h3>Contact Info</h3>
+          <ul class="contact-info">
+            <li>Email: support@researchsummits.com</li>
+            <li>Phone: +442081913434</li>
+            <li>Support: 24/7 Available</li>
+          </ul>
       </div>
 
       <!-- Newsletter and Social Icons -->
@@ -970,6 +969,7 @@
       <p>&copy; 2025 Research Summits. All rights reserved.</p>
     </div>
   </div>
+    </footer>
 
   <script>
     const countdownEls = document.querySelectorAll(".countdown");
@@ -1046,5 +1046,37 @@
       }
     }
   </script>
+    <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+    });
+  </script>
+    <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
 </body>
 </html>

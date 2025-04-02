@@ -74,10 +74,6 @@
       width: auto;
     }
 
-    .logo i {
-      color: var(--primary);
-    }
-
     .nav-links {
       display: flex;
       gap: 2.5rem;
@@ -95,10 +91,13 @@
       color: var(--primary);
     }
 
+    nav.scrolled {
+      padding: 0.75rem 0;
+    }
+
     /* Contact Hero Section */
     .contact-hero {
-      position: relative;
-      padding: 8rem 0 4rem;
+      padding: 10rem 0 4rem;
       background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
                   url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80') center/cover;
       color: white;
@@ -109,9 +108,6 @@
       font-size: 3.5rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
-      background: linear-gradient(to right, #fff, #94a3b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .contact-hero p {
@@ -174,11 +170,12 @@
 
     .info-content p {
       color: var(--text-light);
+      margin-bottom: 0.5rem;
     }
 
     .bold-large {
       font-weight: bold;
-      font-size: 1.25rem; /* Larger font size */
+      font-size: 1.25rem;
     }
 
     .contact-form {
@@ -207,7 +204,8 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 0.75rem;
       border: 1px solid #e2e8f0;
@@ -217,7 +215,8 @@
     }
 
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -243,7 +242,6 @@
 
     .submit-btn:hover {
       background: var(--primary-dark);
-      transform: translateY(-2px);
     }
 
     /* Map Section */
@@ -265,7 +263,29 @@
       border: 0;
     }
 
-   /* Footer */
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icons a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary-dark);
+    }
+
+    .social-icons i {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
@@ -294,7 +314,7 @@
     }
 
     .footer-logo img {
-      height: 50px;
+      height: 100px;
       width: auto;
     }
 
@@ -360,20 +380,9 @@
     }
 
     /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     .animate {
-      opacity: 1; /* Ensure content is visible by default */
-      transform: translateY(0);
+      opacity: 0;
+      transform: translateY(20px);
       transition: all 0.6s ease-out;
     }
 
@@ -388,12 +397,17 @@
         display: none;
       }
 
+      .contact-hero {
+        padding: 8rem 0 3rem;
+      }
+
       .contact-hero h1 {
         font-size: 2.5rem;
       }
 
       .contact-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
       .contact-info,
@@ -418,7 +432,6 @@
       z-index: 1000;
       padding: 0.5rem 0;
       border: 1px solid #e2e8f0;
-      margin-top: 0.5rem;
     }
 
     .dropdown-content a {
@@ -433,43 +446,20 @@
     .dropdown-content a:hover {
       background: #3b82f6;
       color: #ffffff;
-      border-radius: 0.25rem;
     }
 
     .dropdown:hover .dropdown-content {
       display: block;
     }
-
-    .dropdown:hover .dropbtn {
-      color: #3b82f6;
-    }
-    .social-icons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.social-icons a {
-  color: #94a3b8; /* Light gray color for icons */
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.social-icons a:hover {
-  color: var(--primary); /* Change to primary color on hover */
-}
-
-.social-icons i {
-  width: 24px;
-  height: 24px;
-}
   </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav>
     <div class="container nav-content">
-      <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+      <a href="index.html" class="logo">
+        <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+      </a>
       <div class="nav-links">
         <a href="index.html">
           <i data-lucide="home"></i>
@@ -503,7 +493,7 @@
             <a href="reg_conf4.html">Oil and Gas</a>
           </div>
         </div>
-        <a href="contact.html">
+        <a href="contact.html" class="active">
           <i data-lucide="mail"></i>
           Contact
         </a>
@@ -514,8 +504,8 @@
   <!-- Contact Hero Section -->
   <section class="contact-hero">
     <div class="container">
-      <h1>Get in Touch</h1>
-      <p>Have questions about our conferences or need assistance? We're here to help!</p>
+      <h1 class="animate">Get in Touch</h1>
+      <p class="animate">Have questions about our conferences or need assistance? We're here to help!</p>
     </div>
   </section>
 
@@ -530,7 +520,7 @@
               <i data-lucide="map-pin"></i>
               <div class="info-content">
                 <h3>Location</h3>
-                <p class="bold-large">128 CITY ROAD, <br>LONDON, UNITED KINGDOM<br>EC1V 2NX</p>
+                <p class="bold-large">128 CITY ROAD,<br>LONDON, UNITED KINGDOM<br>EC1V 2NX</p>
               </div>
             </div>
             <div class="info-item">
@@ -540,37 +530,36 @@
                 <p class="bold-large">+442081913434</p>
               </div>
             </div>
-          <div class="info-item">
-  <i data-lucide="mail"></i>
-  <div class="info-content">
-    <h3>Email</h3>
-    <p class="bold-large">support@researchsummits.com</p>
-    <!-- Social Media Icons -->
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
-        <i data-lucide="linkedin"></i>
-      </a>
-      <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
-        <i data-lucide="twitter"></i>
-      </a>
-      <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
-        <i data-lucide="instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
-        <i data-lucide="facebook"></i>
-      </a>
-      <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
-        <i data-lucide="youtube"></i>
-      </a>
-    </div>
-  </div>
-</div>
+            <div class="info-item">
+              <i data-lucide="mail"></i>
+              <div class="info-content">
+                <h3>Email</h3>
+                <p class="bold-large">support@researchsummits.com</p>
+                <div class="social-icons">
+                  <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                  </a>
+                  <a href="https://twitter.com/researchsummits" target="_blank" aria-label="Twitter">
+                    <i data-lucide="twitter"></i>
+                  </a>
+                  <a href="https://www.instagram.com/researchsummits" target="_blank" aria-label="Instagram">
+                    <i data-lucide="instagram"></i>
+                  </a>
+                  <a href="https://www.facebook.com/researchsummits" target="_blank" aria-label="Facebook">
+                    <i data-lucide="facebook"></i>
+                  </a>
+                  <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+                    <i data-lucide="youtube"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="contact-form animate">
           <h2>Send us a Message</h2>
-          <form id="contact-form">
+          <form id="contactForm">
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" required>
@@ -580,12 +569,19 @@
               <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="text" id="phone" name="phone" required>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required>
             </div>
             <div class="form-group">
-              <label for="country">Country</label>
-              <input type="text" id="country" name="country" required>
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Conference Information">Conference Information</option>
+                <option value="Registration Help">Registration Help</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="message">Message</label>
@@ -602,19 +598,19 @@
   <section class="map-section">
     <div class="container">
       <div class="map-container animate">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.8442639328655!2d-71.06099638453007!3d42.35773607918721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370868bc2ce7b%3A0x82fa7db94f5fea9e!2sDowntown%2C%20Boston%2C%20MA%2C%20USA!5e0!3m2!1sen!2s!4v1647881760757!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.722644423448!2d-0.0936904238439609!3d51.52577197181444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb127a9f0e5%3A0x2a1999a1b5a0a9a3!2s128%20City%20Rd%2C%20London%20EC1V%202NX%2C%20UK!5e0!3m2!1sen!2sus!4v1712345678901!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
-<!-- Footer -->
+  <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <!-- Footer Logo and Description -->
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
         <p>Advancing research through global collaboration since 2010.</p>
@@ -654,7 +650,7 @@
 
         <!-- Social Media Icons -->
         <div class="social-icons">
-          <a href="https://www.linkedin.com/your-profile" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
             <i data-lucide="linkedin"></i>
           </a>
           <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
@@ -666,7 +662,7 @@
           <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
             <i data-lucide="facebook"></i>
           </a>
-          <a href="https://www.youtube.com/your-profile" target="_blank" aria-label="YouTube">
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
             <i data-lucide="youtube"></i>
           </a>
         </div>
@@ -679,12 +675,13 @@
     </div>
   </div>
 </footer>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       lucide.createIcons();
 
       // Form submission handler
-      document.getElementById('contact-form').addEventListener('submit', function(e) {
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         alert('Thank you for your message! We will get back to you soon.');
         this.reset();
@@ -703,6 +700,16 @@
 
       document.querySelectorAll('.animate').forEach(el => {
         observer.observe(el);
+      });
+
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
       });
     });
   </script>

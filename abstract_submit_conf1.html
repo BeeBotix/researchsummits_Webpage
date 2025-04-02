@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
+  <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
       --primary: #2563eb;
@@ -53,6 +54,9 @@
       left: 0;
       right: 0;
       z-index: 1000;
+    }
+         nav.scrolled {
+      padding: 0.75rem 0;
     }
 
     .navbar .container {
@@ -299,10 +303,22 @@
     .paypal-button-container {
       display: none;
       margin-top: 2rem;
-      align-items: centre;
+      text-align: center;
     }
 
-       /* Footer */
+    /* Stripe Button */
+    .stripe-button-container {
+      display: none;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Style for the discount checkbox */
+    .form-group label input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    /* Footer */
     .footer {
       background: var(--text);
       color: #94a3b8;
@@ -328,11 +344,10 @@
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
-    white-space: nowrap; /* Ensure text stays in one line */
- }
+    }
 
     .footer-logo img {
-      height: 50px;
+      height: 100px;
       width: auto;
     }
 
@@ -367,7 +382,7 @@
 
     .newsletter-input {
       flex: 1;
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #334155;
       border-radius: 0.5rem;
       background: #1e293b;
@@ -376,7 +391,7 @@
     }
 
     .newsletter-btn {
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       background: var(--primary);
       color: white;
       border: none;
@@ -390,121 +405,108 @@
       background: var(--primary-dark);
     }
 
- 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
-
     .social-icons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.social-icons a {
-  color: #94a3b8; /* Light gray color for icons */
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.social-icons a:hover {
-  color: var(--primary); /* Change to primary color on hover */
-}
-
-.social-icons i {
-  width: 24px;
-  height: 24px;
-}
-    
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #374151;
-      color: #94a3b8;
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
-   
+    .social-icons a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-     /* Countdown Timer Styles */
-.countdown {
-  --number-color: hsl(0 0% 25%);
-  --text-color: hsl(0 0% 25%);
-  --dot-color: hsl(0, 0%, 10%); /* Dark gray for inactive dots */
-  --dot-color-remaining: hsl(240, 100%, 50%); /* Blue for remaining dots */
-  --dot-color-active: hsl(0, 100%, 50%);
-  font-family: system-ui, sans-serif;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  width: min(60rem, 100%);
-  margin-inline: auto;
-  container: inline-size;
-  margin-bottom: 4rem;
-}
+    .social-icons a:hover {
+      color: var(--primary);
+    }
 
-.countdown > .part {
-  aspect-ratio: 1/1;
-  display: grid;
-  place-items: center;
-}
+    .social-icons i {
+      width: 24px;
+      height: 24px;
+    }
 
-.countdown > .part > .remaining {
-  grid-area: 1/1;
-  color: hsl(0 0% 100%);
-  display: grid;
-  text-align: center;
-  font-size: 4cqi;
-}
+    /* Countdown Timer Styles */
+    .countdown {
+      --number-color: hsl(0 0% 25%);
+      --text-color: hsl(0 0% 25%);
+      --dot-color: hsl(0, 0%, 10%);
+      --dot-color-remaining: hsl(240, 100%, 50%);
+      --dot-color-active: hsl(0, 100%, 50%);
+      font-family: system-ui, sans-serif;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: min(60rem, 100%);
+      margin-inline: auto;
+      container: inline-size;
+      margin-bottom: 4rem;
+    }
 
-.countdown > .part > .remaining > .number {
-  color: var(--number-color);
-}
+    .countdown > .part {
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+    }
 
-.countdown > .part > .remaining > .text {
-  color: var(--text-color);
-  text-transform: uppercase;
-  font-size: 0.5em;
-}
+    .countdown > .part > .remaining {
+      grid-area: 1/1;
+      color: hsl(0 0% 100%);
+      display: grid;
+      text-align: center;
+      font-size: 4cqi;
+    }
 
-.countdown > .part > .dot-container {
-  grid-area: 1/1;
-  height: 100%;
-  width: 4%;
-  rotate: calc(360deg / var(--dots) * var(--dot-idx));
-}
+    .countdown > .part > .remaining > .number {
+      color: var(--number-color);
+    }
 
-.countdown > .part > .dot-container > .dot {
-  width: 100%;
-  aspect-ratio: 1/1;
-  background-color: var(--dot-color);
-  border-radius: 50%;
-  transition: background-color 0.25s;
-}
+    .countdown > .part > .remaining > .text {
+      color: var(--text-color);
+      text-transform: uppercase;
+      font-size: 0.5em;
+    }
 
-.countdown > .part > .dot-container > .dot[data-active="true"] {
-  background-color: var(--dot-color-remaining);
-}
+    .countdown > .part > .dot-container {
+      grid-area: 1/1;
+      height: 100%;
+      width: 4%;
+      rotate: calc(360deg / var(--dots) * var(--dot-idx));
+    }
 
-.countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
-  background-color: var(--dot-color-active);
-}
+    .countdown > .part > .dot-container > .dot {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      transition: background-color 0.25s;
+    }
 
-      .tracks-grid,
-      .guidelines-grid {
-        grid-template-columns: 1fr;
-      }
+    .countdown > .part > .dot-container > .dot[data-active="true"] {
+      background-color: var(--dot-color-remaining);
+    }
 
-      .submission-form {
-        padding: 1.5rem;
-      }
+    .countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+      background-color: var(--dot-color-active);
+    }
 
-      .footer-content {
-        grid-template-columns: 1fr;
-      }
+    .tracks-grid,
+    .guidelines-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .submission-form {
+      padding: 1.5rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
     }
 
     .dropdown {
@@ -543,7 +545,7 @@
       color: var(--primary);
     }
 
-     /* Responsive Design */
+    /* Responsive Design */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -561,14 +563,17 @@
         flex-direction: column;
         gap: 1.5rem;
       }
+    }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
+       <a href="index.html" class="logo">
+        <img src="rsummits.png" alt="Infectious Disease Conference: 2025 Logo" width="60" height="60">
+      </a>
       <a href="abstract_submit_conf1.html" class="logo">
-        <img src="rsummits.png" alt="Neurophysiology 2025 Logo" width="60" height="60">
-        <img src="cmelogo.png" alt="Neurophysiology 2025 Logo" width="80" height="60">
+              <img src="cmelogo.png" alt="Neurophysiology 2025 Logo" width="80" height="60">
         <span>Neurophysiology 2025</span>
       </a>
       <div class="nav-links">
@@ -666,14 +671,27 @@
           </div>
 
           <div class="form-group">
+            <label>
+              <input type="checkbox" id="requestDiscount" name="requestDiscount">
+              Request Discount (Check if you're applying for a scholarship or financial aid)
+            </label>
+          </div>
+
+          <div class="form-group">
             <button type="submit" id="submitButton" class="btn-submit">Submit Abstract</button>
             <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
           </div>
         </form>
 
-        <!-- PayPal Button Container (initially hidden) -->
+        <!-- PayPal Button Container -->
         <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
           <p>Please complete your payment to finalize your submission.</p>
+        </div>
+
+        <!-- Stripe Button Container -->
+        <div id="stripe-button-container" class="stripe-button-container" style="display: none;">
+          <p>Or pay with credit/debit card:</p>
+          <button id="stripe-button" class="btn-submit">Pay with Stripe</button>
         </div>
       </section>
 
@@ -712,7 +730,6 @@
     </div>
   </main>
 
- <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -741,8 +758,8 @@
       <div class="footer-section">
        <h3>Contact Info</h3>
           <ul class="contact-info">
-            <li>Email: richard@researchsummits.com</li>
-            <li>Phone: +1 (555) 123-4567</li>
+            <li>Email: support@researchsummits.com</li>
+            <li>Phone: +442081913434</li>
             <li>Support: 24/7 Available</li>
           </ul>
       </div>
@@ -782,10 +799,20 @@
       <p>&copy; 2025 Research Summits. All rights reserved.</p>
     </div>
   </div>
-  </footer>
+    </footer>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
+    // Initialize Stripe
+    const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ');
+
+    // Handle discount checkbox change
+    document.getElementById('requestDiscount').addEventListener('change', function() {
+      const showPayment = !this.checked;
+      document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
+      document.getElementById('stripe-button-container').style.display = showPayment ? 'block' : 'none';
+    });
+
     // Function to handle form submission
     document.getElementById('abstractForm').addEventListener('submit', function (event) {
       event.preventDefault(); // Prevent the default form submission
@@ -810,37 +837,57 @@
 
           // Change the submit button to "Submitted"
           submitButton.textContent = 'Submit Abstract';
-          submitButton.style.backgroundColor = 'gray'; // Optional: Change button color
-          submitButton.disabled = true; // Keep the button disabled
+          submitButton.style.backgroundColor = 'gray';
+          submitButton.disabled = true;
 
           // Show the "Submitted" status
           document.getElementById('submissionStatus').style.display = 'inline';
 
-          // Show the PayPal button
-          document.getElementById('paypal-button-container').style.display = 'block';
+          // Show payment options only if discount is not requested
+          const showPayment = !document.getElementById('requestDiscount').checked;
+          document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
+          document.getElementById('stripe-button-container').style.display = showPayment ? 'block' : 'none';
 
-          // Initialize PayPal button
-          paypal.Buttons({
-            createOrder: function (data, actions) {
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: '1.00' // Set the payment amount
-                  }
-                }]
+          // Initialize PayPal button if showing
+          if (showPayment) {
+            paypal.Buttons({
+              createOrder: function (data, actions) {
+                return actions.order.create({
+                  purchase_units: [{
+                    amount: {
+                      value: '1.00' // Set the payment amount
+                    }
+                  }]
+                });
+              },
+              onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                  alert('Payment completed by ' + details.payer.name.given_name);
+                });
+              },
+              onError: function (err) {
+                console.error('PayPal Error:', err);
+                alert('Payment failed. Please try again.');
+              }
+            }).render('#paypal-button-container');
+
+            // Initialize Stripe button
+            document.getElementById('stripe-button').addEventListener('click', function() {
+              stripe.redirectToCheckout({
+                lineItems: [{
+                  price: 'price_1QzJ3JL8PncHyD1Hv8QYJX7H', // Your Stripe price ID
+                  quantity: 1,
+                }],
+                mode: 'payment',
+                successUrl: window.location.href + '?payment=success',
+                cancelUrl: window.location.href + '?payment=cancel',
+              }).then(function(result) {
+                if (result.error) {
+                  alert(result.error.message);
+                }
               });
-            },
-            onApprove: function (data, actions) {
-              return actions.order.capture().then(function (details) {
-                alert('Payment completed by ' + details.payer.name.given_name);
-                // You can add additional logic here, such as updating the server about the payment
-              });
-            },
-            onError: function (err) {
-              console.error('PayPal Error:', err);
-              alert('Payment failed. Please try again.');
-            }
-          }).render('#paypal-button-container');
+            });
+          }
         },
         error: function (xhr, status, error) {
           console.error('Form submission error:', error);
@@ -862,7 +909,7 @@
         const file = fileInput.files[0];
         const candidateName = document.getElementById('name').value;
         const confname = document.getElementById('conferencetitle').value;
-        const fileNamePrefix = `${confname}_${candidateName}_${file.name}`;
+        const fileNamePrefix = `abstractfile_${confname}_${candidateName}_${file.name}`;
 
         const fr = new FileReader();
         fr.fileName = fileNamePrefix;
@@ -973,6 +1020,38 @@
     }
   }
 </script>
+  <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+    });
+  </script>
+    <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
 
 </body>
 </html>
