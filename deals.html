@@ -421,21 +421,38 @@
         <h1>Unlock the Best Offers</h1>
         <p><strong>Please complete the form below to unlock exclusive deals and discounts for Research Summits conferences.</strong></p>
         <div class="deals-form">
-          <form action="#" method="post">
-            <div class="form-group">
-              <input type="text" id="name" name="name" placeholder=" " required>
-              <label for="name">Full Name*</label>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" name="email" placeholder=" " required>
-              <label for="email">Email Address*</label>
-            </div>
-            <div class="form-group">
-              <input type="tel" id="phone" name="phone" placeholder=" ">
-              <label for="phone">Contact Number</label>
-            </div>
-            <div class="form-group">
-              <select id="country" name="country" required>
+  <form id="dealsForm">
+    <input type="hidden" id="conferencetitle" name="conferencetitle" value="Deals">
+    
+    <div class="form-group">
+      <select id="title" name="Title" required>
+        <option value="" disabled selected>Select Title</option>
+        <option value="Dr">Dr</option>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Ms">Ms</option>
+        <option value="Prof">Prof</option>
+      </select>
+      <label for="title">Title*</label>
+    </div>
+    
+    <div class="form-group">
+      <input type="text" id="name" name="Name" placeholder=" " required>
+      <label for="name">Full Name*</label>
+    </div>
+    
+    <div class="form-group">
+      <input type="email" id="email" name="Email" placeholder=" " required>
+      <label for="email">Email Address*</label>
+    </div>
+    
+    <div class="form-group">
+      <input type="tel" id="whatsapp" name="WhatsAppNum" placeholder=" " required>
+      <label for="whatsapp">WhatsApp Number*</label>
+    </div>
+    
+          <div class="form-group">
+              <select id="country" name="Country" required>
                 <option value="" disabled selected></option>
                 <option value="USA">United States</option>
                 <option value="UK">United Kingdom</option>
@@ -524,6 +541,65 @@
     </div>
   </div>
 </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  // Function to handle form submission
+  document.querySelector('.deals-form form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Disable the submit button to prevent multiple submissions
+    const submitButton = document.querySelector('.btn-submit');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Processing...';
+
+    // Collect form data
+    const formData = new FormData(this);
+
+    // Submit form data using AJAX
+    $.ajax({
+      url: 'https://script.google.com/macros/s/AKfycbxZHcvCWFXYbCzVgpzgvxeL_w_zuo6toOoLX3Rr0AXbLmRs9uIOwIB2XLdmprtE5ttG/exec',
+      method: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log('Form submitted successfully:', response);
+        
+        // Show success message
+        submitButton.textContent = '✓ Offers Sent!';
+        submitButton.style.backgroundColor = '#10b981'; // Green color
+        
+        // Create and show a success message
+        const successMessage = document.createElement('div');
+        successMessage.innerHTML = `
+          <p style="margin-top: 1rem; color: #10b981; font-weight: 600;">
+            Thank you! Check your email for exclusive deals and discounts.
+          </p>
+        `;
+        document.querySelector('.deals-form').appendChild(successMessage);
+      },
+      error: function (xhr, status, error) {
+        console.error('Form submission error:', error);
+        
+        // Show error message
+        submitButton.textContent = 'Try Again';
+        submitButton.style.backgroundColor = '#ef4444'; // Red color
+        submitButton.disabled = false;
+        
+        // Create and show an error message
+        const errorMessage = document.createElement('div');
+        errorMessage.innerHTML = `
+          <p style="margin-top: 1rem; color: #ef4444; font-weight: 600;">
+            Submission failed. Please try again or contact support.
+          </p>
+        `;
+        document.querySelector('.deals-form').appendChild(errorMessage);
+      }
+    });
+  });
+</script>
   <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
