@@ -36,6 +36,8 @@
       box-sizing: border-box;
     }
 
+
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
@@ -569,15 +571,146 @@
   margin-bottom: 1.5rem;
   color: var(--primary);
 }
+
+  @media (max-width: 768px) {
+      /* Navigation adjustments */
+      .nav-content {
+        padding: 0 1rem;
+      }
+      
+      .logo-image {
+        height: 60px !important;
+      }
+
+      /* Hamburger menu */
+      .mobile-menu-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: var(--background-alt);
+      }
+
+      /* Hero section */
+      .hero {
+        padding: 6rem 0 2rem;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-logo-image {
+        height: 30vh;
+        margin-top: 1rem;
+      }
+
+      /* Features grid */
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Conference cards */
+      .conference-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .conference-date {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.75rem;
+      }
+
+      /* Footer adjustments */
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      /* General spacing */
+      .container {
+        padding: 0 1rem;
+      }
+
+      section {
+        padding: 3rem 0 !important;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card,
+      .feature-card {
+        padding: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .hero-content {
+        gap: 2rem;
+      }
+    }
+
+    /* Add hamburger menu button */
+    .mobile-menu-btn {
+      display: none;
+    }
+
 </style>
 </head>
 <body>
   <nav>
-    <div class="container nav-content">
+   
+        
+      <div class="container nav-content">
       <a href="index.html" class="logo">
-        <img src="rsummits.png" alt="Research Summits Logo" class="logo-image" style="margin-right: 20px;">
+        <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
       </a>
-      <div class="nav-links">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+      </button>
+      <div class="nav-links" id="navLinks">
         <a href="index.html">
           <i data-lucide="home"></i>
           Home
@@ -622,7 +755,7 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <h1 style="margin-top: 15%;">Welcome to <br>Research Summits!</h1>
+          <h1>Welcome to <br>Research Summits!</h1>
           <p>We bring the world closer by organizing impactful global medical & engineering conferences. Our mission is to connect intellectuals and aspiring talents. With our passionate team of professionals and expertise, we ensure that your vision becomes a reality. Headquartered in London, United Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference.</p>
           <p>Join us to embark on a journey of unparalleled success and shining recognition!</p>
           <div class="hero-buttons">
@@ -1028,5 +1161,46 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+  <script>
+    // Improved mobile menu handling
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const body = document.body;
+
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+      body.classList.toggle('menu-open');
+      lucide.createIcons();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-content')) {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+
+    // Close menu when clicking nav links
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+
+    // Handle dropdown menus on mobile
+    document.querySelectorAll('.dropdown > a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = e.target.closest('.dropdown');
+          dropdown.classList.toggle('open');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
