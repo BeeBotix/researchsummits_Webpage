@@ -650,17 +650,16 @@
       <!-- Introduction to World Conference on Cyber security and Data privacy Section -->
       <section class="section-content">
         <h2>Introduction to Cyber security and Data privacy</h2>
-        <p>Dear Colleagues and Esteemed Guests,
-          We are thrilled to invite you to the Pharma Conference 2025, a premier global event scheduled for 16-17 July 2025, hosted in an engaging webinar format. This virtual platform ensures seamless participation from anywhere in the world, bringing together pharmaceutical professionals, researchers, policymakers, and industry leaders to explore the future of healthcare innovation.</p>
+        <p>Join the Cybersecurity and Data Privacy Webinar on July 21-22, 2025, a leading virtual event for cybersecurity experts, data privacy professionals, and industry leaders. This two-day conference explores cutting-edge strategies to combat cyber threats and ensure data protection. Featuring keynote addresses from global thought leaders, hands-on workshops on AI-powered security and blockchain encryption, and panels on GDPR and CCPA compliance, the event equips attendees with practical solutions. Network with over 5,000 participants and 100+ solution providers through AI-driven matchmaking. Key topics include phishing defense, zero-trust architecture, and data breach prevention. Tailored for CISOs, privacy officers, and IT specialists, the webinar offers up to 10 CPE credits and is accessible via Zoom for global participation. Register early to secure discounts and gain insights to strengthen your organization’s cyber resilience in an increasingly digital world.</p>
       </section>
 
-      <!-- Key Areas of Pharma -->
+      <!-- Key Areas of Cyber security and Data privacy -->
       <section class="section-content">
-        <h2>Key Areas of Pharma</h2>
+        <h2>Key Areas of Cyber security and Data privacy</h2>
         <ul>
-          <li><strong>Drug Development: :</strong> Researching and formulating new medications to treat diseases.</li>
-          <li><strong>Regulatory Affairs:</strong> Ensuring compliance with global health regulations and drug approval processes.</li>
-          <li><strong>Pharmaceutical Marketing::</strong> Promoting drugs ethically to healthcare professionals and consumers while adhering to legal standards.</li>
+          <li><strong>AI-Driven Threat Detection:</strong> Leverages AI to identify and mitigate cyber threats in real-time, enhancing security.</li>
+          <li><strong>Data Encryption:</strong> Utilizes advanced encryption like blockchain to protect sensitive data from breaches.</li>
+          <li><strong>Regulatory Compliance:</strong> Ensures adherence to GDPR and CCPA, minimizing legal and privacy risks.</li>
         </ul>
       </section>
 
