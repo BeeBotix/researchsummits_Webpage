@@ -1,1 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oncology Conference 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="icon" type="image/png" href="./Logo.png">
+  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --text: #1e293b;
+      --text-light: #000000;
+      --background: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--background);
+      padding-top: 70px; /* Add padding to account for fixed navbar */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+         nav.scrolled {
+      padding: 0.75rem 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+  
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--gradient);
+      color: var(--white);
+      padding: 8rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      color: var(--white);
+    }
+
+    .event-details {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .detail strong {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cta-buttons .btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--white);
+      color: var(--primary);
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .cta-buttons .btn:hover {
+      background: var(--primary-dark);
+      color: var(--white);
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .section-content {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .section-content h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .section-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+       text-align: center;
+
+    }
+
+    .section-content ul {
+      list-style: disc;
+      padding-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .section-content p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+ /*pricing*/
+
+  .pricing-table {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  .pricing-table th {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+
+  }
+
+  .pricing-table td {
+    background: var(--background);
+    color: var(--text);
+  }
+  .pricing-table th,
+.pricing-table td {
+  padding: 1rem;
+  border: 1px solid gray; /* Black borders */
+}
+
+  .pricing-table ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .pricing-table ul li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+  }
+
+  .pricing-table ul li::before {
+    content: "•";
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+
+  @keyframes flash {
+  0%, 100% {
+    background-color:gold;
+  }
+  50% {
+    background-color: darkgoldenrod;
+  }
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  animation: flash 1.5s infinite;
+}
+
+.btn-register {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+    /* Speakers Section */
+    .speakers-section {
+      margin-bottom: 4rem;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .speaker-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .speaker-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    .speaker-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .speaker-card p {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .speaker-card .affiliation {
+      font-size: 0.875rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+       /* Footer */
+    .footer {
+      background: var(--text);
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .footer-section h3 {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+    }
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 6rem 0 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .event-details {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* New Countdown Styles */
+    .countdown {
+      --number-color: hsl(0 0% 25%);
+      --text-color: hsl(0 0% 25%);
+     --dot-color: hsl(0, 0%, 10%); /* Dark gray for inactive dots */
+  --dot-color-remaining: hsl(240, 100%, 50%); /* Blue for remaining dots */
+  --dot-color-active: hsl(0, 100%, 50%);
+      font-family: system-ui, sans-serif;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: min(60rem, 100%);
+      margin-inline: auto;
+      container: inline-size;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .countdown > .part {
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+    }
+
+    .countdown > .part > .remaining {
+      grid-area: 1/1;
+      color: hsl(0 0% 100%);
+      display: grid;
+      text-align: center;
+      font-size: 4cqi;
+    }
+
+    .countdown > .part > .remaining > .number {
+      color: var(--number-color);
+    }
+
+    .countdown > .part > .remaining > .text {
+      color: var(--text-color);
+      text-transform: uppercase;
+      font-size: 0.5em;
+    }
+
+    .countdown > .part > .dot-container {
+      grid-area: 1/1;
+      height: 100%;
+      width: 4%;
+      rotate: calc(360deg / var(--dots) * var(--dot-idx));
+    }
+
+    .countdown > .part > .dot-container > .dot {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      transition: background-color 0.25s;
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"] {
+      background-color: var(--dot-color-remaining);
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+      background-color: var(--dot-color-active);
+    }
+ 
+   .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-radius: 0.5rem;
+      min-width: 200px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: var(--text-light);
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .nav-links a {
+      color: var(--primary);
+    }
+
+ 
+    </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="rsummits.png" alt="Obesity Conference: 2025 Logo" width="60" height="60">
+      </a>
+        <a href="abstract_submit_conf24.html" class="logo">
+        <img src="cmelogo.png" alt="Obesity Conference: 2025 Logo" width="80" height="60">
+        <span>Obesity Conference</span>
+     
+      <div class="nav-links">
+        <a href="conf23.html" class="active">Home</a>
+        <a href="abstract_submit_conf24.html">Submit Abstract</a>
+        <a href="reg_conf24.html">Register</a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn">Program</a>
+          <div class="dropdown-content">
+            <a href="sp.pdf" target="_blank">Scientific Program</a>
+            <a href="broch.pdf" target="_blank">Download Brochure</a>
+            <a href="final_prog.pdf" target="_blank">Final Program</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Oncology Conference</h1>
+    
+      <div class="event-details">
+        <div class="detail">
+          <strong>Submission Deadline</strong>
+          <span>August 20, 2025</span>
+        </div>
+        <div class="detail">
+          <strong>Conference Dates</strong>
+          <span>September 12-13, 2025</span>
+        </div>
+        <div class="detail">
+          <strong>Location</strong>
+          <span>Virtual Conference</span>
+        </div>
+      </div>
+      <div class="cta-buttons">
+        <a href="abstract_submit_conf24.html" class="btn">Submit Abstract</a>
+        <a href="reg_conf24.html" class="btn">Register Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <!-- Countdown Section -->
+      <section class="countdown-section">
+        <h1>Countdown to Oncology Conference 2025</span></h1>
+        <div class="countdown" data-target-date="2025-09-11 00:00:00"></div>
+      </section>
+
+      <!-- Introduction to Oncology Conference Section -->
+      <section class="section-content">
+        <h2>Introduction to Oncology Conference</h2>
+        <p>Join us for the Oncology Conference 2025, a global virtual event taking place on September 12-13, 2025, dedicated to advancing cancer research, treatment, and patient care. This online conference will unite leading oncologists, researchers, clinicians, and healthcare professionals to share groundbreaking discoveries, innovative therapies, and the latest advancements in oncology.
+Organized by Research Summit, the event focuses on the theme “Innovating Treatments Shaping the Future of Cancer Care” and will feature keynote speeches, expert panels, research presentations, and virtual exhibitions. Attendees can connect and collaborate from anywhere in the world, gaining valuable knowledge and networking opportunities.
+Be part of this transformative event to drive progress and improve outcomes in cancer care worldwide!</p>
+      </section>
+
+      <!-- Key Areas of Oncology Section -->
+      <section class="section-content">
+        <h2>Key Areas of Oncology</h2>
+        <ul>
+          <li><strong>Cancer Diagnosis & Screening:</strong> Early detection through imaging, biomarkers, and genetic testing improves treatment outcomes and survival rates.</li>
+          <li><strong>Treatment & Therapeutic Advances:</strong> Innovations in chemotherapy, radiation therapy, immunotherapy, and precision medicine enhance patient care and recovery.</li>
+          <li><strong>Prevention & Risk Factors:</strong> Lifestyle changes, genetic counseling, and environmental awareness reduce cancer risks and support long-term health.</li>
+        </ul>
+      </section>
+
+      </section>
+
+      <!-- Market Insights Section -->
+      <section class="section-content">
+        <h2>Market Insights in Oncology<</h2>
+        <p>The global oncology market has witnessed significant growth over the past decade due to rising cancer prevalence, advances in treatment options, and increased research funding. Conferences focusing on oncology have expanded to address evolving areas such as immunotherapy, precision medicine, and AI applications.
+From 2018 to 2024, the number of oncology-related conferences, attendees, and industry participation have grown annually by an estimated 8-12%. Innovations in cancer therapies and diagnostics are driving interest and investments, while virtual and hybrid event formats have broadened global reach, contributing to steady market expansion.
+This growth reflects increased collaboration between academia, healthcare providers, and pharma, highlighting the oncology conference sector as a critical platform for knowledge exchange and innovation.</p>
+          </li>
+        </ul>
+        <h3>Target Audience</h3>
+        <ul>
+          <li><strong>Oncologists & Cancer Specialists:</strong> Experts diagnosing, treating, and managing various types of cancer.</li>
+          <li><strong>Radiologists & Imaging Experts:</strong> Professionals using advanced imaging techniques for cancer detection and monitoring.</li>
+          <li><strong>Surgeons & Surgical Oncologists:</strong> Specialists performing cancer-related surgeries for tumor removal and treatment.</li>
+          <li><strong>Pathologists & Laboratory Researchers:</strong> Scientists studying cancer cells and biomarkers for precise diagnosis.</li>
+          <li><strong>Pharmaceutical Scientists & Drug Developers:</strong> Innovators creating targeted therapies, immunotherapies, and chemotherapy drugs.</li>
+          <li><strong>Geneticists & Precision Medicine Experts:</strong> Specialists using genomics to personalize cancer treatments and risk assessment.</li>
+          <li><strong>Palliative Care & Pain Management Specialists:</strong> Professionals ensuring comfort and quality of life for cancer patients.</li>
+          <li><strong>Medical & Nursing Professionals:</strong> Care providers offering treatment, education, and patient support throughout therapy.</li>
+          <li><strong>Academic Researchers & Policy Makers:</strong> Scholars driving cancer research, awareness campaigns, and healthcare policies.</li>
+            <ul>
+          </li>
+        </ul>
+      <!-- Key Topics Section -->
+      <section class="section-content">
+        <h2>Key Topics & Tracks</h2>
+       <p>Explore the latest advancements and research in Obesity through our comprehensive tracks:</p>
+        <h3>Obesity Management</h3>
+        <ul>
+          <li>Effective obesity management involves a multidisciplinary approach combining lifestyle modifications, medical interventions, behavioural therapy, and sometimes surgery. Tailored treatment plans help individuals achieve sustainable weight loss and improve metabolic health.</li>
+        </ul>
+        <h3>Metabolic Syndrome</h3>
+        <ul>
+          <li>Metabolic syndrome is a cluster of conditions—high blood pressure, high blood sugar, excess abdominal fat, and abnormal cholesterol levels—that raise the risk for heart disease, stroke, and type 2 diabetes, often linked to obesity.</li>
+        </ul>
+        <h3>Childhood Obesity</h3>
+        <ul>
+          <li>Childhood obesity is a growing global concern, contributing to early onset of health issues like diabetes and hypertension. It is often influenced by genetics, lifestyle, and environmental factors, requiring early intervention.</li>
+        </ul>
+        <h3>Bariatric Surgery</h3>
+        <ul>
+          <li>Bariatric surgery is a medical procedure designed for weight loss in severely obese patients. It alters the digestive system to restrict food intake or nutrient absorption, helping reduce obesity-related complications.</li>
+        </ul>
+        <h3>Obesity and Diabetes</h3>
+        <ul>
+          <li>Obesity is a major risk factor for type 2 diabetes, primarily due to increased insulin resistance. Managing weight through diet, exercise, and medication can significantly lower diabetes risk and improve glucose control.</li>
+        </ul>
+        <h3>Nutritional Therapy</h3>
+        <ul>
+          <li>Nutritional therapy uses personalized diet plans to address obesity. It emphasizes balanced nutrition, portion control, and nutrient-dense food choices, promoting gradual and sustainable weight loss while improving overall health.</li>
+        </ul>
+        <h3>Anti-Obesity Drugs</h3>
+        <ul>
+          <li>Pharmacological treatments for obesity target appetite regulation, fat absorption, or metabolic rate. These medications support lifestyle changes and are typically prescribed for individuals with obesity-related health risks.</li>
+        </ul>
+        <h3>Genetic Obesity Factors</h3>
+        <ul>
+          <li>Genetic predisposition plays a role in obesity by influencing appetite, metabolism, and fat storage. Understanding these genetic markers helps in developing personalized treatment and prevention strategies.</li>
+        </ul>
+        <h3>Obesity and Cardiovascular Risk</h3>
+        <ul>
+          <li>Obesity significantly raises the risk of cardiovascular diseases by contributing to hypertension, high cholesterol, and atherosclerosis. Weight reduction improves heart health and lowers long-term cardiac risks.</li>
+        </ul>
+        <h3>Behavioural Therapy</h3>
+        <ul>
+          <li>Behavioural strategies focus on modifying eating and activity habits through counselling, goal-setting, and self-monitoring. These interventions are key to long-term success in obesity treatment and relapse prevention.</li>
+        </ul>
+        <h3>Obesity Prevention Strategies</h3>
+        <ul>
+          <li>Preventing obesity involves promoting healthy eating, regular physical activity, and public health policies that support active lifestyles. Early education and community support are vital to effective prevention.</li>
+        </ul>
+        <h3>Endocrinology of Obesity</h3>
+        <ul>
+          <li>The endocrine system influences obesity through hormones like insulin, leptin, and ghrelin. Disruptions in hormonal balance can lead to increased fat storage and reduced energy expenditure.</li>
+        </ul>
+        <h3>Public Health and Obesity</h3>
+        <ul>
+          <li>Public health efforts address obesity through awareness campaigns, policy changes, and improved access to healthy foods and exercise. Community-level initiatives are essential in reversing obesity trends.</li>
+        </ul>
+        <h3>Obesity and Mental Health</h3>
+        <ul>
+          <li>There is a strong link between obesity and mental health conditions such as depression and anxiety. Addressing emotional well-being is a critical component of comprehensive obesity care.</li>
+        </ul>
+      </section>
+
+<!-- Pricing Section -->
+<section class="pricing-section">
+  <h2 class="section-title">Pricing</h2>
+  <div class="pricing-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Exclusive Offers</th>
+          <th>Early Bird Deadline<br>Valid till 30-Jun-25</th>
+          <th>Standard Offer<br>Valid from 01-Jul-25 till 15-Aug-25</th>
+          <th>Last Call Price<br>Valid from 16-Aug-25 till 10-Sep-25</th>
+          <th>Key Benefits for all!</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Speaker / Presenter Benefits</td>
+          <td>£199</td>
+          <td>£299</td>
+          <td>£399</td>
+          <td rowspan="4">
+          <ul>
+    <li>Access to all sessions</li>
+    <li>Conference materials</li>
+    <li>Networking opportunities</li>
+    <li>Certificate of participation</li>
+    <li>Early Bird Exclusive Registration Discounts for participants registering early</li>
+    <li>E-Certification for all attendees</li>
+    <li>Book of Abstracts access for all attendees</li>
+    <li>Keynote Presentations by distinguished experts</li>
+    <li>Oral Presentations to showcase ground-breaking insights</li>
+    <li>Poster Presentations for innovative research highlights</li>
+    <li>Interactive and Networking Sessions to foster meaningful connections</li>
+    <li>On-Demand Presentation Recording Features for flexible access</li>
+    <li>Conference Videos Powered by Research Summits LTD for seamless delivery</li>
+    <li>Exclusive Pre-conference Demo Session for early insights</li>
+    <li>Breakout Rooms available for all speakers to enhance collaboration</li>
+    <li>Complimentary Attendance for Up to Five Student Delegates with select packages</li>
+    <li>Special Sessions featuring focused discussions on trending topics</li>
+    <li>Best Interactive Speaker Award to honour exceptional engagement</li>
+    <li>Exciting Sponsorship Opportunities tailored to your needs (consult with the organizer)</li>
+    <li>Short Video Advertisement Option (consult with the organizer for details)</li>
+    <li>Live Q&A Sessions with renowned presenters</li>
+</ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Listener / Delegate Benefits</td>
+          <td>£199</td>
+          <td>£299</td>
+          <td>£399</td>
+        </tr>
+        <tr>
+          <td>Student Benefits</td>
+          <td>£99</td>
+          <td>£199</td>
+          <td>£299</td>
+        </tr>
+        <tr>
+          <td>Poster Benefits</td>
+          <td>£249</td>
+          <td>£349</td>
+          <td>£449</td>
+        </tr>
+        <!-- Add Register Now Buttons in the Last Row -->
+        <tr>
+          <td colspan="5" style="text-align: center; padding: 1rem;">
+            <div class="register-buttons">
+              <a href="register.html" class="btn btn-register">Register Now (Early Bird)</a>
+              <a href="register.html" class="btn btn-register">Register Now (Standard)</a>
+              <a href="register.html" class="btn btn-register">Register Now (Last Call)</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+      </section>
+    </div>
+  </main>
+
+  
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
+        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+       <h3>Contact Info</h3>
+          <ul class="contact-info">
+            <li>Email: support@researchsummits.com</li>
+            <li>Phone: +442081913434</li>
+            <li>Support: 24/7 Available</li>
+          </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+    </footer>
+
+  <script>
+    const countdownEls = document.querySelectorAll(".countdown");
+    countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
+
+    function createCountdown(countdownEl) {
+      const target = new Date(
+        new Date(countdownEl.dataset.targetDate).toLocaleString("en")
+      );
+      const parts = {
+        days: { text: ["days", "day"], dots: 30 },
+        hours: { text: ["hours", "hour"], dots: 24 },
+        minutes: { text: ["minutes", "minute"], dots: 60 },
+        seconds: { text: ["seconds", "second"], dots: 60 },
+      };
+
+      Object.entries(parts).forEach(([key, value]) => {
+        const partEl = document.createElement("div");
+        partEl.classList.add("part", key);
+        partEl.style.setProperty("--dots", value.dots);
+        value.element = partEl;
+
+        const remainingEl = document.createElement("div");
+        remainingEl.classList.add("remaining");
+        remainingEl.innerHTML = `
+          <span class="number"></span>
+          <span class="text"></span>
+        `;
+        partEl.append(remainingEl);
+
+        for (let i = 0; i < value.dots; i++) {
+          const dotContainerEl = document.createElement("div");
+          dotContainerEl.style.setProperty("--dot-idx", i);
+          dotContainerEl.classList.add("dot-container");
+          const dotEl = document.createElement("div");
+          dotEl.classList.add("dot");
+          dotContainerEl.append(dotEl);
+          partEl.append(dotContainerEl);
+        }
+        countdownEl.append(partEl);
+      });
+
+      getRemainingTime(target, parts);
+    }
+
+    function getRemainingTime(target, parts, first = true) {
+      const now = new Date();
+      if (first) console.log({ target, now });
+      const remaining = {};
+      let seconds = Math.floor((target - now) / 1000);
+      let minutes = Math.floor(seconds / 60);
+      let hours = Math.floor(minutes / 60);
+      let days = Math.floor(hours / 24);
+      hours = hours - days * 24;
+      minutes = minutes - days * 24 * 60 - hours * 60;
+      seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+
+      Object.entries({ days, hours, minutes, seconds }).forEach(([key, value]) => {
+        const remaining = parts[key].element.querySelector(".number");
+        const text = parts[key].element.querySelector(".text");
+        remaining.innerText = value;
+        text.innerText = parts[key].text[Number(value == 1)];
+        const dots = parts[key].element.querySelectorAll(".dot");
+        dots.forEach((dot, idx) => {
+          dot.dataset.active = idx <= value;
+          dot.dataset.lastactive = idx == value;
+        });
+      });
+
+      if (now <= target) {
+        window.requestAnimationFrame(() => {
+          getRemainingTime(target, parts, false);
+        });
+      }
+    }
+  </script>
+    <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+    });
+  </script>
+    <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
+</body>
+</html>
