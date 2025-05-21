@@ -663,44 +663,44 @@
         </ul>
       </section>
 
-      <!-- cyber Section -->
+      <!-- Renewal Energy Section -->
       <section class="section-content">
         <h2>Targeted Audience</h2>
         <ul>
-          <li><strong>Chief Information Security Officers:</strong> Senior executives responsible for developing and overseeing cybersecurity strategies to protect organizational data and systems.</li>
-          <li><strong>Data Privacy Officers:</strong> Specialists ensuring compliance with data protection laws like GDPR and CCPA, safeguarding personal information.</li>
-          <li><strong>IT Professionals:</strong> Technicians managing network security, implementing firewalls, and mitigating cyber threats to maintain system integrity.</li>
-          <li><strong>Compliance Managers:</strong> Professionals ensuring organizational adherence to cybersecurity regulations and standards, minimizing legal risks.</li>
-          <li><strong>Cybersecurity Analysts:</strong>Experts monitoring, detecting, and responding to cyber threats, analyzing vulnerabilities to enhance security.</li>
-          <li><strong>Healthcare IT Staff:</strong> Professionals securing sensitive patient data in digital health systems, ensuring HIPAA compliance.</li>
-          <li><strong>Policy Makers:</strong> Regulators and government officials shaping cybersecurity and data privacy frameworks to protect public and private sectors.</li>
+          <li><strong>Renewable Energy Engineers:</strong> Design and optimize solar, wind, and hydro systems, seeking innovations.</li>
+          <li><strong>Environmental Scientists:</strong> Study energy impacts on ecosystems, exploring sustainable practices.</li>
+          <li><strong>Energy Policy Makers:</strong> Shape regulations for clean energy adoption, updating frameworks.</li>
+          <li><strong>Sustainability Consultants:</strong> Advise organizations on green strategies, integrating renewable solutions.</li>
+          <li><strong>Power Grid Operators:</strong>Manage grid integration of renewables, enhancing efficiency.</li>
+          <li><strong>Energy Researchers:</strong> Investigate new energy technologies, sharing cutting-edge findings.</li>
+          <li><strong>Green Technology Innovators:</strong> Develop renewable tech, driving market advancements.</li>
         </ul>
       </section>
 
       <!-- Benifits Section -->
       <section class="section-content">
-        <h2>Benefits of Attending a Webinar on Cyber security and Data privacy</h2>
-        <p>Benefits of attending Cyber security and Data privacy:</p>
+        <h2>Benefits of Attending a Webinar on Renewal Energy</h2>
+        <p>Renewable energy webinars empower professionals with sustainable energy insights.</p>
         <ul>
-          <li>Expert Insights: Learn advanced strategies for threat detection and data protection.</li>
-          <li>Networking: Connect with cybersecurity experts and peers.</li>
-          <li>Convenience: Access cutting-edge knowledge remotely, saving time.</li>
-          <li>Certification: Earn CPE credits and certifications for career growth.</li>
+          <li>Expert Knowledge: Gain insights on solar, wind, and green hydrogen advancements.</li>
+          <liNetworking: Connect with energy experts and innovators for collaboration.</li>
+          <li>Convenience: Access cutting-edge content remotely, saving time and costs.</li>
+          <li>Certification: Earn up to 8 CE credits for career growth.</li>
           
         </ul>
       </section>
 
       <!-- Market Insights Section -->
       <section class="section-content">
-        <h2>Market Insights in Cybersecurity and Data Privacy</h2>
-        <p>The cybersecurity and data privacy market, valued at USD 183.4 billion in 2024, is projected to reach USD 406.3 billion by 2030, growing at a CAGR of 14.2%. Key research and development trends drive this expansion.</p>
-        <h3>Global Cybersecurity and Data Privacy Market</h3>
+        <h2>Market Insights in Renewal Energy</h2>
+        <p>The global renewable energy market, valued at USD 1,085 billion in 2024, is projected to reach USD 2,271.2 billion by 2030, growing at a CAGR of 17.2%. Key trends drive this expansion.</p>
+        <h3>Global Renewal Energy Market</h3>
         <ul>
           
             <ul>
-              <li>AI-Powered Threat Detection: R&D focuses on AI algorithms for real-time threat identification, reducing response times. Innovations like machine learning models enhance predictive analytics, helping organizations prevent breaches. Investments in AI cybersecurity reached USD 7.1 billion in 2024, supporting scalable solutions.</li>
-              <li>Zero-Trust Architecture: Development emphasizes zero-trust frameworks, ensuring continuous verification of users and devices. Research advances secure access service edge (SASE) solutions, integrating network security with cloud environments, addressing remote work vulnerabilities with USD 2.3 billion in funding.</li>
-              <li>Privacy-Enhancing Technologies (PETs): R&D in PETs, like homomorphic encryption and differential privacy, safeguards data during processing. Blockchain-based solutions for secure data sharing gain traction, with USD 1.8 billion invested in 2024, ensuring compliance with GDPR and CCPA.</li>
+              <li>Solar and Wind Dominance: Solar and wind accounted for 98% of new U.S. electricity capacity in Q1 2025, with solar output doubling to 2,000 TWh globally in five years, powering 200 million homes.</li>
+              <li>Green Hydrogen Growth: Investments in green hydrogen surge, with USD 10 billion allocated in 2024, supporting decarbonization efforts and energy storage solutions.</li>
+              <li>Policy and Investment Surge: Global renewable investments hit USD 495 billion in 2023, with a 10% increase expected in 2025, driven by policies like the U.S. Inflation Reduction Act.</li>
             </ul>
           </li>
         
@@ -710,13 +710,13 @@
 
       <!-- Emerging Trends Section -->
       <section class="section-content">
-        <h2>Emerging Trends in Cybersecurity and Data Privacy</h2>
+        <h2>Emerging Trends in Renewal Energy</h2>
         <ul>
-          <li><strong>AI-Driven Threat Detection:</strong> AI enhances real-time threat identification using machine learning, with USD 7.1 billion invested in 2024, aiding nurses in securing patient data.</li>
-          <li><strong>Quantum Cryptography:</strong> Quantum key distribution offers unhackable encryption, with USD 1.2 billion in R&D, supporting healthcare data privacy.</li>
-          <li><strong>Privacy-Preserving Computation:</strong> SFederated learning ensures GDPR-compliant data analysis, with USD 1.8 billion invested, assisting nurses in secure record management.</li>
-          <li><strong>Zero-Trust Architecture:</strong> Continuous verification via SASE solutions secures remote work, with USD 2.3 billion in funding, enhancing healthcare IT.</li>
-          <li><strong>Ransomware Defense:</strong> Advanced endpoint protection counters rising ransomware, with 60% of organizations adopting solutions, protecting sensitive medical data.</li>
+          <li><strong>Advanced Solar Technologies:</strong> Perovskite solar cells boost efficiency, with global solar output hitting 2,000 TWh.</li>
+          <li><strong>Offshore Wind Expansion:</strong> Offshore wind capacity grows 20% annually, driven by floating turbine innovations.</li>
+          <li><strong>Green Hydrogen Scaling:</strong> USD 10 billion invested in 2024, enhancing energy storage solutions.</li>
+          <li><strong>Smart Grid Integration:</strong> AI-driven grids optimize renewable distribution, reducing outages by 15%.</li>
+          <li><strong>Energy Storage Innovations:</strong> Solid-state batteries improve storage, supporting 24/7 renewable power supply.</li>
         </ul>
       </section>
 
@@ -724,61 +724,59 @@
       <section class="section-content">
         <h2>Key Topics & Tracks</h2>
         
-        <h3>Emerging Threats and Attack Vectors</h3>
+        <h3>Solar Energy</h3>
         <ul>
-          <li>Explore evolving cyber threats, including ransomware, phishing, and zero-day exploits, and how organizations can proactively defend against them.
-
-</li>
+          <li>Harnesses sunlight with advanced panels, powering millions globally.</li>
          
         </ul>
-        <h3>Data Privacy Regulations and Compliance</h3>
+        <h3>Wind Energy</h3>
         <ul>
-          <li>Understand key data privacy laws like GDPR, CCPA, and HIPAA, and learn how to build effective compliance strategies.</li>
+          <li>Utilizes turbines for clean power, expanding offshore capacity.</li>
           
         </ul>
-        <h3>Cloud Security Best Practices</h3>
+        <h3>Hydro Energy</h3>
         <ul>
-          <li>Learn how to secure data and applications in public, private, and hybrid cloud environments while managing access and visibility.</li>
+          <li>Generates electricity via water flow, ensuring reliable energy.</li>
          
         </ul>
-        <h3>Cybersecurity for Remote Workforces</h3>
+        <h3>Green Hydrogen</h3>
         <ul>
-          <li>Discuss challenges and solutions for securing endpoints, networks, and communication tools in a distributed workforce.</li>
+          <li>Produces clean fuel, decarbonizing industries with scalable solutions.</li>
           
         </ul>
-        <h3>Zero Trust Architecture</h3>
+        <h3>Energy Storage</h3>
         <ul>
-          <li>Delve into the principles of Zero Trust and how to implement it to reduce risk and improve access controls.</li>
+          <li>Advances batteries for 24/7 renewable power availability.</li>
           
         </ul>
-        <h3>Incident Response and Recovery</h3>
+        <h3>Smart Grids</h3>
         <ul>
-          <li>Best practices for preparing for, detecting, responding to, and recovering from cybersecurity incidents.</li>
+          <li>AI-driven grids optimize energy distribution,</li>
          
         </ul>
-        <h3>Zero Trust Architecture</h3>
+        <h3>Geothermal Energy</h3>
         <ul>
-          <li>Delve into the principles of Zero Trust and how to implement it to reduce risk and improve access controls.</li>
+          <li>Taps Earth’s heat for sustainable, constant power supply.</li>
           
         </ul>
-        <h3>Incident Response and Recovery</h3>
+        <h3>Bioenergy</h3>
         <ul>
-          <li>Best practices for preparing for, detecting, responding to, and recovering from cybersecurity incidents.</li>
+          <li>Converts biomass into renewable fuel, supporting circular economies.</li>
           
         </ul>
-        <h3>Identity and Access Management</h3>
+        <h3>Tidal Energy</h3>
         <ul>
-          <li>Examine how IAM tools enhance security by controlling user access to critical information and systems.</li>
+          <li>Harnesses ocean tides for consistent, eco-friendly energy.</li>
           
         </ul>
-        <h3>Privacy by Design</h3>
+        <h3>Energy Efficiency</h3>
         <ul>
-          <li>Explore integrating privacy into system design, product development, and data processing from the outset.</li>
+          <li>Focuses on technologies reducing energy waste in systems.</li>
           
         </ul>
-        <h3>Future Trends in Cybersecurity</h3>
+        <h3>Carbon Capture</h3>
         <ul>
-          <li>Analyze upcoming technologies like AI, quantum computing, and blockchain and their impact on cybersecurity and privacy.</li>
+          <li>Integrates renewables with CO2 capture for net-zero goals.</li>
           
         </ul>
         
@@ -792,18 +790,18 @@
       <thead>
         <tr>
           <th>Exclusive Offers</th>
-          <th>Early Bird Deadline<br>Valid till 20-Mar-25</th>
-          <th>Standard Offer<br>Valid from 21-Mar-25 till 20-May-25</th>
-          <th>Last Call Price<br>Valid from 21-May-25 till 06-Jun-25</th>
+          <th>Early Bird Deadline<br>Valid till 30-June-25</th>
+          <th>Standard Offer<br>Valid from 21-Mar-25 till 30-june-25</th>
+          <th>Last Call Price<br>Valid from 30-June-25 till 13-August-25</th>
           <th>Key Benefits for all!</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Speaker / Presenter Benefits</td>
+          <td>£199</td>
+          <td>£299</td>
           <td>£399</td>
-          <td>£499</td>
-          <td>£599</td>
           <td rowspan="4">
           <ul>
     <li>Access to all sessions</li>
@@ -844,9 +842,9 @@
         </tr>
         <tr>
           <td>Poster Benefits</td>
-          <td>£449</td>
-          <td>£549</td>
-          <td>£649</td>
+          <td>£199</td>
+          <td>£199</td>
+          <td>£199</td>
         </tr>
         <!-- Add Register Now Buttons in the Last Row -->
         <tr>
