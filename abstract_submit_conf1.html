@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="./Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=GBP"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
   <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
@@ -596,18 +596,132 @@
   box-shadow: var(--shadow);
   margin-top: 2rem;
 }
+
+
+/* Mobile Menu */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .logo span {
+      display: none;
+    }
+
+    /* Hero Adjustments */
+    .hero h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1rem;
+    }
+
+    /* Countdown Adjustments */
+    .countdown {
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .countdown > .part > .remaining {
+      font-size: 6cqi;
+    }
+
+    /* Pricing Table Adjustments */
+    .pricing-table {
+      overflow-x: auto;
+    }
+
+    .pricing-table table {
+      min-width: 600px;
+    }
+
+    /* Footer Adjustments */
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    /* Section Content Padding */
+    .section-content {
+      padding: 1rem;
+    }
+
+    /* Event Details */
+    .event-details {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Further Mobile Optimizations */
+    .container {
+      padding: 0 1rem;
+    }
+
+    .hero {
+      padding: 6rem 0 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .speaker-card {
+      padding: 1rem;
+    }
+
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+  }
+
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-       <a href="index.html" class="logo">
-        <img src="rsummits.png" alt="Infectious Disease Conference: 2025 Logo" width="60" height="60">
-      </a>
-      <a href="abstract_submit_conf1.html" class="logo">
-              <img src="cmelogo.png" alt="Neurophysiology 2025 Logo" width="80" height="60">
-        <span>Neurophysiology 2025</span>
-      </a>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-group">
+        <img src="rsummits.png" alt="Research Summits Logo" class="logo-main" width="60" height="60">
+        <img src="cmelogo.png" alt="CME Accredited Logo" class="logo-cme" width="80" height="60">
+      </div>
+      <span class="logo-text">Neurophysiology Conference</span>
+    </a>
       <div class="nav-links">
         <a href="conf1.html">Home</a>
         <a href="abstract_submit_conf1.html" class="active">Submit Abstract</a>
@@ -789,7 +903,7 @@
           <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
-        <p>Advancing research through global collaboration.</p>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
 
       <!-- Quick Links -->
@@ -1141,7 +1255,33 @@
       });
     }
   }
+
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = '<i data-lucide="menu"></i>';
+    document.querySelector('.navbar .container').appendChild(mobileMenuBtn);
+    
+    const navLinks = document.querySelector('.nav-links');
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  });
+</script>
+
   <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();

@@ -583,16 +583,112 @@
     .dropdown:hover .nav-links a {
       color: var(--primary);
     }
+@media (max-width: 768px) {
+  /* Mobile Navbar */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+  }
+
+  /* Hero Adjustments */
+  .hero {
+    padding: 6rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .event-details {
+    gap: 1rem;
+  }
+
+  /* Pricing Table Scroll */
+  .pricing-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pricing-table {
+    min-width: 600px;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+
+  /* Countdown Adjustments */
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  /* Footer Adjustments */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  /* General Mobile Adjustments */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-content {
+    padding: 1rem;
+  }
+
+  .btn-register {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .register-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
 
  
     </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="rsummits.png" alt="Infectious Disease Conference: 2025 Logo" width="60" height="60">
-      </a>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="rsummits.png" alt="Conference Logo" width="60" height="60">
+    </a>
         <a href="abstract_submit_conf1.html" class="logo">
         <img src="cmelogo.png" alt="Infectious Disease Conference: 2025 Logo" width="80" height="60">
         <span>Neurophysiology Conference</span>
@@ -819,7 +915,8 @@
 <!-- Pricing Section -->
 <section class="pricing-section">
   <h2 class="section-title">Pricing</h2>
-  <div class="pricing-table">
+  <div class="pricing-scroll">
+    <div class="pricing-table">
     <table>
       <thead>
         <tr>
@@ -909,7 +1006,7 @@
           <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
-        <p>Advancing research through global collaboration.</p>
+        <p>Advancing research through global collaboration since 2010.</p>
       </div>
 
       <!-- Quick Links -->
@@ -1077,6 +1174,38 @@
     }
   });
 </script>
+<!-- Add this JavaScript before closing </body> -->
+<script>
+  // Mobile Menu Toggle
+  const hamburger = document.createElement('button');
+  hamburger.className = 'hamburger';
+  hamburger.innerHTML = '<i data-lucide="menu"></i>';
+  document.querySelector('.navbar .container').appendChild(hamburger);
 
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.navbar')) {
+      navLinks.classList.remove('active');
+    }
+  });
+</script>
+    <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
 </body>
 </html>
