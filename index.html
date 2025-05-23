@@ -573,6 +573,7 @@
 }
 
   @media (max-width: 768px) {
+    
       /* Navigation adjustments */
       .nav-content {
         padding: 0 1rem;
@@ -617,7 +618,9 @@
       /* Hero section */
       .hero {
         padding: 6rem 0 2rem;
-        min-height: auto;
+   
+         padding-top: 100px; /* Adds space below fixed navigation */
+    min-height: calc(100vh - 100px); /* Maintains full viewport height */
       }
 
       .hero h1 {
