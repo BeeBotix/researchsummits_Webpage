@@ -928,21 +928,32 @@
   });
 </script>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
+<script>
+    // Improved mobile menu handling
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Toggle mobile menu
+    const navLinks = document.getElementById('navLinks');
+    const body = document.body;
+
     mobileMenuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       navLinks.classList.toggle('active');
+      body.classList.toggle('menu-open');
+      lucide.createIcons();
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.nav-content')) {
         navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+
+    // Close menu when clicking nav links
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
       }
     });
 
@@ -956,8 +967,7 @@
         }
       });
     });
-  });
-</script>
+  </script>
 
   
 </body>
