@@ -508,7 +508,7 @@
       }
 
       .dropdown-content {
-        position: static;
+        position: relative;
         box-shadow: none;
         background: var(--background-alt);
       }
@@ -903,7 +903,9 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        z-index: 1001;
+    position: absolute;
+    top: 100%;
       }
 
       .conferences-hero h1 {
