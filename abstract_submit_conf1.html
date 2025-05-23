@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="./Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=GBP"></script>
   <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
@@ -810,6 +810,16 @@
           </div>
 
           <div class="form-group">
+  <label for="paymentLevel">Registration Type</label>
+  <select name="paymentLevel" id="paymentLevel" required>
+    <option value="" disabled selected>Select your payment level</option>
+    <option value="399">Speaker Early Bird (£399)</option>
+    <option value="499">Standard Registration (£499)</option>
+    <option value="599">Last Call Price (£599)</option>
+  </select>
+</div>
+
+          <div class="form-group">
             <label class="form-label required" for="fileUpload">Upload File</label>
             <input type="file" class="file-input" id="fileUpload" name="fileUpload" >
             <button type="button" class="btn btn-upload" onclick="uploadFile('fileUpload')">Upload</button>
@@ -1029,44 +1039,44 @@
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response) {
-                console.log('Form submitted successfully:', response);
+           success: function(response) {
+  console.log('Form submitted successfully:', response);
+  const paymentLevel = document.getElementById('paymentLevel');
+  const selectedPrice = paymentLevel.value;
+  
+  // Disable the payment level dropdown after submission
+  paymentLevel.disabled = true;
 
-                // Change the submit button to "Submitted"
-                submitButton.textContent = 'Submit Abstract';
-                submitButton.style.backgroundColor = 'gray';
-                submitButton.disabled = true;
+  // Update Stripe button text
+  document.getElementById('stripe-pay-button').textContent = `Pay £${selectedPrice}`;
 
-                // Show the "Submitted" status
-                document.getElementById('submissionStatus').style.display = 'inline';
-
-                // Show payment options only if discount is not requested
-                const showPayment = !document.getElementById('requestDiscount').checked;
-                document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-                document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
-
-                // Initialize PayPal button if showing
-                if (showPayment) {
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: '1.00' // Set the payment amount
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('Payment completed by ' + details.payer.name.given_name);
-                            });
-                        },
-                        onError: function(err) {
-                            console.error('PayPal Error:', err);
-                            alert('Payment failed. Please try again.');
-                        }
-                    }).render('#paypal-button-container');
+  // Show payment options if needed
+  const showPayment = !document.getElementById('requestDiscount').checked;
+  if (showPayment) {
+    // Initialize PayPal with selected price
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: selectedPrice,
+              currency_code: 'GBP'
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Payment completed by ' + details.payer.name.given_name);
+        });
+      },
+      onError: function(err) {
+        console.error('PayPal Error:', err);
+        alert('Payment failed. Please try again.');
+      }
+    }).render('#paypal-button-container');
+        document.getElementById('paypal-button-container').style.display = 'block';
+    document.getElementById('stripe-payment-container').style.display = 'block';
                 }
             },
             error: function(xhr, status, error) {
