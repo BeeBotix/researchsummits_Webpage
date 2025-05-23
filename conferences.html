@@ -550,8 +550,14 @@
 
   @media (max-width: 768px) {
     .mobile-menu-btn {
-      display: block;
-    }
+    display: block !important;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    z-index: 1001;
+  }
 
     .nav-links {
       display: none;
@@ -580,7 +586,7 @@
 
     .nav-content {
       position: relative;
-      padding: 0 1rem;
+      padding-right: 50px;
     }
 
     .logo-image {
