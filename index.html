@@ -63,7 +63,6 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       padding: 1.5rem 0;
       transition: all 0.3s ease;
-      height: 100px; /* Default desktop height */
     }
 
     nav.scrolled {
@@ -574,7 +573,6 @@
 }
 
   @media (max-width: 768px) {
-    
       /* Navigation adjustments */
       .nav-content {
         padding: 0 1rem;
@@ -619,9 +617,7 @@
       /* Hero section */
       .hero {
         padding: 6rem 0 2rem;
-   
-         padding-top: 100px; /* Adds space below fixed navigation */
-    min-height: calc(100vh - 100px); /* Maintains full viewport height */
+        min-height: auto;
       }
 
       .hero h1 {
@@ -701,46 +697,6 @@
       display: none;
     }
 
-     @media (max-width: 768px) {
-      nav {
-        height: 80px !important;
-        padding: 1rem 0 !important;
-      }
-
-      .logo-image {
-        height: 60px !important;
-      }
-
-      /* Fixed Hero Section Spacing */
-      .hero {
-        padding: 80px 0 2rem !important; /* Match nav height */
-        min-height: calc(100vh - 80px) !important;
-        margin-top: 0 !important;
-      }
-
-      .hero h1 {
-        margin-top: 0 !important;
-        padding-top: 1rem !important;
-      }
-
-      /* Ensure content alignment */
-      .hero-content {
-        padding-top: 20px !important;
-      }
-
-      /* Adjust logo image spacing */
-      .hero-logo-image {
-        margin-top: 1rem !important;
-      }
-    }
-
-    /* Desktop Hero Section */
-    @media (min-width: 769px) {
-      .hero {
-        padding-top: 120px; /* Space for desktop nav */
-      }
-    }
-
 </style>
 </head>
 <body>
@@ -800,7 +756,7 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1>Welcome to <br>Research Summits!</h1>
-          <p>We bring the world closer by organizing impactful global medical & engineering conferences. Our mission is to connect intellectuals and aspiring talents. With our passionate team of professionals and expertise, we ensure that your vision becomes a reality. Headquartered in London, United Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference.</p>
+          <p>We bring the world closer by organizing impactful global medical & engineering conferences. Our mission is to connect intellectuals and aspiring talents. With our passionate team of professionals and expertise, we ensure that your vision becomes a reality. Registered in London, United Kingdom, we take pride in delivering exceptional conferences that inspire and make a difference.</p>
           <p>Join us to embark on a journey of unparalleled success and shining recognition!</p>
           <div class="hero-buttons">
             <a href="conferences.html" class="btn btn-primary">
@@ -819,7 +775,7 @@
       <div class="about-content">
         <div class="about-text">
           <h2>About Research Summits</h2>
-          <p>Research Summits is a global leader in organizing academic and professional conferences. Since our inception in 2010, we have been dedicated to fostering collaboration and innovation by bringing together researchers, industry experts, and thought leaders from around the world.</p>
+          <p>Research Summits is a global leader in organizing academic and professional conferences. We have been dedicated to fostering collaboration and innovation by bringing together researchers, industry experts, and thought leaders from around the world.</p>
           <p>Our mission is to create a platform where groundbreaking ideas are shared, and meaningful connections are made. With a focus on excellence, we ensure every event is a unique and enriching experience for all participants.</p>
         </div>
         <div class="about-image">
@@ -926,7 +882,7 @@
         </div>
 
         <!-- Benefit 11 -->
-          <!--  
+          <!---
         <div class="feature-card animate active">
           <div class="feature-icon" style="font-size: 50px;">
             <i data-lucide="message-square"></i>
@@ -943,7 +899,7 @@
           <h3 class="feature-title">Best Speaker Award</h3>
           <p class="feature-description">Recognition for exceptional engagement.</p>
         </div>
-   -->
+   --->
         <!-- Repeat for other benefits -->
       </div>
     </div>
@@ -1011,10 +967,11 @@
         <!-- Conference 2 -->
         <div class="conference-card animate active">
         <div class="conference-image">
-  <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80" alt="Medical Conference" style="object-position: center 40%;">
+  <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80" alt="Medical Conference" style="object-position: center 40%;"> 
+
   <div class="conference-date">
     <i data-lucide="calendar"></i>
-    Saturday &amp; Sunday, 21 &amp; 22 June, 2025
+    Monday &amp; Tuesday, 08 &amp; 09 September, 2025
   </div>
 </div>
           <div class="conference-content">
@@ -1029,7 +986,7 @@
                 Serial – 202
               </div>
             </div>
-            <a href="conf1.html" class="conference-button">Visit Website</a>
+            <a href="conf3.html" class="conference-button">Visit Website</a>
           </div>
         </div>
 
@@ -1080,18 +1037,571 @@
                 Serial – 204
               </div>
             </div>
-            <a href="conf1.html" class="conference-button">Visit Website</a>
+            <a href="conf3.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      
+        <!--conference 5-->
+        <div class="conference-card animate active">
+      <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1725870953863-4ad4db0acfc2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Tuesday &amp; Wednesday, 19 &amp; 20 August, 2025
+  </div>
+</div>
+
+          <div class="conference-content">
+            <h3 class="conference-title">Nursing Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 205
+              </div>
+            </div>
+            <a href="conf5.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+        <!--conference 6-->
+        <div class="conference-card animate active">
+      <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8UGhhcm1hfGVufDB8fDB8fHww">
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Wednesday &amp; Thursday, 16 &amp; 17 July, 2025
+  </div>
+</div>
+
+          <div class="conference-content">
+            <h3 class="conference-title">World Pharma Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 206
+              </div>
+            </div>
+            <a href="conf6.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+        <!--conference 7-->
+        <div class="conference-card animate active">
+      <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1598300188480-626f2f79ab8d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fERlcm1hdG9sb2d5fGVufDB8fDB8fHww">
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Tuesday &amp; Wednesday, 22 &amp; 23 July, 2025
+  </div>
+</div>
+
+          <div class="conference-content">
+            <h3 class="conference-title">Dermatology Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 207
+              </div>
+            </div>
+            <a href="conf7.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+       <!--conference 8-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1609207825181-52d3214556dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fERlbnRpc3RyeXxlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 4 &amp; 5 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">World Dentistry Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 208
+              </div>
+            </div>
+            <a href="conf8.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!--conference 9-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1664476002571-ead0cbfc6d74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8TnV0cml0aW9ufGVufDB8fDB8fHww"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Tuesday &amp; Wednesday, 22 &amp; 23 July, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">World Nutrition & Dietetics Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 209
+              </div>
+            </div>
+            <a href="conf9.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+       <!--conference 10-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1661670296739-1ec6fe866bcb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8RGlnaXRhbCUyMGhlYWx0aHxlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 25 &amp; 26 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">International Conference on Digital Health</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 210
+              </div>
+            </div>
+            <a href="conf10.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!--conference 11-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1663091633166-20ef12aa7b4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fEN5YmVyJTIwY2VxdXJpdHl8ZW58MHx8MHx8fDA%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Thursay, 21 &amp; 22 July, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">World Conference on Cyber security and Data privacy</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 211
+              </div>
+            </div>
+            <a href="conf11.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!--conference 12-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1699387204475-9b09a8ef2d7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8QUklMjBoZWFsdGglMjBjYXJlfGVufDB8fDB8fHww"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Wednesday &amp;Thursday, 14 &amp; 15 July, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">International Conference on AI in Healthcare: Revolutionizing Diagnostics and Treatment</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 212
+              </div>
+            </div>
+            <a href="conf12.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+       <!--conference 13-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8QWx0ZXJuYXRpdmUlMjBtZWRpY2luZXxlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Wednesday &amp; Thursday, 21 &amp; 22 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Alternative Medicine Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 213
+              </div>
+            </div>
+            <a href="conf13.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!--conference 14-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1661779724260-8bf28820ec19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fFdvbWVucyUyMEhlYWx0aHxlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Wednesday &amp; Thursday, 23 &amp; 24 July, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Women health Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 214
+              </div>
+            </div>
+            <a href="conf14.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+       <!--conference 15-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1603894963988-9eb3a4577080?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8VG94aWNvbG9neXxlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Tuesday &amp; Wednesday, 19 &amp; 20 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Toxicology Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 215
+              </div>
+            </div>
+            <a href="conf15.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!--conference 16-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1678865310222-a70ca24f38c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8UmVuZXdhbCUyMGVuZXJneXxlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Saturday &amp; Sunday, 13 &amp; 14 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">International Conference on Renewal Energy</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 216
+              </div>
+            </div>
+            <a href="conf16.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!--conference 17-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1673351534377-4ca4ab92a576?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RU5UfGVufDB8fDB8fHww"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Thursday &amp; Friday, 7 &amp; 8 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">International Conference on ENT</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 217
+              </div>
+            </div>
+            <a href="conf17.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+       <!--conference 18-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZGlnaXRhbCUyMG1hcmtldGluZ3xlbnwwfHwwfHx8MA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 7 &amp; 8 July, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">World Conference on Digital marketing, Global Business, Entrepreneurship,social media trends</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 218
+              </div>
+            </div>
+            <a href="conf18.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+       <!--conference 19-->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1674066121357-1da0690ad7fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8TmFubyUyMHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Friday &amp; Saturay, 22 &amp; 23 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">International Conference on Nano technology </h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 219
+              </div>
+            </div>
+            <a href="conf19.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+     <!__conference 20__>
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1702599120667-d86c2eb51ada?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 04 &amp; 05 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">International Conference on Endocrinology & Diabetes</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 220
+              </div>
+            </div>
+            <a href="conf20.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!__Conference 21__>
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1743767587874-b6887c888ea1?q=80&w=1655&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Thursday &amp; Friday, 07 &amp; 08 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Osteoporosis & Orthopedic Surgery Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 221
+              </div>
+            </div>
+            <a href="conf21.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!__Conference 22__>
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1719550371336-7bb64b5cacfa?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 18 &amp; 19 August, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Alzheimer's,Dementia and Brain Disorders,Mental health & Psychiatry Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 222
+              </div>
+            </div>
+            <a href="conf22.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!__Conference 23__>
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1634463278803-f9f71890e67d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Thursday &amp; Friday, 11 &amp; 12 September, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Obesity Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 223
+              </div>
+            </div>
+            <a href="conf23.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!__Conference 24__>
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://plus.unsplash.com/premium_photo-1733873099032-591e68a1310b?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Friday &amp; Saturday, 12 &amp; 13 September, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Advances in Oncology: Personalized Therapies and Early Detection Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 224
+              </div>
+            </div>
+            <a href="conf24.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!-- Conference 25 -->
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1618249987208-1dca78ad5a47?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 15 &amp; 16 September, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Ophthalmology Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 225
+              </div>
+            </div>
+            <a href="conf25.html" class="conference-button">Visit Website</a>
+          </div>
+        </div>
+      <!__Conference 26__>
+        <div class="conference-card animate active">
+        <div class="conference-image">
+  <img src="https://images.unsplash.com/photo-1611694449252-02453c27856a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"> 
+
+  <div class="conference-date">
+    <i data-lucide="calendar"></i>
+    Monday &amp; Tuesday, 22 &amp; 23 September, 2025
+  </div>
+</div>
+          <div class="conference-content">
+            <h3 class="conference-title">Vaccine Conference</h3>
+            <div class="conference-details">
+              <div class="detail-item">
+                <i data-lucide="map-pin"></i>
+                Zoom Meeting
+              </div>
+              <div class="detail-item">
+                <i data-lucide="hash"></i>
+                Serial – 226
+              </div>
+            </div>
+            <a href="conf26.html" class="conference-button">Visit Website</a>
           </div>
         </div>
       </div>
-      <!-- Explore More Conferences Button -->
+<!-- Explore More Conferences Button -->
       <div class="explore-more">
         <a href="conferences.html" class="btn btn-primary">
           Explore More Conferences
           <i data-lucide="arrow-right"></i>
         </a>
       </div>
-    </div>
+ 
+
+   </div>  <!-- add new conf above the tag -->
   </section>
 
   <!-- Footer -->
@@ -1104,7 +1614,7 @@
           <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
           <span>Research Summits</span>
         </div>
-        <p>Advancing research through global collaboration since 2010.</p>
+        <p>Advancing research through global collaboration.</p>
       </div>
 
       <!-- Quick Links -->
