@@ -755,7 +755,22 @@ nav.scrolled .logo-image {
         padding-top: 120px; /* Space for desktop nav */
       }
     }
+.hero-logo-image {
+  max-height: 400px;
+  width: auto;
+  object-fit: contain; /* Changed from cover to contain */
+  border-radius: 1rem;
+  margin: 0 auto;
+  display: block;
+}
 
+@media (max-width: 768px) {
+  .hero-logo-image {
+    max-height: 300px;
+    max-width: 90%; /* Prevent horizontal overflow */
+    margin: 1rem auto 0;
+  }
+}
 </style>
 </head>
 <body>
