@@ -530,61 +530,89 @@
   <main class="main-content">
     <div class="container">
       
-      <section class="registration-form">
-        <h2>Registration Form</h2>
-        <form id="registrationForm" class="form-container" enctype="multipart/form-data">
-          <input type="hidden" id="conferencetitle" name="conferencetitle" value="Registration">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <select name="Title" id="title" required>
-              <option value="" disabled selected>Select your title</option>
-              <option value="Dr">Dr</option>
-              <option value="Mr">Mr</option>
-              <option value="Mrs">Mrs</option>
-              <option value="Ms">Ms</option>
-              <option value="Prof">Prof</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+   <section class="registration-form">
+  <h2>Registration Form</h2>
+  <form id="registrationForm" class="form-container" enctype="multipart/form-data">
+    <input type="hidden" id="conferencetitle" name="conferencetitle" value="Registration">
+    
+    <!-- Title Dropdown -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <select name="Title" id="title" required>
+        <option value="" disabled selected>Select your title</option>
+        <option value="Dr">Dr</option>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Ms">Ms</option>
+        <option value="Prof">Prof</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
 
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="Name" id="name" placeholder="Enter your full name" required>
-          </div>
+    <!-- Name Input -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="Name" id="name" placeholder="Enter your full name" required>
+    </div>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="Email" id="email" placeholder="Enter your email address" required>
-          </div>
+    <!-- Email Input -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="Email" id="email" placeholder="Enter your email address" required>
+    </div>
 
-          <div class="form-group">
-            <label for="country">Country</label>
-            <input type="text" name="Country" id="country" placeholder="Enter your country" required>
-          </div>
+    <!-- Country Input -->
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" name="Country" id="country" placeholder="Enter your country" required>
+    </div>
 
-          <div class="form-group">
-            <label for="whatsapp">WhatsApp Number</label>
-            <input type="tel" name="WhatsAppNum" id="whatsapp" placeholder="Enter your WhatsApp number" required>
-          </div>
+    <!-- WhatsApp Input -->
+    <div class="form-group">
+      <label for="whatsapp">WhatsApp Number</label>
+      <input type="tel" name="WhatsAppNum" id="whatsapp" placeholder="Enter your WhatsApp number" required>
+    </div>
 
-          <div class="form-group">
-            <label class="form-label required" for="bioUpload">Upload Bio</label>
-            <input type="file" class="file-input" id="bioUpload" name="bioUpload" >
-            <button type="button" class="btn btn-upload" onclick="uploadFile('bioUpload')">Upload</button>
-            <span id="bioUploadStatus" class="upload-status"></span>
-          </div>
+    <!-- Payment Amount Input -->
+    <div class="form-group">
+      <label for="paymentAmount">Registration Amount (£)</label>
+      <input type="number" name="paymentAmount" id="paymentAmount" 
+             placeholder="Enter your payment amount" 
+             min="0" step="1" required>
+    </div>
 
-          <div class="form-group">
-            <button type="submit" id="submitButton" class="btn-submit">Register Now</button>
-            <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
-          </div>
-        </form>
+    <!-- File Upload -->
+    <div class="form-group">
+      <label class="form-label required" for="bioUpload">Upload Bio</label>
+      <input type="file" class="file-input" id="bioUpload" name="bioUpload">
+      <button type="button" class="btn btn-upload" onclick="uploadFile('bioUpload')">Upload</button>
+      <span id="bioUploadStatus" class="upload-status"></span>
+    </div>
 
-        <!-- PayPal Button Container (initially hidden) -->
-        <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
-          <p>Please complete your payment to finalize your registration.</p>
-        </div>
-      </section>
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" id="submitButton" class="btn-submit">Register Now</button>
+      <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
+    </div>
+  </form>
+
+
+  <!-- PayPal Button Container -->
+  <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
+    <p>Please complete your payment to finalize your registration.</p>
+  </div>
+
+  <!-- Stripe Payment Container -->
+  <div id="stripe-payment-container" class="stripe-payment-container" style="display: none;">
+    <p>Please complete your payment via Stripe:</p>
+    <div class="form-group">
+      <label for="card-element">Credit/Debit Card Details</label>
+      <div id="card-element" class="StripeElement"></div>
+      <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 0.5rem;"></div>
+    </div>
+    <button id="stripe-pay-button" class="btn-submit">Pay Now</button>
+  </div>
+</section>
     </div>
   </main>
 
