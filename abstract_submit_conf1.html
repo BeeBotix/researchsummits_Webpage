@@ -301,21 +301,14 @@
 
     /* PayPal Button */
     .paypal-button-container {
-      display: none;
       margin-top: 2rem;
       text-align: center;
     }
 
     /* Stripe Button */
     .stripe-button-container {
-      display: none;
       margin-top: 2rem;
       text-align: center;
-    }
-
-    /* Style for the discount checkbox */
-    .form-group label input[type="checkbox"] {
-      margin-right: 8px;
     }
 
     /* Footer */
@@ -810,14 +803,9 @@
           </div>
 
           <div class="form-group">
-  <label for="paymentLevel">Registration Type</label>
-  <select name="paymentLevel" id="paymentLevel" required>
-    <option value="" disabled selected>Select your payment level</option>
-    <option value="399">Speaker Early Bird (£399)</option>
-    <option value="499">Standard Registration (£499)</option>
-    <option value="599">Last Call Price (£599)</option>
-  </select>
-</div>
+            <label for="paymentAmount">Enter Your Amount (£)</label>
+            <input type="number" name="paymentAmount" id="paymentAmount" min="1" step="0.01" placeholder="Enter your amount" required>
+          </div>
 
           <div class="form-group">
             <label class="form-label required" for="fileUpload">Upload File</label>
@@ -825,21 +813,6 @@
             <button type="button" class="btn btn-upload" onclick="uploadFile('fileUpload')">Upload</button>
             <span id="fileUploadStatus" class="upload-status"></span>
           </div>
-
-      <div class="form-group">
-  <label style="display: flex; align-items: center; gap: 8px;">
-    
-    Request Discount (Check if you're applying for a scholarship or financial aid)
-    <input type="checkbox" id="requestDiscount" name="requestDiscount">
-  </label>
-  <div id="discountInput" style="display: none; margin-top: 10px;">
-    <label for="discountCode">Discount Code/Price</label>
-    <input type="text" id="discountCode" name="discountCode" placeholder="Enter discount code or amount">
-    <small style="display: block; color: var(--text-light); margin-top: 5px;">
-      If you have a discount code or special price, please enter it here
-    </small>
-  </div>
-</div>
 
           <div class="form-group">
             <button type="submit" id="submitButton" class="btn-submit">Submit Abstract</button>
@@ -865,7 +838,7 @@
     <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 0.5rem;"></div>
   </div>
   
-  <button id="stripe-pay-button" class="btn-submit">Pay $1.00</button>
+  <button id="stripe-pay-button" class="btn-submit">Pay £0</button>
 </div>
       </section>
 
@@ -1009,15 +982,41 @@
         }
     });
 
-    // Handle discount checkbox change
-    document.getElementById('requestDiscount').addEventListener('change', function() {
-        const discountInput = document.getElementById('discountInput');
-        discountInput.style.display = this.checked ? 'block' : 'none';
+    // Update payment buttons when amount changes
+    document.getElementById('paymentAmount').addEventListener('input', function() {
+        const amount = parseFloat(this.value) || 0;
         
-        // Show/hide payment options
-        const showPayment = !this.checked;
-        document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-        document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
+        // Update Stripe button text
+        document.getElementById('stripe-pay-button').textContent = `Pay £${amount.toFixed(2)}`;
+        
+        // Clear existing PayPal buttons and reinitialize with new amount
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = '<p>Please complete your payment to finalize your submission.</p>';
+        
+        if (amount > 0) {
+            // Initialize PayPal with the entered amount
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: amount.toFixed(2),
+                                currency_code: 'GBP'
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Payment completed by ' + details.payer.name.given_name);
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal Error:', err);
+                    alert('Payment failed. Please try again.');
+                }
+            }).render('#paypal-button-container');
+        }
     });
 
     // Function to handle form submission
@@ -1039,45 +1038,22 @@
             data: formData,
             processData: false,
             contentType: false,
-           success: function(response) {
-  console.log('Form submitted successfully:', response);
-  const paymentLevel = document.getElementById('paymentLevel');
-  const selectedPrice = paymentLevel.value;
-  
-  // Disable the payment level dropdown after submission
-  paymentLevel.disabled = true;
-
-  // Update Stripe button text
-  document.getElementById('stripe-pay-button').textContent = `Pay £${selectedPrice}`;
-
-  // Show payment options if needed
-  const showPayment = !document.getElementById('requestDiscount').checked;
-  if (showPayment) {
-    // Initialize PayPal with selected price
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: selectedPrice,
-              currency_code: 'GBP'
-            }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          alert('Payment completed by ' + details.payer.name.given_name);
-        });
-      },
-      onError: function(err) {
-        console.error('PayPal Error:', err);
-        alert('Payment failed. Please try again.');
-      }
-    }).render('#paypal-button-container');
-        document.getElementById('paypal-button-container').style.display = 'block';
-    document.getElementById('stripe-payment-container').style.display = 'block';
-                }
+            success: function(response) {
+                console.log('Form submitted successfully:', response);
+                
+                // Show payment options
+                document.getElementById('paypal-button-container').style.display = 'block';
+                document.getElementById('stripe-payment-container').style.display = 'block';
+                
+                // Trigger the amount change event to initialize PayPal with current amount
+                document.getElementById('paymentAmount').dispatchEvent(new Event('input'));
+                
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Abstract';
+                
+                // Show success status
+                document.getElementById('submissionStatus').style.display = 'inline';
             },
             error: function(xhr, status, error) {
                 console.error('Form submission error:', error);
@@ -1095,6 +1071,13 @@
         e.preventDefault();
         
         const submitButton = document.getElementById('stripe-pay-button');
+        const amount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+        
+        if (amount <= 0) {
+            alert('Please enter a valid amount before proceeding with payment.');
+            return;
+        }
+        
         submitButton.disabled = true;
         submitButton.textContent = 'Processing...';
         
@@ -1107,8 +1090,8 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    amount: 100, // amount in cents
-                    currency: 'usd'
+                    amount: Math.round(amount * 100), // amount in pence
+                    currency: 'gbp'
                 })
             });
             
@@ -1129,7 +1112,7 @@
                 const errorElement = document.getElementById('card-errors');
                 errorElement.textContent = error.message;
                 submitButton.disabled = false;
-                submitButton.textContent = 'Pay $1.00';
+                submitButton.textContent = `Pay £${amount.toFixed(2)}`;
             } else {
                 if (paymentIntent.status === 'succeeded') {
                     // Payment succeeded - show success message
@@ -1142,11 +1125,11 @@
             console.error('Payment error:', err);
             alert('Payment processing failed. Please try again.');
             submitButton.disabled = false;
-            submitButton.textContent = 'Pay $1.00';
+            submitButton.textContent = `Pay £${amount.toFixed(2)}`;
         }
     });
 
-    // Function to handle file upload (same as before)
+    // Function to handle file upload
     function uploadFile(inputId) {
         const fileInput = document.getElementById(inputId);
         const uploadStatusElement = document.getElementById(inputId + 'Status');
