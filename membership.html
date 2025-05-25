@@ -144,6 +144,56 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+    html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding: 0 1rem; /* Reduced padding for mobile */
+}
+
+@media (max-width: 768px) {
+  /* Add these mobile-specific fixes */
+  .container {
+    padding: 0 1rem !important;
+  }
+
+  .about-grid,
+  .stats-grid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-image img,
+  .stat-item {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Fix for mobile menu overflow */
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+/* Add this to prevent horizontal overflow in all elements */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+        
     </style>
 </head>
 <body>
