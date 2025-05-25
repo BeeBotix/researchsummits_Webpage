@@ -772,102 +772,93 @@
 </section>
       </section>
 
-      <section class="submission-form">
-        <h2>Abstract Submission Form</h2>
-        <form id="abstractForm" class="form-container" enctype="multipart/form-data">
-          <input type="hidden" id="conferencetitle" name="conferencetitle" value="Neurophysiology">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <select name="Title" id="title" required>
-              <option value="" disabled selected>Select your title</option>
-              <option value="Dr">Dr</option>
-              <option value="Mr">Mr</option>
-              <option value="Mrs">Mrs</option>
-              <option value="Ms">Ms</option>
-              <option value="Prof">Prof</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="Name" id="name" placeholder="Enter your full name" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="Email" id="email" placeholder="Enter your email address" required>
-          </div>
-
-          <div class="form-group">
-            <label for="country">Country</label>
-            <input type="text" name="Country" id="country" placeholder="Enter your country" required>
-          </div>
-
-          <div class="form-group">
-            <label for="whatsapp">WhatsApp Number</label>
-            <input type="tel" name="WhatsAppNum" id="whatsapp" placeholder="Enter your WhatsApp number" required>
-          </div>
-
-          <div class="form-group">
-  <label for="paymentLevel">Registration Type</label>
-  <select name="paymentLevel" id="paymentLevel" required>
-    <option value="" disabled selected>Select your payment level</option>
-    <option value="399">Speaker Early Bird (£399)</option>
-    <option value="499">Standard Registration (£499)</option>
-    <option value="599">Last Call Price (£599)</option>
-  </select>
-</div>
-
-          <div class="form-group">
-            <label class="form-label required" for="fileUpload">Upload File</label>
-            <input type="file" class="file-input" id="fileUpload" name="fileUpload" >
-            <button type="button" class="btn btn-upload" onclick="uploadFile('fileUpload')">Upload</button>
-            <span id="fileUploadStatus" class="upload-status"></span>
-          </div>
-
-      <div class="form-group">
-  <label style="display: flex; align-items: center; gap: 8px;">
+<section class="submission-form">
+  <h2>Abstract Submission Form</h2>
+  <form id="abstractForm" class="form-container" enctype="multipart/form-data">
+    <input type="hidden" id="conferencetitle" name="conferencetitle" value="Neurophysiology">
     
-    Request Discount (Check if you're applying for a scholarship or financial aid)
-    <input type="checkbox" id="requestDiscount" name="requestDiscount">
-  </label>
-  <div id="discountInput" style="display: none; margin-top: 10px;">
-    <label for="discountCode">Discount Code/Price</label>
-    <input type="text" id="discountCode" name="discountCode" placeholder="Enter discount code or amount">
-    <small style="display: block; color: var(--text-light); margin-top: 5px;">
-      If you have a discount code or special price, please enter it here
-    </small>
-  </div>
-</div>
+    <!-- Title Dropdown -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <select name="Title" id="title" required>
+        <option value="" disabled selected>Select your title</option>
+        <option value="Dr">Dr</option>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Ms">Ms</option>
+        <option value="Prof">Prof</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
 
-          <div class="form-group">
-            <button type="submit" id="submitButton" class="btn-submit">Submit Abstract</button>
-            <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
-          </div>
-        </form>
+    <!-- Name Input -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="Name" id="name" placeholder="Enter your full name" required>
+    </div>
+
+    <!-- Email Input -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="Email" id="email" placeholder="Enter your email address" required>
+    </div>
+
+    <!-- Country Input -->
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" name="Country" id="country" placeholder="Enter your country" required>
+    </div>
+
+    <!-- WhatsApp Input -->
+    <div class="form-group">
+      <label for="whatsapp">WhatsApp Number</label>
+      <input type="tel" name="WhatsAppNum" id="whatsapp" placeholder="Enter your WhatsApp number" required>
+    </div>
+
+    <!-- Payment Amount Input (Replaced Dropdown) -->
+    <div class="form-group">
+      <label for="paymentAmount">Registration Amount (£)</label>
+      <input type="number" name="paymentAmount" id="paymentAmount" 
+             placeholder="Enter your payment amount" 
+             min="0" step="1" required>
+    </div>
+
+    <!-- File Upload -->
+    <div class="form-group">
+      <label class="form-label required" for="fileUpload">Upload File</label>
+      <input type="file" class="file-input" id="fileUpload" name="fileUpload">
+      <button type="button" class="btn btn-upload" onclick="uploadFile('fileUpload')">Upload</button>
+      <span id="fileUploadStatus" class="upload-status"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" id="submitButton" class="btn-submit">Submit Abstract</button>
+      <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
+    </div>
+  </form>
 
         <!-- PayPal Button Container -->
         <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
-          <p>Please complete your payment to finalize your submission.</p>
-        </div>
+    <p>Please complete your payment to finalize your submission.</p>
+  </div>
 
         <!-- Stripe Button Container -->
-        <div id="stripe-payment-container" class="stripe-payment-container" style="display: none;">
-  <p>Please complete your payment to finalize your submission via stripe:</p>
-  
-  <!-- Stripe Card Element -->
-  <div class="form-group">
-    <label for="card-element">Credit/Debit Card Details</label>
-    <div id="card-element" class="StripeElement">
-      <!-- Stripe will insert the card elements here -->
-    </div>
-    <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 0.5rem;"></div>
+  <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
+    <p>Please complete your payment to finalize your submission.</p>
   </div>
-  
-  <button id="stripe-pay-button" class="btn-submit">Pay $1.00</button>
-</div>
-      </section>
+
+  <!-- Stripe Payment Container -->
+  <div id="stripe-payment-container" class="stripe-payment-container" style="display: none;">
+    <p>Please complete your payment via Stripe:</p>
+    <div class="form-group">
+      <label for="card-element">Credit/Debit Card Details</label>
+      <div id="card-element" class="StripeElement"></div>
+      <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 0.5rem;"></div>
+    </div>
+    <button id="stripe-pay-button" class="btn-submit">Pay Now</button>
+  </div>
+</section>
 
       <section class="guidelines">
         <h2>Submission Guidelines</h2>
@@ -1041,11 +1032,11 @@
             contentType: false,
            success: function(response) {
   console.log('Form submitted successfully:', response);
-  const paymentLevel = document.getElementById('paymentLevel');
-  const selectedPrice = paymentLevel.value;
+  
+  const selectedPrice = document.getElementById('paymentAmount').value;
   
   // Disable the payment level dropdown after submission
-  paymentLevel.disabled = true;
+
 
   // Update Stripe button text
   document.getElementById('stripe-pay-button').textContent = `Pay £${selectedPrice}`;
