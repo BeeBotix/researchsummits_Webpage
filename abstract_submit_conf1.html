@@ -851,9 +851,12 @@
   </form>
 
         <!-- PayPal Button Container -->
-        <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
+<div id="paypal-button-container" class="paypal-button-container" style="display: none;">
     <p>Please complete your payment to finalize your submission.</p>
-  </div>
+    <div class="paypal-fallback" style="display: none;">
+        <p>If you don't see the PayPal button, please disable ad-blockers and refresh the page.</p>
+    </div>
+</div>
 
         <!-- Stripe Button Container -->
   <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
@@ -1012,16 +1015,7 @@
         }
     });
 
-    // Handle discount checkbox change
-    document.getElementById('requestDiscount').addEventListener('change', function() {
-        const discountInput = document.getElementById('discountInput');
-        discountInput.style.display = this.checked ? 'block' : 'none';
-        
-        // Show/hide payment options
-        const showPayment = !this.checked;
-        document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-        document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
-    });
+    
 
     // Function to handle form submission
     
@@ -1034,6 +1028,15 @@ document.getElementById('abstractForm').addEventListener('submit', function(even
 
     const formData = new FormData(this);
 
+    // Add client-side validation
+    const paymentAmount = document.getElementById('paymentAmount').value;
+    if (paymentAmount <= 0) {
+        alert('Please enter a valid payment amount');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Abstract';
+        return;
+    }
+
     $.ajax({
         url: 'https://script.google.com/macros/s/AKfycbxZHcvCWFXYbCzVgpzgvxeL_w_zuo6toOoLX3Rr0AXbLmRs9uIOwIB2XLdmprtE5ttG/exec',
         method: 'POST',
@@ -1042,13 +1045,12 @@ document.getElementById('abstractForm').addEventListener('submit', function(even
         contentType: false,
         success: function(response) {
             console.log('Form submitted successfully:', response);
-            const selectedPrice = document.getElementById('paymentAmount').value;
-
-            // Always show payment options after successful submission
+            
+            // Show payment containers
             document.getElementById('paypal-button-container').style.display = 'block';
             document.getElementById('stripe-payment-container').style.display = 'block';
 
-            // Initialize PayPal with selected price
+            // Initialize PayPal
             paypal.Buttons({
                 style: {
                     layout: 'vertical',
@@ -1060,7 +1062,7 @@ document.getElementById('abstractForm').addEventListener('submit', function(even
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: selectedPrice,
+                                value: paymentAmount,
                                 currency_code: 'GBP'
                             }
                         }]
@@ -1068,8 +1070,8 @@ document.getElementById('abstractForm').addEventListener('submit', function(even
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Payment completed by ' + details.payer.name.given_name);
-                        // Handle successful payment here
+                        alert('Payment completed! Transaction ID: ' + details.id);
+                        document.getElementById('submissionStatus').style.display = 'inline-block';
                     });
                 },
                 onError: function(err) {
@@ -1079,11 +1081,10 @@ document.getElementById('abstractForm').addEventListener('submit', function(even
             }).render('#paypal-button-container');
 
             submitButton.style.display = 'none';
-            document.getElementById('submissionStatus').style.display = 'inline-block';
         },
         error: function(xhr, status, error) {
             console.error('Form submission error:', error);
-            alert('Form submission failed. Please try again.');
+            alert('Form submission failed: ' + error);
             submitButton.disabled = false;
             submitButton.textContent = 'Submit Abstract';
         }
