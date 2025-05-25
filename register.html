@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" href="./Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=GBP"></script>
+  <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
       --primary: #2563eb;
@@ -300,11 +301,48 @@
 
     /* PayPal Button */
     .paypal-button-container {
-      display: none;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Stripe Button */
+    .stripe-button-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Stripe Element Styles */
+    .StripeElement {
+      box-sizing: border-box;
+      height: 40px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      background-color: white;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .StripeElement--focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .StripeElement--invalid {
+      border-color: #dc3545;
+    }
+
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
+    }
+
+    .stripe-payment-container {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
       margin-top: 2rem;
     }
 
-   
        /* Footer */
     .footer {
       background: var(--text);
@@ -573,12 +611,11 @@
       <input type="tel" name="WhatsAppNum" id="whatsapp" placeholder="Enter your WhatsApp number" required>
     </div>
 
-    <!-- Payment Amount Input -->
+    <!-- Payment Amount Input - Updated to free-flow -->
     <div class="form-group">
-      <label for="paymentAmount">Registration Amount (£)</label>
+      <label for="paymentAmount">Enter Your Amount (£)</label>
       <input type="number" name="paymentAmount" id="paymentAmount" 
-             placeholder="Enter your payment amount" 
-             min="0" step="1" required>
+             min="1" step="0.01" placeholder="Enter your amount" required>
     </div>
 
     <!-- File Upload -->
@@ -610,7 +647,7 @@
       <div id="card-element" class="StripeElement"></div>
       <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 0.5rem;"></div>
     </div>
-    <button id="stripe-pay-button" class="btn-submit">Pay Now</button>
+    <button id="stripe-pay-button" class="btn-submit">Pay £0</button>
   </div>
 </section>
     </div>
@@ -692,6 +729,75 @@
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
+    // Initialize Stripe
+    const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ');
+    const elements = stripe.elements();
+
+    // Create and mount Stripe card element
+    const cardElement = elements.create('card', {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#32325d',
+                fontFamily: '"Inter", sans-serif',
+                '::placeholder': {
+                    color: '#aab7c4'
+                }
+            },
+            invalid: {
+                color: '#dc3545'
+            }
+        }
+    });
+    cardElement.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element
+    cardElement.on('change', function(event) {
+        const displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+    // Update payment buttons when amount changes
+    document.getElementById('paymentAmount').addEventListener('input', function() {
+        const amount = parseFloat(this.value) || 0;
+        
+        // Update Stripe button text
+        document.getElementById('stripe-pay-button').textContent = `Pay £${amount.toFixed(2)}`;
+        
+        // Clear existing PayPal buttons and reinitialize with new amount
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = '<p>Please complete your payment to finalize your registration.</p>';
+        
+        if (amount > 0) {
+            // Initialize PayPal with the entered amount
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: amount.toFixed(2),
+                                currency_code: 'GBP'
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Payment completed by ' + details.payer.name.given_name);
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal Error:', err);
+                    alert('Payment failed. Please try again.');
+                }
+            }).render('#paypal-button-container');
+        }
+    });
+
     // Function to handle form submission
     document.getElementById('registrationForm').addEventListener('submit', function (event) {
       event.preventDefault(); // Prevent the default form submission
@@ -714,39 +820,19 @@
         success: function (response) {
           console.log('Form submitted successfully:', response);
 
-          // Change the submit button to "Submitted"
+          // Show payment options
+          document.getElementById('paypal-button-container').style.display = 'block';
+          document.getElementById('stripe-payment-container').style.display = 'block';
+          
+          // Trigger the amount change event to initialize PayPal with current amount
+          document.getElementById('paymentAmount').dispatchEvent(new Event('input'));
+
+          // Re-enable submit button
+          submitButton.disabled = false;
           submitButton.textContent = 'Register Now';
-          submitButton.style.backgroundColor = 'gray'; // Optional: Change button color
-          submitButton.disabled = true; // Keep the button disabled
 
           // Show the "Submitted" status
           document.getElementById('submissionStatus').style.display = 'inline';
-
-          // Show the PayPal button
-          document.getElementById('paypal-button-container').style.display = 'block';
-
-          // Initialize PayPal button
-          paypal.Buttons({
-            createOrder: function (data, actions) {
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: '1.00' // Set the payment amount
-                  }
-                }]
-              });
-            },
-            onApprove: function (data, actions) {
-              return actions.order.capture().then(function (details) {
-                alert('Payment completed by ' + details.payer.name.given_name);
-                // You can add additional logic here, such as updating the server about the payment
-              });
-            },
-            onError: function (err) {
-              console.error('PayPal Error:', err);
-              alert('Payment failed. Please try again.');
-            }
-          }).render('#paypal-button-container');
         },
         error: function (xhr, status, error) {
           console.error('Form submission error:', error);
@@ -757,6 +843,69 @@
           submitButton.textContent = 'Register Now';
         }
       });
+    });
+
+    // Handle Stripe payment submission
+    document.getElementById('stripe-pay-button').addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        const submitButton = document.getElementById('stripe-pay-button');
+        const amount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+        
+        if (amount <= 0) {
+            alert('Please enter a valid amount before proceeding with payment.');
+            return;
+        }
+        
+        submitButton.disabled = true;
+        submitButton.textContent = 'Processing...';
+        
+        // First, we need to get a payment intent client secret from your server
+        // This is just a placeholder - you'll need to implement this server-side
+        try {
+            const response = await fetch('YOUR_SERVER_ENDPOINT_TO_CREATE_PAYMENT_INTENT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    amount: Math.round(amount * 100), // amount in pence
+                    currency: 'gbp'
+                })
+            });
+            
+            const { clientSecret } = await response.json();
+            
+            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: cardElement,
+                    billing_details: {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value
+                    }
+                }
+            });
+
+            if (error) {
+                // Show error to your customer
+                const errorElement = document.getElementById('card-errors');
+                errorElement.textContent = error.message;
+                submitButton.disabled = false;
+                submitButton.textContent = `Pay £${amount.toFixed(2)}`;
+            } else {
+                if (paymentIntent.status === 'succeeded') {
+                    // Payment succeeded - show success message
+                    alert('Payment successful! Your registration is complete.');
+                    // You might want to submit the form data to your server here
+                    // or redirect to a success page
+                }
+            }
+        } catch (err) {
+            console.error('Payment error:', err);
+            alert('Payment processing failed. Please try again.');
+            submitButton.disabled = false;
+            submitButton.textContent = `Pay £${amount.toFixed(2)}`;
+        }
     });
 
     // Function to handle file upload (same as before)
@@ -817,5 +966,22 @@
     }
   });
 </script>
-</body>
-</html>
+
+  <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+    });
+  </script>
