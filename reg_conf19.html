@@ -1,1 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Register Online - International Conference on Nano technology 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/png" href="./Logo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style> 
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #f59e0b;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --background: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+  padding-top: 70px; /* Add padding to account for fixed navbar */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  background: var(--white);
+  box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+nav.scrolled {
+  padding: 0.75rem 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+  display: none; /* Hidden by default, shown in mobile view */
+}
+
+/* Hero Section */
+.hero {
+  background: var(--gradient);
+  color: var(--white);
+  padding: 6rem 0 3rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 5rem 0 2rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.event-details {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail strong {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+/* Main Content */
+.main-content {
+  padding: 4rem 0;
+}
+
+/* Info Cards */
+.info-cards {
+  margin-bottom: 4rem;
+}
+
+.highlight-card {
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.highlight-card h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* Registration Options */
+.registration-options {
+  margin-bottom: 4rem;
+}
+
+.registration-options h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pricing-card {
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--primary);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+
+.currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  padding: 0.75rem 0;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border);
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+}
+
+/* Guidelines */
+.guidelines {
+  background: var(--white);
+  padding: 4rem 0;
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+}
+
+.guidelines h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.guideline-card {
+  padding: 2rem;
+  background: var(--background);
+  border-radius: 1rem;
+}
+
+.guideline-card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.guideline-card ul {
+  list-style: none;
+}
+
+.guideline-card ul li {
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.guideline-card ul li::before {
+  content: "•";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+}
+
+/* Footer */
+.footer {
+  background: var(--text);
+  color: #94a3b8;
+  padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section {
+  margin-bottom: 2rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+  height: 100px;
+  width: auto;
+}
+
+.footer-section h3 {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-section ul li a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: white;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  background: #1e293b;
+  color: white;
+  font-size: 1rem;
+}
+
+.newsletter-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newsletter-btn:hover {
+  background: var(--primary-dark);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #334155;
+  color: #94a3b8;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+  min-width: 200px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--text-light);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .nav-links a {
+  color: var(--primary);
+}
+
+/*pricing*/
+.pricing-table {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.pricing-table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: 1rem;
+  border: 1px solid gray; /* Black borders */
+}
+
+.pricing-table th {
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.pricing-table td {
+  background: var(--background);
+  color: var(--text);
+}
+
+.pricing-table ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.pricing-table ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.pricing-table ul li::before {
+  content: "•";
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+
+@keyframes flash {
+  0%, 100% {
+    background-color:gold;
+  }
+  50% {
+    background-color: darkgoldenrod;
+  }
+}
+
+.pricing-table th:nth-child(2),
+.pricing-table td:nth-child(2) {
+  animation: flash 1.5s infinite;
+}
+
+.register-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-register {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Countdown Timer Styles */
+.countdown {
+  --number-color: hsl(0 0% 25%);
+  --text-color: hsl(0 0% 25%);
+  --dot-color: hsl(0, 0%, 10%); /* Dark gray for inactive dots */
+  --dot-color-remaining: hsl(240, 100%, 50%); /* Blue for remaining dots */
+  --dot-color-active: hsl(0, 100%, 50%);
+  font-family: system-ui, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: min(60rem, 100%);
+  margin-inline: auto;
+  container: inline-size;
+  margin-bottom: 4rem;
+}
+
+.countdown > .part {
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+}
+
+.countdown > .part > .remaining {
+  grid-area: 1/1;
+  color: hsl(0 0% 100%);
+  display: grid;
+  text-align: center;
+  font-size: 4cqi;
+}
+
+.countdown > .part > .remaining > .number {
+  color: var(--number-color);
+}
+
+.countdown > .part > .remaining > .text {
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-size: 0.5em;
+}
+
+.countdown > .part > .dot-container {
+  grid-area: 1/1;
+  height: 100%;
+  width: 4%;
+  rotate: calc(360deg / var(--dots) * var(--dot-idx));
+}
+
+.countdown > .part > .dot-container > .dot {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--dot-color);
+  border-radius: 50%;
+  transition: background-color 0.25s;
+}
+
+.countdown > .part > .dot-container > .dot[data-active="true"] {
+  background-color: var(--dot-color-remaining);
+}
+
+.countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+  background-color: var(--dot-color-active);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Mobile Navbar */
+  body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+    width: 100%;
+  }
+  
+  .navbar .container {
+    position: relative;
+    padding: 0 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .logo-container {
+    max-width: 70%;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  .logo {
+    font-size: 0.9rem;
+    gap: 0.25rem;
+  }
+  
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .logo span {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none; /* Hide the text on smallest screens */
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    z-index: 100;
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: var(--shadow);
+    z-index: 200;
+  }
+  
+  .hamburger i {
+    color: var(--primary);
+    width: 24px;
+    height: 24px;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    display: none;
+    width: 100%;
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  /* Hero Adjustments */
+  .hero {
+    padding: 6rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .event-details {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Pricing Table Scroll */
+.pricing-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -0.75rem; /* Negative margin to align with container padding */
+    padding: 0 0.75rem; /* Add padding back to maintain spacing */
+    width: 100%;
+    position: relative;
+    max-width: 100vw;
+  }
+
+  .pricing-table {
+    min-width: 500px; /* Slightly smaller minimum width */
+    margin-bottom: 1rem;
+  }
+  
+  .pricing-table th,
+  .pricing-table td {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+
+  /* Countdown Adjustments */
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  /* Footer Adjustments */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  /* General Mobile Adjustments */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-content {
+    padding: 1rem;
+  }
+
+  .btn-register {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .register-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Fix for logo container in mobile */
+  .logo-container {
+    max-width: 80%;
+  }
+  
+  .logo span {
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="logo-container">
+      <a href="index.html" class="logo">
+        <img src="rsummits.png" alt="Conference Logo" width="60" height="60">
+      </a>
+      <a href="abstract_submit_conf19.html" class="logo">
+        <img src="cmelogo.png" alt="International Conference on Nano technology: 2025 Logo" width="80" height="60">
+        <span>International Conference on Nano technology</span>
+      </a>
+    </div>
+    
+    <div class="nav-links">
+      <a href="conf19.html">Home</a>
+      <a href="abstract_submit_conf18.html">Submit Abstract</a>
+      <a href="reg_conf19.html" class="active">Register</a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Program</a>
+        <div class="dropdown-content">
+          <a href="sp.pdf" target="_blank">Scientific Program</a>
+          <a href="broch.pdf" target="_blank">Download Brochure</a>
+          <a href="final_prog.pdf" target="_blank">Final Program</a>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>International Conference on Nano technology 2025</h1>
+ 
+    <div class="event-details">
+      <div class="detail">
+        <strong>Date:</strong>
+        <span>August 22&23, 2025</span>
+      </div>
+      <div class="detail">
+        <strong>Location:</strong>
+        <span>Virtual Conference</span>
+      </div>
+      <div class="detail">
+        <strong>Registration Deadline:</strong>
+        <span>August 23, 2025</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="container">
+    <section class="info-cards">
+      <div class="card highlight-card">
+        <h2>Early Bird Submission Open</h2>
+        <p>Submit before August 1st to get priority review and presentation slots!</p>
+        <!-- Countdown Timer -->
+        <div class="countdown" data-target-date="2025-03-30 00:00:00"></div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-scroll">
+        <div class="pricing-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Exclusive Offers</th>
+                <th>Early Bird<br>till 1-July</th>
+                <th>Standard<br>1-July to 1-August</th>
+                <th>Last Call<br>1-August to 23-August</th>
+                <th>Benefits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Speaker / Presenter Benefits</td>
+                <td>£199</td>
+                <td>£299</td>
+                <td>£399</td>
+                <td rowspan="4">
+                <ul>
+                  <li>Access to all sessions</li>
+                  <li>Conference materials</li>
+                  <li>Networking opportunities</li>
+                  <li>Certificate of participation</li>
+                  <li>Early Bird Exclusive Registration Discounts for participants registering early</li>
+                  <li>E-Certification for all attendees</li>
+                  <li>Book of Abstracts access for all attendees</li>
+                  <li>Keynote Presentations by distinguished experts</li>
+                  <li>Oral Presentations to showcase ground-breaking insights</li>
+                  <li>Poster Presentations for innovative research highlights</li>
+                  <li>Interactive and Networking Sessions to foster meaningful connections</li>
+                  <li>On-Demand Presentation Recording Features for flexible access</li>
+                  <li>Conference Videos Powered by Research Summits LTD for seamless delivery</li>
+                  <li>Exclusive Pre-conference Demo Session for early insights</li>
+                  <li>Breakout Rooms available for all speakers to enhance collaboration</li>
+                  <li>Complimentary Attendance for Up to Five Student Delegates with select packages</li>
+                  <li>Special Sessions featuring focused discussions on trending topics</li>
+                  <li>Best Interactive Speaker Award to honour exceptional engagement</li>
+                  <li>Exciting Sponsorship Opportunities tailored to your needs (consult with the organizer)</li>
+                  <li>Short Video Advertisement Option (consult with the organizer for details)</li>
+                  <li>Live Q&A Sessions with renowned presenters</li>
+                </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Listener / Delegate Benefits</td>
+                <td>£199</td>
+                <td>£299</td>
+                <td>£399</td>
+              </tr>
+              <tr>
+                <td>Student Benefits</td>
+                <td>£99</td>
+                <td>£199</td>
+                <td>£299</td>
+              </tr>
+              <tr>
+                <td>Poster Benefits</td>
+                <td>£199</td>
+                <td>£299</td>
+                <td>£399</td>
+              </tr>
+              <!-- Add Register Now Buttons in the Last Row -->
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 1rem;">
+                  <div class="register-buttons">
+                    <a href="register.html" class="btn btn-register">Register Now (Early Bird)</a>
+                    <a href="register.html" class="btn btn-register">Register Now (Standard)</a>
+                    <a href="register.html" class="btn btn-register">Register Now (Last Call)</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="guidelines">
+    <div class="container">
+      <h2>Registration Guidelines</h2>
+      <div class="guidelines-grid">
+        <div class="guideline-card">
+          <h3>Before Registration</h3>
+          <ul>
+            <li>Prepare your professional bio</li>
+            <li>Have your abstract ready (if presenting)</li>
+            <li>Check eligibility requirements</li>
+          </ul>
+        </div>
+        <div class="guideline-card">
+          <h3>During Registration</h3>
+          <ul>
+            <li>Fill all required fields</li>
+            <li>Upload necessary documents</li>
+            <li>Review your information</li>
+          </ul>
+        </div>
+        <div class="guideline-card">
+          <h3>After Registration</h3>
+          <ul>
+            <li>Check confirmation email</li>
+            <li>Save registration ID</li>
+            <li>Join orientation session</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
+        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <ul class="contact-info">
+          <li>Email: support@researchsummits.com</li>
+          <li>Phone: +442081913434</li>
+          <li>Support: 24/7 Available</li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+
+<!-- Mobile Menu Toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Create hamburger button dynamically
+    const hamburger = document.createElement('button');
+    hamburger.className = 'hamburger';
+    hamburger.innerHTML = '<i data-lucide="menu"></i>';
+    document.querySelector('.navbar .container').appendChild(hamburger);
+
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      console.log('Menu toggled');
+    });
+
+    // Handle dropdown in mobile view
+    const dropdownBtns = document.querySelectorAll('.dropdown .dropbtn');
+    dropdownBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('active');
+        }
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        navLinks.classList.remove('active');
+      }
+    });
+    
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  });
+</script>
+
+<!-- Scroll effects -->
+<script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.navbar');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
+<!-- Countdown Script -->
+<script>
+  const countdownEls = document.querySelectorAll(".countdown");
+  countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
+
+  function createCountdown(countdownEl) {
+    const target = new Date(
+      new Date(countdownEl.dataset.targetDate).toLocaleString("en")
+    );
+    const parts = {
+      days: { text: ["days", "day"], dots: 30 },
+      hours: { text: ["hours", "hour"], dots: 24 },
+      minutes: { text: ["minutes", "minute"], dots: 60 },
+      seconds: { text: ["seconds", "second"], dots: 60 },
+    };
+
+    Object.entries(parts).forEach(([key, value]) => {
+      const partEl = document.createElement("div");
+      partEl.classList.add("part", key);
+      partEl.style.setProperty("--dots", value.dots);
+      value.element = partEl;
+
+      const remainingEl = document.createElement("div");
+      remainingEl.classList.add("remaining");
+      remainingEl.innerHTML = `
+        <span class="number"></span>
+        <span class="text"></span>
+      `;
+      partEl.append(remainingEl);
+
+      for (let i = 0; i < value.dots; i++) {
+        const dotContainerEl = document.createElement("div");
+        dotContainerEl.style.setProperty("--dot-idx", i);
+        dotContainerEl.classList.add("dot-container");
+        const dotEl = document.createElement("div");
+        dotEl.classList.add("dot");
+        dotContainerEl.append(dotEl);
+        partEl.append(dotContainerEl);
+      }
+      countdownEl.append(partEl);
+    });
+
+    getRemainingTime(target, parts);
+  }
+
+  function getRemainingTime(target, parts, first = true) {
+    const now = new Date();
+    if (first) console.log({ target, now });
+    
+    let seconds = Math.floor((target - now) / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    hours = hours - days * 24;
+    minutes = minutes - days * 24 * 60 - hours * 60;
+    seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+
+    Object.entries({ days, hours, minutes, seconds }).forEach(([key, value]) => {
+      const remaining = parts[key].element.querySelector(".number");
+      const text = parts[key].element.querySelector(".text");
+      remaining.innerText = value;
+      text.innerText = parts[key].text[Number(value == 1)];
+      const dots = parts[key].element.querySelectorAll(".dot");
+      dots.forEach((dot, idx) => {
+        dot.dataset.active = idx <= value;
+        dot.dataset.lastactive = idx == value;
+      });
+    });
+
+    if (now <= target) {
+      window.requestAnimationFrame(() => {
+        getRemainingTime(target, parts, false);
+      });
+    }
+  } 
