@@ -261,7 +261,7 @@
 
                 <button type="submit" class="pay-button" id="submit-button">
                     <span class="loading" id="loading"></span>
-                    <span id="button-text">Pay $1</span>
+                    <span id="button-text">Pay $32.39</span>
                 </button>
             </form>
 
@@ -289,9 +289,9 @@
     </div>
 
     <script>
-        // Initialize Stripe
-        // Replace 'pk_test_...' with your actual Stripe publishable key
-        const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ'); // Demo key - replace with yours
+        // Initialize Stripe with live key
+        // Replace with your actual live publishable key
+        const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ'); // Replace with your live key
         const elements = stripe.elements();
         
         // Create card element
@@ -357,18 +357,44 @@
                 // Re-enable the submit button
                 submitButton.disabled = false;
                 loading.style.display = 'none';
-                buttonText.textContent = 'Pay $32.39';
+                buttonText.textContent = 'Pay $1.00';
             } else {
-                // For demo purposes, we'll simulate a successful payment
-                // In a real implementation, you'd send the paymentMethod.id to your server
-                console.log('Payment Method ID:', paymentMethod.id);
-                
-                // Simulate API call delay
-                setTimeout(() => {
-                    // Show success message
-                    document.getElementById('payment-form').style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
-                }, 1500);
+                // Send payment method to your server for processing
+                // This is where you'd make the actual payment in production
+                try {
+                    const response = await fetch('/create-payment-intent', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            payment_method_id: paymentMethod.id,
+                            amount: 3239, // Amount in cents ($32.39)
+                            currency: 'usd',
+                            customer_email: document.getElementById('email').value,
+                            customer_name: document.getElementById('name').value,
+                        }),
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Show success message
+                        document.getElementById('payment-form').style.display = 'none';
+                        document.getElementById('success-message').style.display = 'block';
+                    } else {
+                        throw new Error(result.error || 'Payment failed');
+                    }
+                } catch (serverError) {
+                    // Handle server errors
+                    document.getElementById('card-errors').textContent = 'Payment failed. Please try again.';
+                    console.error('Payment error:', serverError);
+                    
+                    // Re-enable the submit button
+                    submitButton.disabled = false;
+                    loading.style.display = 'none';
+                    buttonText.textContent = 'Pay $1.00';
+                }
             }
         });
         
