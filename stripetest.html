@@ -226,7 +226,7 @@
                 </div>
                 <div class="order-item">
                     <span>Total</span>
-                    <span>$32.39</span>
+                    <span>$1.00</span>
                 </div>
             </div>
 
@@ -262,7 +262,7 @@
 
                 <button type="submit" class="pay-button" id="submit-button">
                     <span class="loading" id="loading"></span>
-                    <span id="button-text">Pay $32.39</span>
+                    <span id="button-text">Pay $1.00</span>
                 </button>
             </form>
 
@@ -358,7 +358,7 @@
                 // Re-enable the submit button
                 submitButton.disabled = false;
                 loading.style.display = 'none';
-                buttonText.textContent = 'Pay $32.39';
+                buttonText.textContent = 'Pay $1.00';
             } else {
                 // Send payment method to your server for processing
                 // This is where you'd make the actual payment in production
@@ -370,7 +370,7 @@
                         },
                         body: JSON.stringify({
                             payment_method_id: paymentMethod.id,
-                            amount: 3239, // Amount in cents ($32.39)
+                            amount: 100, // Amount in cents ($32.39)
                             currency: 'usd',
                             customer_email: document.getElementById('email').value,
                             customer_name: document.getElementById('name').value,
