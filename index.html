@@ -182,11 +182,15 @@ nav.scrolled .logo-image {
       color: #FFFFFF;
     }
 
-    .hero-logo-image {
-      height: 45vh;
-      width: auto;
-      border-radius: 1rem;
-    }
+   .hero-logo-image {
+  max-height: 50vh; /* Reduced from 400px for better proportionality */
+  width: auto;
+  max-width: 90%;
+  object-fit: contain; /* Ensures full image visibility */
+  margin: 2rem auto; /* Adds spacing above/below */
+  display: block;
+  aspect-ratio: 1/1; /* Maintains square ratio if needed */
+}
 
     .btn {
       display: inline-flex;
