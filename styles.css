@@ -1,5 +1,4 @@
-
-* {
+ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -95,7 +94,6 @@ body {
     color: var(--primary-blue);
 }
 
-
 .dropdown {
     position: relative;
 }
@@ -181,6 +179,7 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1001;
 }
 
 .hamburger span {
@@ -189,6 +188,18 @@ body {
     background: var(--gray-600);
     margin: 3px 0;
     transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Hero Section */
@@ -237,19 +248,15 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow-lg);
-    padding: 20px;
+    padding: 40px;
 }
 
 .hero-logo-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
-
-
-.hero-logo-subtitle {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    max-width: 160px;
+    max-height: 160px;
 }
 
 .hero-text h1 {
@@ -704,9 +711,44 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-menu,
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 20px 0;
+        gap: 0;
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
     .nav-buttons {
-        display: none;
+        position: fixed;
+        left: -100%;
+        top: calc(70px + 320px);
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .nav-buttons.active {
+        left: 0;
     }
 
     .hamburger {
@@ -727,6 +769,12 @@ body {
     .hero-logo-inner {
         width: 180px;
         height: 180px;
+        padding: 30px;
+    }
+
+    .hero-logo-img {
+        max-width: 120px;
+        max-height: 120px;
     }
 
     .hero-logo-text {
