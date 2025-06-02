@@ -211,7 +211,7 @@
       color: var(--text-light);
     }
 
- /*pricing*/
+ /pricing/
 
   .pricing-table {
     background: var(--white);
@@ -584,6 +584,128 @@
     .dropdown:hover .nav-links a {
       color: var(--primary);
     }
+@media (max-width: 768px) {
+  /* Mobile Navbar */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+  }
+
+  /* Hero Adjustments */
+  .hero {
+    padding: 6rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .event-details {
+    gap: 1rem;
+  }
+
+  /* Pricing Table Scroll */
+  .pricing-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pricing-table {
+    min-width: 600px;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+
+
+  /* Footer Adjustments */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  /* General Mobile Adjustments */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-content {
+    padding: 1rem;
+  }
+
+  .btn-register {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .register-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+    .hamburger {
+  display: none; /* Hide by default on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
 
  
     </style>
