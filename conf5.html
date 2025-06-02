@@ -16,7 +16,7 @@
       --primary-dark: #1d4ed8;
       --secondary: #f59e0b;
       --text: #1e293b;
-      --text-light: #64748b;
+      --text-light: #000000;
       --background: #f8fafc;
       --white: #ffffff;
       --border: #e2e8f0;
@@ -55,6 +55,9 @@
       right: 0;
       z-index: 1000;
     }
+         nav.scrolled {
+      padding: 0.75rem 0;
+    }
 
     .navbar .container {
       display: flex;
@@ -66,7 +69,7 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+  
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--text);
@@ -183,6 +186,15 @@
       color: var(--primary);
     }
 
+    .section-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+       text-align: center;
+
+    }
+
     .section-content ul {
       list-style: disc;
       padding-left: 2rem;
@@ -198,7 +210,7 @@
       color: var(--text-light);
     }
 
- /*pricing*/
+ /pricing/
 
   .pricing-table {
     background: var(--white);
@@ -269,13 +281,6 @@
   animation: flash 1.5s infinite;
 }
 
-.register-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
 .btn-register {
   padding: 0.75rem 1.5rem;
   background: var(--primary);
@@ -292,6 +297,7 @@
   background: var(--primary-dark);
   transform: translateY(-2px);
 }
+
     /* Speakers Section */
     .speakers-section {
       margin-bottom: 4rem;
@@ -363,11 +369,10 @@
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
-    white-space: nowrap; /* Ensure text stays in one line */
- }
+    }
 
     .footer-logo img {
-      height: 50px;
+      height: 100px;
       width: auto;
     }
 
@@ -402,7 +407,7 @@
 
     .newsletter-input {
       flex: 1;
-      padding: 1rem;
+      padding: 0.75rem;
       border: 1px solid #334155;
       border-radius: 0.5rem;
       background: #1e293b;
@@ -411,7 +416,7 @@
     }
 
     .newsletter-btn {
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       background: var(--primary);
       color: white;
       border: none;
@@ -425,14 +430,12 @@
       background: var(--primary-dark);
     }
 
- 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #334155;
       color: #94a3b8;
     }
-
     .social-icons {
   display: flex;
   gap: 1rem;
@@ -480,7 +483,6 @@
       }
     }
 
-  
     /* New Countdown Styles */
     .countdown {
       --number-color: hsl(0 0% 25%);
@@ -496,6 +498,7 @@
       margin-inline: auto;
       container: inline-size;
       margin-bottom: 4rem;
+      text-align: center;
     }
 
     .countdown > .part {
@@ -544,6 +547,7 @@
     .countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
       background-color: var(--dot-color-active);
     }
+ 
    .dropdown {
       position: relative;
       display: inline-block;
@@ -579,6 +583,130 @@
     .dropdown:hover .nav-links a {
       color: var(--primary);
     }
+@media (max-width: 768px) {
+  /* Mobile Navbar */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+  }
+
+  /* Hero Adjustments */
+  .hero {
+    padding: 6rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .event-details {
+    gap: 1rem;
+  }
+
+  /* Pricing Table Scroll */
+  .pricing-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pricing-table {
+    min-width: 600px;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+
+
+  /* Footer Adjustments */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  /* General Mobile Adjustments */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-content {
+    padding: 1rem;
+  }
+
+  .btn-register {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .register-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+    .hamburger {
+  display: none; /* Hide by default on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+ 
     </style>
 </head>
 <body>
