@@ -1,196 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Camera App</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Camera App + USB-UVC</title>
+
+    <!-- CSS / Bootstrap -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- jQuery / Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <h5 class="card-header h5 text-center">
-                        HTML 5 & JS Live Cam (Mobile Fixed)
-                    </h5>
-                    <div class="card-body">
-                        <div class="booth">
-                            <video id="video" width="100%" height="400" autoplay muted playsinline></video>
-                        </div>
-                        <div class="text-center mt-3">
-                            <button class="btn btn-danger" onClick="stopCam()">Stop Cam</button>
-                            <button class="btn btn-success" onClick="startCam()">Start Cam</button>
-                            <button class="btn btn-info" onClick="switchCamera()">Switch Camera</button>
-                        </div>
-                        <div class="mt-3">
-                            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
-                            <div id="status-message" class="alert alert-info" style="display: none;"></div>
-                        </div>
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card shadow">
+                <h5 class="card-header text-center">HTML 5 & JS Live Cam (Mobile + USB UVC)</h5>
+                <div class="card-body">
+
+                    <!-- video feed -->
+                    <div class="booth">
+                        <video id="video" width="100%" height="400" autoplay muted playsinline></video>
+                    </div>
+
+                    <!-- runtime messages -->
+                    <div class="mt-3">
+                        <select id="device-select" class="form-control mb-2" style="display:none;"></select>
+                        <div id="error-message"  class="alert alert-danger" style="display:none;"></div>
+                        <div id="status-message" class="alert alert-info"   style="display:none;"></div>
+                    </div>
+
+                    <!-- control buttons -->
+                    <div class="text-center mt-2">
+                        <button class="btn btn-danger"   onclick="stopCam()">Stop Cam</button>
+                        <button class="btn btn-success"  onclick="startCam()">Start Cam</button>
+                        <button class="btn btn-info"     onclick="switchCamera()">Switch Camera</button>
+                        <button class="btn btn-primary"  onclick="openUsbCam()">USB Cam</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        let currentStream = null;
-        let currentFacingMode = 'user'; // 'user' for front camera, 'environment' for back camera
-        
-        const showError = (message) => {
-            const errorDiv = document.getElementById('error-message');
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-            setTimeout(() => {
-                errorDiv.style.display = 'none';
-            }, 5000);
-        };
-        
-        const showStatus = (message) => {
-            const statusDiv = document.getElementById('status-message');
-            statusDiv.textContent = message;
-            statusDiv.style.display = 'block';
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 3000);
-        };
+</div>
 
-        const stopCam = () => {
-            const video = document.getElementById('video');
-            if (currentStream) {
-                const tracks = currentStream.getTracks();
-                tracks.forEach(track => track.stop());
-                currentStream = null;
-            }
-            video.srcObject = null;
-            showStatus('Camera stopped');
-        };
+<script>
+let currentStream = null;
+let currentFacingMode = 'user';       // 'user' | 'environment'
+let preferredDeviceId = null;         // explicit deviceId for USB camera (or any picked device)
 
-        const startCam = async () => {
-            const video = document.getElementById('video');
-            
-            // Check if getUserMedia is supported
-            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                showError('Camera not supported on this browser');
-                return;
-            }
+/* ---------- UI helpers ---------- */
+const showError  = msg => { $('#error-message').text(msg).fadeIn().delay(5000).fadeOut(); };
+const showStatus = msg => { $('#status-message').text(msg).fadeIn().delay(3000).fadeOut(); };
 
-            try {
-                // Stop any existing stream
-                if (currentStream) {
-                    stopCam();
-                }
+/* ---------- camera control ---------- */
+function stopCam () {
+    if (currentStream) currentStream.getTracks().forEach(t => t.stop());
+    $('#video').prop('srcObject', null);
+    currentStream = null;
+    showStatus('Camera stopped');
+}
 
-                showStatus('Requesting camera access...');
+async function startCam () {
+    if (!navigator.mediaDevices?.getUserMedia) { showError('Camera not supported on this browser'); return; }
+    stopCam();
 
-                // Enhanced constraints for mobile compatibility
-                const constraints = {
-                    video: {
-                        facingMode: currentFacingMode,
-                        width: { ideal: 1280, max: 1920 },
-                        height: { ideal: 720, max: 1080 }
-                    },
-                    audio: false
-                };
+    const constraints = preferredDeviceId
+        ? { video: { deviceId: { exact: preferredDeviceId } }, audio:false }
+        : { video: { facingMode: currentFacingMode, width:{ideal:1280,max:1920}, height:{ideal:720,max:1080} }, audio:false };
 
-                currentStream = await navigator.mediaDevices.getUserMedia(constraints);
-                video.srcObject = currentStream;
-                
-                // Ensure video plays on mobile
-                video.onloadedmetadata = () => {
-                    video.play().catch(e => {
-                        console.error('Error playing video:', e);
-                        showError('Error starting video playback');
-                    });
-                };
-                
-                showStatus('Camera started successfully');
-                
-            } catch (error) {
-                console.error('Camera access error:', error);
-                
-                // Provide specific error messages
-                if (error.name === 'NotAllowedError') {
-                    showError('Camera access denied. Please allow camera permissions in your browser settings.');
-                } else if (error.name === 'NotFoundError') {
-                    showError('No camera found on this device.');
-                } else if (error.name === 'NotSupportedError') {
-                    showError('Camera not supported on this browser.');
-                } else if (error.name === 'OverconstrainedError') {
-                    showError('Camera constraints not supported. Trying with basic settings...');
-                    // Try with basic constraints
-                    tryBasicCamera();
-                } else {
-                    showError(`Camera error: ${error.message}`);
-                }
-            }
-        };
+    try {
+        showStatus('Requesting camera...');
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        $('#video').prop('srcObject', currentStream);
+    } catch (e) {
+        console.error(e);
+        if (e.name === 'OverconstrainedError' && !preferredDeviceId) { showError('Constraint error – retrying basic.'); return tryBasicCamera(); }
+        showError(e.name === 'NotAllowedError' ? 'Permission denied.' : `Camera error: ${e.message}`);
+    }
+}
 
-        const tryBasicCamera = async () => {
-            try {
-                const basicConstraints = {
-                    video: true,
-                    audio: false
-                };
-                
-                currentStream = await navigator.mediaDevices.getUserMedia(basicConstraints);
-                const video = document.getElementById('video');
-                video.srcObject = currentStream;
-                
-                video.onloadedmetadata = () => {
-                    video.play().catch(e => {
-                        console.error('Error playing video:', e);
-                        showError('Error starting video playback');
-                    });
-                };
-                
-                showStatus('Camera started with basic settings');
-                
-            } catch (error) {
-                showError(`Basic camera access failed: ${error.message}`);
-            }
-        };
+async function tryBasicCamera () {
+    try {
+        currentStream = await navigator.mediaDevices.getUserMedia({ video:true, audio:false });
+        $('#video').prop('srcObject', currentStream);
+        showStatus('Basic camera started');
+    } catch (e) { showError(`Basic camera failed: ${e.message}`); }
+}
 
-        const switchCamera = () => {
-            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+function switchCamera () { preferredDeviceId = null; currentFacingMode = (currentFacingMode === 'user') ? 'environment' : 'user'; startCam(); }
+
+/* ---------- USB camera support ---------- */
+async function enumerateVideoInputs () {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    return devices.filter(d => d.kind === 'videoinput');
+}
+
+async function openUsbCam () {
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') { showError('USB cam needs HTTPS'); return; }
+
+    // ensure we already have permission; if not, request a 1-pixel dummy stream first
+    try { await navigator.mediaDevices.getUserMedia({ video:true, audio:false }); } catch(e){ /* ignore – may already have */ }
+
+    const videoInputs = await enumerateVideoInputs();
+    const usbCams = videoInputs.filter(d => /usb|uvc/i.test(d.label));
+
+    if (usbCams.length === 0) { showError('No USB UVC camera detected. Plug in & refresh.'); return; }
+
+    if (usbCams.length === 1) {
+        preferredDeviceId = usbCams[0].deviceId;
+        $('#device-select').hide();
+        showStatus(`Opening: ${usbCams[0].label}`);
+        startCam();
+    } else {
+        // let user choose
+        const $sel = $('#device-select').empty().show();
+        usbCams.forEach(d => $sel.append(`<option value="${d.deviceId}">${d.label}</option>`));
+        $sel.off('change').on('change', e => {
+            preferredDeviceId = e.target.value;
             startCam();
-        };
-
-        // Check HTTPS requirement
-        const checkHTTPS = () => {
-            if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-                showError('HTTPS required for camera access on mobile devices. Please use HTTPS.');
-                return false;
-            }
-            return true;
-        };
-
-        // Initialize when page loads
-        $(document).ready(() => {
-            if (checkHTTPS()) {
-                // Small delay to ensure DOM is fully ready
-                setTimeout(() => {
-                    startCam();
-                }, 500);
-            }
         });
+        showStatus('Select USB camera from the list');
+    }
+}
 
-        // Handle page visibility changes (mobile browsers may pause camera)
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                // Page is hidden, camera might be paused
-            } else {
-                // Page is visible again, restart camera if needed
-                const video = document.getElementById('video');
-                if (!video.srcObject && !document.hidden) {
-                    setTimeout(() => {
-                        startCam();
-                    }, 1000);
-                }
-            }
-        });
-    </script>
+/* ---------- initialise on load ---------- */
+$(async () => {
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+        showError('HTTPS required for camera access on mobile devices.');
+        return;
+    }
+    // tiny delay so DOM is ready
+    setTimeout(startCam, 300);
+    // clean up if user leaves tab
+    document.addEventListener('visibilitychange', () => !document.hidden && !$('#video').prop('srcObject') && setTimeout(startCam, 500));
+});
+</script>
 </body>
 </html>
