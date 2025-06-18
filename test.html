@@ -22,15 +22,9 @@
                             <video id="video" width="100%" height="400" autoplay muted playsinline></video>
                         </div>
                         <div class="text-center mt-3">
-                            <div class="form-group">
-                                <label for="cameraSelect">Select Camera:</label>
-                                <select id="cameraSelect" class="form-control" onChange="onCameraChange()">
-                                    <option value="">Loading cameras...</option>
-                                </select>
-                            </div>
                             <button class="btn btn-danger" onClick="stopCam()">Stop Cam</button>
                             <button class="btn btn-success" onClick="startCam()">Start Cam</button>
-                            <button class="btn btn-secondary" onClick="refreshCameras()">Refresh Camera List</button>
+                            <button class="btn btn-info" onClick="switchCamera()">Switch Camera</button>
                         </div>
                         <div class="mt-3">
                             <div id="error-message" class="alert alert-danger" style="display: none;"></div>
@@ -43,8 +37,7 @@
     </div>
     <script>
         let currentStream = null;
-        let availableCameras = [];
-        let selectedDeviceId = null;
+        let currentFacingMode = 'user'; // 'user' for front camera, 'environment' for back camera
         
         const showError = (message) => {
             const errorDiv = document.getElementById('error-message');
@@ -64,77 +57,7 @@
             }, 3000);
         };
 
-        const enumerateCameras = async () => {
-            try {
-                // Request permission first to get device labels
-                await navigator.mediaDevices.getUserMedia({ video: true });
-                
-                const devices = await navigator.mediaDevices.enumerateDevices();
-                availableCameras = devices.filter(device => device.kind === 'videoinput');
-                
-                const cameraSelect = document.getElementById('cameraSelect');
-                cameraSelect.innerHTML = '';
-                
-                if (availableCameras.length === 0) {
-                    cameraSelect.innerHTML = '<option value="">No cameras found</option>';
-                    showError('No cameras detected. Make sure your USB camera is connected.');
-                    return;
-                }
-                
-                // Add default option
-                cameraSelect.innerHTML = '<option value="">Select a camera...</option>';
-                
-                // Add each camera to the dropdown
-                availableCameras.forEach((camera, index) => {
-                    const option = document.createElement('option');
-                    option.value = camera.deviceId;
-                    
-                    // Create a meaningful label
-                    let label = camera.label || `Camera ${index + 1}`;
-                    
-                    // Add additional info to help identify cameras
-                    if (label.includes('front') || label.includes('user')) {
-                        label += ' (Front)';
-                    } else if (label.includes('back') || label.includes('environment')) {
-                        label += ' (Back)';
-                    } else if (label.includes('usb') || label.includes('USB')) {
-                        label += ' (USB)';
-                    }
-                    
-                    option.textContent = label;
-                    cameraSelect.appendChild(option);
-                });
-                
-                // Auto-select first camera if none selected
-                if (!selectedDeviceId && availableCameras.length > 0) {
-                    selectedDeviceId = availableCameras[0].deviceId;
-                    cameraSelect.value = selectedDeviceId;
-                }
-                
-                showStatus(`Found ${availableCameras.length} camera(s)`);
-                
-            } catch (error) {
-                console.error('Error enumerating cameras:', error);
-                showError('Error getting camera list: ' + error.message);
-                
-                const cameraSelect = document.getElementById('cameraSelect');
-                cameraSelect.innerHTML = '<option value="">Error loading cameras</option>';
-            }
-        };
-
-        const onCameraChange = () => {
-            const cameraSelect = document.getElementById('cameraSelect');
-            selectedDeviceId = cameraSelect.value;
-            
-            if (selectedDeviceId) {
-                showStatus('Camera selected. Click "Start Cam" to use it.');
-            }
-        };
-
-        const refreshCameras = async () => {
-            showStatus('Refreshing camera list...');
-            await enumerateCameras();
-        };
+        const stopCam = () => {
             const video = document.getElementById('video');
             if (currentStream) {
                 const tracks = currentStream.getTracks();
@@ -154,24 +77,18 @@
                 return;
             }
 
-            // Check if a camera is selected
-            if (!selectedDeviceId) {
-                showError('Please select a camera from the dropdown first');
-                return;
-            }
-
             try {
                 // Stop any existing stream
                 if (currentStream) {
                     stopCam();
                 }
 
-                showStatus('Starting selected camera...');
+                showStatus('Requesting camera access...');
 
-                // Use the selected device ID
+                // Enhanced constraints for mobile compatibility
                 const constraints = {
                     video: {
-                        deviceId: { exact: selectedDeviceId },
+                        facingMode: currentFacingMode,
                         width: { ideal: 1280, max: 1920 },
                         height: { ideal: 720, max: 1080 }
                     },
@@ -189,9 +106,7 @@
                     });
                 };
                 
-                const selectedCamera = availableCameras.find(cam => cam.deviceId === selectedDeviceId);
-                const cameraName = selectedCamera ? selectedCamera.label || 'Selected Camera' : 'Selected Camera';
-                showStatus(`Camera started: ${cameraName}`);
+                showStatus('Camera started successfully');
                 
             } catch (error) {
                 console.error('Camera access error:', error);
@@ -200,12 +115,12 @@
                 if (error.name === 'NotAllowedError') {
                     showError('Camera access denied. Please allow camera permissions in your browser settings.');
                 } else if (error.name === 'NotFoundError') {
-                    showError('Selected camera not found. It may have been disconnected.');
+                    showError('No camera found on this device.');
                 } else if (error.name === 'NotSupportedError') {
-                    showError('Selected camera not supported on this browser.');
+                    showError('Camera not supported on this browser.');
                 } else if (error.name === 'OverconstrainedError') {
                     showError('Camera constraints not supported. Trying with basic settings...');
-                    // Try with basic constraints for the selected device
+                    // Try with basic constraints
                     tryBasicCamera();
                 } else {
                     showError(`Camera error: ${error.message}`);
@@ -216,7 +131,7 @@
         const tryBasicCamera = async () => {
             try {
                 const basicConstraints = {
-                    video: { deviceId: { exact: selectedDeviceId } },
+                    video: true,
                     audio: false
                 };
                 
@@ -238,6 +153,11 @@
             }
         };
 
+        const switchCamera = () => {
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            startCam();
+        };
+
         // Check HTTPS requirement
         const checkHTTPS = () => {
             if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
@@ -250,30 +170,25 @@
         // Initialize when page loads
         $(document).ready(() => {
             if (checkHTTPS()) {
-                // Enumerate cameras first
+                // Small delay to ensure DOM is fully ready
                 setTimeout(() => {
-                    enumerateCameras();
+                    startCam();
                 }, 500);
             }
-        });
-
-        // Handle device changes (USB camera connected/disconnected)
-        navigator.mediaDevices.addEventListener('devicechange', () => {
-            console.log('Device change detected, refreshing camera list...');
-            enumerateCameras();
         });
 
         // Handle page visibility changes (mobile browsers may pause camera)
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 // Page is hidden, camera might be paused
-                console.log('Page hidden, camera may pause');
             } else {
-                // Page is visible again, refresh camera list in case devices changed
-                console.log('Page visible again, checking for device changes');
-                setTimeout(() => {
-                    enumerateCameras();
-                }, 1000);
+                // Page is visible again, restart camera if needed
+                const video = document.getElementById('video');
+                if (!video.srcObject && !document.hidden) {
+                    setTimeout(() => {
+                        startCam();
+                    }, 1000);
+                }
             }
         });
     </script>
