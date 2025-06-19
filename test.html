@@ -1,142 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile Camera App + USB-UVC</title>
-
-    <!-- CSS / Bootstrap -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- jQuery / Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Camera App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<div class="container pt-3">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card shadow">
-                <h5 class="card-header text-center">HTML 5 & JS Live Cam (Mobile + USB UVC)</h5>
-                <div class="card-body">
-
-                    <!-- video feed -->
-                    <div class="booth">
-                        <video id="video" width="100%" height="400" autoplay muted playsinline></video>
-                    </div>
-
-                    <!-- runtime messages -->
-                    <div class="mt-3">
-                        <select id="device-select" class="form-control mb-2" style="display:none;"></select>
-                        <div id="error-message"  class="alert alert-danger" style="display:none;"></div>
-                        <div id="status-message" class="alert alert-info"   style="display:none;"></div>
-                    </div>
-
-                    <!-- control buttons -->
-                    <div class="text-center mt-2">
-                        <button class="btn btn-danger"   onclick="stopCam()">Stop Cam</button>
-                        <button class="btn btn-success"  onclick="startCam()">Start Cam</button>
-                        <button class="btn btn-info"     onclick="switchCamera()">Switch Camera</button>
-                        <button class="btn btn-primary"  onclick="openUsbCam()">USB Cam</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <h5 class="card-header h5 text-center">
+                        HTML 5 & JS Live Cam (Mobile Fixed)
+                    </h5>
+                    <div class="card-body">
+                        <div class="booth">
+                            <video id="video" width="100%" height="400" autoplay muted playsinline></video>
+                        </div>
+                        <div class="text-center mt-3">
+                            <div class="form-group">
+                                <label for="cameraSelect">Select Camera:</label>
+                                <select id="cameraSelect" class="form-control" onChange="onCameraChange()">
+                                    <option value="">Loading cameras...</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-danger" onClick="stopCam()">Stop Cam</button>
+                            <button class="btn btn-success" onClick="startCam()">Start Cam</button>
+                            <button class="btn btn-secondary" onClick="refreshCameras()">Refresh Camera List</button>
+                        </div>
+                        <div class="mt-3">
+                            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+                            <div id="status-message" class="alert alert-info" style="display: none;"></div>
+                            <div id="usb-help" class="alert alert-warning">
+                                <h6>USB Camera on Android - Setup Instructions:</h6>
+                                <ol class="mb-2">
+                                    <li><strong>Connect USB Camera:</strong> Use USB OTG adapter if needed</li>
+                                    <li><strong>Enable Developer Options:</strong> Settings → About Phone → Tap Build Number 7 times</li>
+                                    <li><strong>Enable USB Debugging:</strong> Settings → Developer Options → USB Debugging</li>
+                                    <li><strong>Use Chrome Browser:</strong> Best compatibility with USB cameras</li>
+                                    <li><strong>Grant Permissions:</strong> Allow camera and USB device access when prompted</li>
+                                    <li><strong>Wait for Recognition:</strong> USB cameras may take 10-30 seconds to appear</li>
+                                </ol>
+                                <div class="small text-muted">
+                                    <strong>Note:</strong> If USB camera still doesn't work, web browsers have limited USB camera support on Android. 
+                                    Consider using a native camera app or Chrome's "Request Desktop Site" feature.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <script>
+        let currentStream = null;
+        let availableCameras = [];
+        let selectedDeviceId = null;
+        
+        const showError = (message) => {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        };
+        
+        const showStatus = (message) => {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
+        };
 
-<script>
-let currentStream = null;
-let currentFacingMode = 'user';       // 'user' | 'environment'
-let preferredDeviceId = null;         // explicit deviceId for USB camera (or any picked device)
+        const enumerateCameras = async () => {
+            try {
+                showStatus('Checking for cameras... Please grant permissions when asked.');
+                
+                // First request basic permission
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                stream.getTracks().forEach(track => track.stop()); // Stop immediately
+                
+                // Wait a bit for devices to be recognized
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                availableCameras = devices.filter(device => device.kind === 'videoinput');
+                
+                const cameraSelect = document.getElementById('cameraSelect');
+                cameraSelect.innerHTML = '';
+                
+                if (availableCameras.length === 0) {
+                    cameraSelect.innerHTML = '<option value="">No cameras detected</option>';
+                    showError('No cameras detected. For USB cameras on Android: Check USB OTG connection, enable Developer Options, and try Chrome browser.');
+                    return;
+                }
+                
+                // Add default option
+                cameraSelect.innerHTML = '<option value="">Select a camera...</option>';
+                
+                // Add each camera to the dropdown
+                availableCameras.forEach((camera, index) => {
+                    const option = document.createElement('option');
+                    option.value = camera.deviceId;
+                    
+                    // Create a meaningful label
+                    let label = camera.label || `Camera ${index + 1}`;
+                    
+                    // Add additional info to help identify cameras
+                    if (label.includes('front') || label.includes('user') || label.includes('Front')) {
+                        label += ' (Front Camera)';
+                    } else if (label.includes('back') || label.includes('environment') || label.includes('Back')) {
+                        label += ' (Back Camera)';
+                    } else if (label.includes('usb') || label.includes('USB') || label.includes('UVC') || label.includes('uvc')) {
+                        label += ' (USB Camera)';
+                    } else if (label.includes('external') || label.includes('External')) {
+                        label += ' (External Camera)';
+                    } else if (!label.includes('Camera') && (label.includes('0') || label.includes('1'))) {
+                        label += ' (May be USB Camera)';
+                    }
+                    
+                    option.textContent = label;
+                    cameraSelect.appendChild(option);
+                });
+                
+                // Auto-select first camera if none selected
+                if (!selectedDeviceId && availableCameras.length > 0) {
+                    selectedDeviceId = availableCameras[0].deviceId;
+                    cameraSelect.value = selectedDeviceId;
+                }
+                
+                showStatus(`Found ${availableCameras.length} camera(s). ${availableCameras.length > 1 ? 'USB cameras may appear as additional devices.' : ''}`);
+                
+                // Log device info for debugging
+                console.log('Available cameras:', availableCameras.map(cam => ({
+                    label: cam.label,
+                    deviceId: cam.deviceId.substring(0, 20) + '...'
+                })));
+                
+            } catch (error) {
+                console.error('Error enumerating cameras:', error);
+                
+                if (error.name === 'NotAllowedError') {
+                    showError('Camera permission denied. Please allow camera access and try again.');
+                } else {
+                    showError('Error getting camera list: ' + error.message + '. For USB cameras, try enabling Developer Options and USB Debugging.');
+                }
+                
+                const cameraSelect = document.getElementById('cameraSelect');
+                cameraSelect.innerHTML = '<option value="">Error loading cameras - Check permissions</option>';
+            }
+        };
 
-/* ---------- UI helpers ---------- */
-const showError  = msg => { $('#error-message').text(msg).fadeIn().delay(5000).fadeOut(); };
-const showStatus = msg => { $('#status-message').text(msg).fadeIn().delay(3000).fadeOut(); };
+        const onCameraChange = () => {
+            const cameraSelect = document.getElementById('cameraSelect');
+            selectedDeviceId = cameraSelect.value;
+            
+            if (selectedDeviceId) {
+                showStatus('Camera selected. Click "Start Cam" to use it.');
+            }
+        };
 
-/* ---------- camera control ---------- */
-function stopCam () {
-    if (currentStream) currentStream.getTracks().forEach(t => t.stop());
-    $('#video').prop('srcObject', null);
-    currentStream = null;
-    showStatus('Camera stopped');
-}
+        const refreshCameras = async () => {
+            showStatus('Refreshing camera list...');
+            await enumerateCameras();
+        };
+            const video = document.getElementById('video');
+            if (currentStream) {
+                const tracks = currentStream.getTracks();
+                tracks.forEach(track => track.stop());
+                currentStream = null;
+            }
+            video.srcObject = null;
+            showStatus('Camera stopped');
+        };
 
-async function startCam () {
-    if (!navigator.mediaDevices?.getUserMedia) { showError('Camera not supported on this browser'); return; }
-    stopCam();
+        const startCam = async () => {
+            const video = document.getElementById('video');
+            
+            // Check if getUserMedia is supported
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                showError('Camera not supported on this browser');
+                return;
+            }
 
-    const constraints = preferredDeviceId
-        ? { video: { deviceId: { exact: preferredDeviceId } }, audio:false }
-        : { video: { facingMode: currentFacingMode, width:{ideal:1280,max:1920}, height:{ideal:720,max:1080} }, audio:false };
+            // Check if a camera is selected
+            if (!selectedDeviceId) {
+                showError('Please select a camera from the dropdown first');
+                return;
+            }
 
-    try {
-        showStatus('Requesting camera...');
-        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
-        $('#video').prop('srcObject', currentStream);
-    } catch (e) {
-        console.error(e);
-        if (e.name === 'OverconstrainedError' && !preferredDeviceId) { showError('Constraint error – retrying basic.'); return tryBasicCamera(); }
-        showError(e.name === 'NotAllowedError' ? 'Permission denied.' : `Camera error: ${e.message}`);
-    }
-}
+            try {
+                // Stop any existing stream
+                if (currentStream) {
+                    stopCam();
+                }
 
-async function tryBasicCamera () {
-    try {
-        currentStream = await navigator.mediaDevices.getUserMedia({ video:true, audio:false });
-        $('#video').prop('srcObject', currentStream);
-        showStatus('Basic camera started');
-    } catch (e) { showError(`Basic camera failed: ${e.message}`); }
-}
+                showStatus('Starting selected camera...');
 
-function switchCamera () { preferredDeviceId = null; currentFacingMode = (currentFacingMode === 'user') ? 'environment' : 'user'; startCam(); }
+                // Use the selected device ID
+                const constraints = {
+                    video: {
+                        deviceId: { exact: selectedDeviceId },
+                        width: { ideal: 1280, max: 1920 },
+                        height: { ideal: 720, max: 1080 }
+                    },
+                    audio: false
+                };
 
-/* ---------- USB camera support ---------- */
-async function enumerateVideoInputs () {
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    return devices.filter(d => d.kind === 'videoinput');
-}
+                currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+                video.srcObject = currentStream;
+                
+                // Ensure video plays on mobile
+                video.onloadedmetadata = () => {
+                    video.play().catch(e => {
+                        console.error('Error playing video:', e);
+                        showError('Error starting video playback');
+                    });
+                };
+                
+                const selectedCamera = availableCameras.find(cam => cam.deviceId === selectedDeviceId);
+                const cameraName = selectedCamera ? selectedCamera.label || 'Selected Camera' : 'Selected Camera';
+                showStatus(`Camera started: ${cameraName}`);
+                
+            } catch (error) {
+                console.error('Camera access error:', error);
+                
+                // Provide specific error messages
+                if (error.name === 'NotAllowedError') {
+                    showError('Camera access denied. Please allow camera permissions in your browser settings.');
+                } else if (error.name === 'NotFoundError') {
+                    showError('Selected camera not found. It may have been disconnected.');
+                } else if (error.name === 'NotSupportedError') {
+                    showError('Selected camera not supported on this browser.');
+                } else if (error.name === 'OverconstrainedError') {
+                    showError('Camera constraints not supported. Trying with basic settings...');
+                    // Try with basic constraints for the selected device
+                    tryBasicCamera();
+                } else {
+                    showError(`Camera error: ${error.message}`);
+                }
+            }
+        };
 
-async function openUsbCam () {
-    if (location.protocol !== 'https:' && location.hostname !== 'localhost') { showError('USB cam needs HTTPS'); return; }
+        const tryBasicCamera = async () => {
+            try {
+                const basicConstraints = {
+                    video: { deviceId: { exact: selectedDeviceId } },
+                    audio: false
+                };
+                
+                currentStream = await navigator.mediaDevices.getUserMedia(basicConstraints);
+                const video = document.getElementById('video');
+                video.srcObject = currentStream;
+                
+                video.onloadedmetadata = () => {
+                    video.play().catch(e => {
+                        console.error('Error playing video:', e);
+                        showError('Error starting video playback');
+                    });
+                };
+                
+                showStatus('Camera started with basic settings');
+                
+            } catch (error) {
+                showError(`Basic camera access failed: ${error.message}`);
+            }
+        };
 
-    // ensure we already have permission; if not, request a 1-pixel dummy stream first
-    try { await navigator.mediaDevices.getUserMedia({ video:true, audio:false }); } catch(e){ /* ignore – may already have */ }
+        // Check HTTPS and Android compatibility
+        const checkHTTPS = () => {
+            if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+                showError('HTTPS required for camera access on mobile devices. Please use HTTPS.');
+                return false;
+            }
+            return true;
+        };
 
-    const videoInputs = await enumerateVideoInputs();
-    const usbCams = videoInputs.filter(d => /usb|uvc/i.test(d.label));
+        const checkAndroidCompatibility = () => {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isAndroid = userAgent.includes('android');
+            
+            if (isAndroid) {
+                showStatus('Android detected. For USB cameras: Ensure USB OTG is enabled and camera is connected before loading page.');
+                
+                // Check if it's Chrome (better USB camera support)
+                if (!userAgent.includes('chrome')) {
+                    document.getElementById('usb-help').innerHTML += 
+                        '<div class="mt-2"><strong>Recommendation:</strong> Try using Chrome browser for better USB camera support on Android.</div>';
+                }
+            }
+            
+            return true;
+        };
 
-    if (usbCams.length === 0) { showError('No USB UVC camera detected. Plug in & refresh.'); return; }
-
-    if (usbCams.length === 1) {
-        preferredDeviceId = usbCams[0].deviceId;
-        $('#device-select').hide();
-        showStatus(`Opening: ${usbCams[0].label}`);
-        startCam();
-    } else {
-        // let user choose
-        const $sel = $('#device-select').empty().show();
-        usbCams.forEach(d => $sel.append(`<option value="${d.deviceId}">${d.label}</option>`));
-        $sel.off('change').on('change', e => {
-            preferredDeviceId = e.target.value;
-            startCam();
+        // Initialize when page loads
+        $(document).ready(() => {
+            if (checkHTTPS() && checkAndroidCompatibility()) {
+                // Wait longer on Android for USB devices to be recognized
+                const delay = navigator.userAgent.toLowerCase().includes('android') ? 2000 : 500;
+                setTimeout(() => {
+                    enumerateCameras();
+                }, delay);
+            }
         });
-        showStatus('Select USB camera from the list');
-    }
-}
 
-/* ---------- initialise on load ---------- */
-$(async () => {
-    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-        showError('HTTPS required for camera access on mobile devices.');
-        return;
-    }
-    // tiny delay so DOM is ready
-    setTimeout(startCam, 300);
-    // clean up if user leaves tab
-    document.addEventListener('visibilitychange', () => !document.hidden && !$('#video').prop('srcObject') && setTimeout(startCam, 500));
-});
-</script>
+        // Handle device changes (USB camera connected/disconnected)
+        navigator.mediaDevices.addEventListener('devicechange', () => {
+            console.log('Device change detected, refreshing camera list...');
+            enumerateCameras();
+        });
+
+        // Handle page visibility changes (mobile browsers may pause camera)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Page is hidden, camera might be paused
+                console.log('Page hidden, camera may pause');
+            } else {
+                // Page is visible again, refresh camera list in case devices changed
+                console.log('Page visible again, checking for device changes');
+                setTimeout(() => {
+                    enumerateCameras();
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
