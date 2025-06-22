@@ -1,0 +1,15 @@
+{
+  "stripe": {
+    "publishableKey": "pk_test_51QzF5bKkb1vONOdkbk7jpV2u4seBbeyItYtSojLrNT0TbcUfHALhHcpqI6Pu2nrUDjMXsnyCHnws99sHEMcA2GdV00LFHekU6B",
+    "secretKey": "sk_test_51QzF5bKkb1vONOdkJJ16a6BxqeRyzq8pBHcrEy3DXv0Z0GWDPfXcyCjnnecGul5XCWYtYQRDFfkIdroKNIIkSRdn00XJCR4xrA"
+  },
+  "config": {
+    "environment": "test",
+    "version": "1.0.0",
+    "note": "These are TEST keys only - replace with production keys when going live"
+  },
+  "endpoints": {
+    "eventsUrl": "https://raw.githubusercontent.com/BeeBotix/researchsummits_Webpage/refs/heads/main/events.json",
+    "redirectUrl": "http://researchsummits.com/index.html"
+  }
+}
