@@ -1,0 +1,38 @@
+[
+  {
+    "eventId": "RS2025AI",
+    "eventName": "AI & Machine Learning Research Summit 2025",
+    "cost": 895,
+    "eventDescription": "Leading international conference bringing together researchers, academics, and industry experts to present cutting-edge developments in artificial intelligence and machine learning."
+  },
+  {
+    "eventId": "RS2025MED",
+    "eventName": "Global Healthcare Innovation Summit",
+    "cost": 1250,
+    "eventDescription": "Premier medical research conference featuring breakthrough studies in healthcare innovation, precision medicine, and clinical research methodologies."
+  },
+  {
+    "eventId": "RS2025ENV",
+    "eventName": "Climate Science & Sustainability Research Forum",
+    "cost": 675,
+    "eventDescription": "International forum for environmental scientists and researchers to share latest findings on climate change, renewable energy, and sustainable development."
+  },
+  {
+    "eventId": "RS2025BIO",
+    "eventName": "Biotechnology & Pharmaceutical Research Conference",
+    "cost": 1150,
+    "eventDescription": "Comprehensive conference covering advances in biotechnology, drug discovery, genomics, and pharmaceutical research with focus on translational medicine."
+  },
+  {
+    "eventId": "RS2025ENG",
+    "eventName": "Engineering Innovation & Technology Symposium",
+    "cost": 780,
+    "eventDescription": "Multidisciplinary engineering conference showcasing innovations in robotics, IoT, smart systems, and emerging technologies for sustainable development."
+  },
+  {
+    "eventId": "RS2025DATA",
+    "eventName": "Big Data & Analytics Research Conference",
+    "cost": 950,
+    "eventDescription": "Advanced conference on data science, analytics, visualization, and computational methods for researchers working with large-scale datasets."
+  }
+]
