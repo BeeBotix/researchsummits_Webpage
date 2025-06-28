@@ -1,7 +1,7 @@
 {
   "stripe": {
-    "publishableKey": "pk_test_51QzF5bKkb1vONOdkbk7jpV2u4seBbeyItYtSojLrNT0TbcUfHALhHcpqI6Pu2nrUDjMXsnyCHnws99sHEMcA2GdV00LFHekU6B",
-    "secretKey": "sk_test_51QzF5bKkb1vONOdkJJ16a6BxqeRyzq8pBHcrEy3DXv0Z0GWDPfXcyCjnnecGul5XCWYtYQRDFfkIdroKNIIkSRdn00XJCR4xrA"
+    "publishableKey": "pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ",
+    "secretKey": "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"
   },
   "config": {
     "environment": "test",
