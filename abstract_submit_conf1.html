@@ -819,8 +819,6 @@
             <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
           </div>
         </form>
-
-    
       </section>
 
       <section class="guidelines">
@@ -929,80 +927,20 @@
   </div>
     </footer>
 
+ 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    // Initialize Stripe
-    const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ');
-    const elements = stripe.elements();
-
-    // Create and mount Stripe card element
-    const cardElement = elements.create('card', {
-        style: {
-            base: {
-                fontSize: '16px',
-                color: '#32325d',
-                fontFamily: '"Inter", sans-serif',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
-            },
-            invalid: {
-                color: '#dc3545'
-            }
-        }
-    });
-    cardElement.mount('#card-element');
-
-    // Handle real-time validation errors from the card Element
-    cardElement.on('change', function(event) {
-        const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    // Update payment buttons when amount changes
-    document.getElementById('paymentAmount').addEventListener('input', function() {
-        const amount = parseFloat(this.value) || 0;
-        
-        // Update Stripe button text
-        document.getElementById('stripe-pay-button').textContent = `Pay £${amount.toFixed(2)}`;
-        
-        // Clear existing PayPal buttons and reinitialize with new amount
-        const paypalContainer = document.getElementById('paypal-button-container');
-        paypalContainer.innerHTML = '<p>Please complete your payment to finalize your submission.</p>';
-        
-        if (amount > 0) {
-            // Initialize PayPal with the entered amount
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: amount.toFixed(2),
-                                currency_code: 'GBP'
-                            }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Payment completed by ' + details.payer.name.given_name);
-                    });
-                },
-                onError: function(err) {
-                    console.error('PayPal Error:', err);
-                    alert('Payment failed. Please try again.');
-                }
-            }).render('#paypal-button-container');
-        }
-    });
-
     // Function to handle form submission
     document.getElementById('abstractForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
+
+        // Get the payment amount
+        const paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+        
+        if (paymentAmount <= 0) {
+            alert('Please enter a valid payment amount before submitting.');
+            return;
+        }
 
         // Disable the submit button to prevent multiple submissions
         const submitButton = document.getElementById('submitButton');
@@ -1022,13 +960,12 @@
             success: function(response) {
                 console.log('Form submitted successfully:', response);
                 
-                            
-                // Re-enable submit button
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit Abstract';
-                
                 // Show success status
                 document.getElementById('submissionStatus').style.display = 'inline';
+                
+                // Redirect to payment gateway with the amount
+                const paymentUrl = `https://payment-gateway-l4ym.onrender.com/payment/RS2025AI?pay=${paymentAmount.toFixed(2)}`;
+                window.location.href = paymentUrl;
             },
             error: function(xhr, status, error) {
                 console.error('Form submission error:', error);
@@ -1040,13 +977,6 @@
             }
         });
     });
-
-  
-        
-        submitButton.disabled = true;
-        submitButton.textContent = 'Processing...';
-        
-     );
 
     // Function to handle file upload
     function uploadFile(inputId) {
@@ -1093,7 +1023,8 @@
         }
     }
 </script>
-  <script>
+
+<script>
   const countdownEls = document.querySelectorAll(".countdown");
   countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
 
@@ -1167,7 +1098,6 @@
       });
     }
   }
-
 </script>
 
 <script>
@@ -1194,25 +1124,26 @@
   });
 </script>
 
-  <!-- Tawk.to Live Chat -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function() {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      lucide.createIcons();
-    });
-  </script>
-    <script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    lucide.createIcons();
+  });
+</script>
+
+<script>
   window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
     const logo = document.querySelector('.logo-image');
@@ -1225,7 +1156,6 @@
     }
   });
 </script>
-
 
 </body>
 </html>
