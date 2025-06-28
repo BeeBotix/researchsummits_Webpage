@@ -1022,13 +1022,7 @@
             success: function(response) {
                 console.log('Form submitted successfully:', response);
                 
-                // Show payment options
-                document.getElementById('paypal-button-container').style.display = 'block';
-                document.getElementById('stripe-payment-container').style.display = 'block';
-                
-                // Trigger the amount change event to initialize PayPal with current amount
-                document.getElementById('paymentAmount').dispatchEvent(new Event('input'));
-                
+                            
                 // Re-enable submit button
                 submitButton.disabled = false;
                 submitButton.textContent = 'Submit Abstract';
@@ -1047,68 +1041,12 @@
         });
     });
 
-    // Handle Stripe payment submission
-    document.getElementById('stripe-pay-button').addEventListener('click', async function(e) {
-        e.preventDefault();
-        
-        const submitButton = document.getElementById('stripe-pay-button');
-        const amount = parseFloat(document.getElementById('paymentAmount').value) || 0;
-        
-        if (amount <= 0) {
-            alert('Please enter a valid amount before proceeding with payment.');
-            return;
-        }
+  
         
         submitButton.disabled = true;
         submitButton.textContent = 'Processing...';
         
-        // First, we need to get a payment intent client secret from your server
-        // This is just a placeholder - you'll need to implement this server-side
-        try {
-            const response = await fetch('YOUR_SERVER_ENDPOINT_TO_CREATE_PAYMENT_INTENT', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    amount: Math.round(amount * 100), // amount in pence
-                    currency: 'gbp'
-                })
-            });
-            
-            const { clientSecret } = await response.json();
-            
-            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value
-                    }
-                }
-            });
-
-            if (error) {
-                // Show error to your customer
-                const errorElement = document.getElementById('card-errors');
-                errorElement.textContent = error.message;
-                submitButton.disabled = false;
-                submitButton.textContent = `Pay £${amount.toFixed(2)}`;
-            } else {
-                if (paymentIntent.status === 'succeeded') {
-                    // Payment succeeded - show success message
-                    alert('Payment successful! Your abstract submission is complete.');
-                    // You might want to submit the form data to your server here
-                    // or redirect to a success page
-                }
-            }
-        } catch (err) {
-            console.error('Payment error:', err);
-            alert('Payment processing failed. Please try again.');
-            submitButton.disabled = false;
-            submitButton.textContent = `Pay £${amount.toFixed(2)}`;
-        }
-    });
+     );
 
     // Function to handle file upload
     function uploadFile(inputId) {
