@@ -6,6 +6,12 @@
     "eventDescription": "Leading international conference bringing together researchers, academics, and industry experts to present cutting-edge developments in artificial intelligence and machine learning."
   },
   {
+    "eventId": "SUKARNA",
+    "eventName": "Testing API",
+    "cost": 1,
+    "eventDescription": "Its For Testing Perpose."
+  },
+  {
     "eventId": "RS2025MED",
     "eventName": "Global Healthcare Innovation Summit",
     "cost": 1250,
