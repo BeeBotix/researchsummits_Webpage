@@ -964,7 +964,7 @@
                 document.getElementById('submissionStatus').style.display = 'inline';
                 
                 // Redirect to payment gateway with the amount
-                const paymentUrl = `https://payment-gateway-l4ym.onrender.com/payment/RS2025AI?pay=${paymentAmount.toFixed(2)}`;
+                const paymentUrl = `https://web-payment-server.web.app/payment/RS2025AI?cost=${paymentAmount.toFixed(2)}`;
                 window.location.href = paymentUrl;
             },
             error: function(xhr, status, error) {
