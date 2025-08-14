@@ -853,52 +853,17 @@
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    // Initialize Stripe
-    const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ');
-    const elements = stripe.elements();
-
-    // Create and mount Stripe card element
-    const cardElement = elements.create('card', {
-        style: {
-            base: {
-                fontSize: '16px',
-                color: '#32325d',
-                fontFamily: '"Inter", sans-serif',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
-            },
-            invalid: {
-                color: '#dc3545'
-            }
-        }
-    });
-    cardElement.mount('#card-element');
-
-    // Handle real-time validation errors from the card Element
-    cardElement.on('change', function(event) {
-        const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    // Handle discount checkbox change
-    document.getElementById('requestDiscount').addEventListener('change', function() {
-        const discountInput = document.getElementById('discountInput');
-        discountInput.style.display = this.checked ? 'block' : 'none';
-        
-        // Show/hide payment options
-        const showPayment = !this.checked;
-        document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-        document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
-    });
-
     // Function to handle form submission
     document.getElementById('abstractForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
+
+        // Get the payment amount
+        const paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+        
+        if (paymentAmount <= 0) {
+            alert('Please enter a valid payment amount before submitting.');
+            return;
+        }
 
         // Disable the submit button to prevent multiple submissions
         const submitButton = document.getElementById('submitButton');
@@ -917,43 +882,15 @@
             contentType: false,
             success: function(response) {
                 console.log('Form submitted successfully:', response);
-
-                // Change the submit button to "Submitted"
-                submitButton.textContent = 'Submit Abstract';
-                submitButton.style.backgroundColor = 'gray';
-                submitButton.disabled = true;
-
-                // Show the "Submitted" status
+                
+                // Show success status
                 document.getElementById('submissionStatus').style.display = 'inline';
-
-                // Show payment options only if discount is not requested
-                const showPayment = !document.getElementById('requestDiscount').checked;
-                document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-                document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
-
-                // Initialize PayPal button if showing
-                if (showPayment) {
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: '1.00' // Set the payment amount
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('Payment completed by ' + details.payer.name.given_name);
-                            });
-                        },
-                        onError: function(err) {
-                            console.error('PayPal Error:', err);
-                            alert('Payment failed. Please try again.');
-                        }
-                    }).render('#paypal-button-container');
-                }
+                
+                // Redirect to payment gateway with the amount
+                /*const paymentUrl = https://web-payment-server.web.app/payment/RS2025AI?cost=${paymentAmount.toFixed(2)};
+                window.location.href = paymentUrl;*/
+               const paymentUrl = https://web-payment-server.web.app/payment/RS2025AI?cost=${paymentAmount.toFixed(2)}&currency=GBP;
+    window.location.href = paymentUrl;
             },
             error: function(xhr, status, error) {
                 console.error('Form submission error:', error);
@@ -966,63 +903,7 @@
         });
     });
 
-    // Handle Stripe payment submission
-    document.getElementById('stripe-pay-button').addEventListener('click', async function(e) {
-        e.preventDefault();
-        
-        const submitButton = document.getElementById('stripe-pay-button');
-        submitButton.disabled = true;
-        submitButton.textContent = 'Processing...';
-        
-        // First, we need to get a payment intent client secret from your server
-        // This is just a placeholder - you'll need to implement this server-side
-        try {
-            const response = await fetch('YOUR_SERVER_ENDPOINT_TO_CREATE_PAYMENT_INTENT', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    amount: 100, // amount in cents
-                    currency: 'usd'
-                })
-            });
-            
-            const { clientSecret } = await response.json();
-            
-            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value
-                    }
-                }
-            });
-
-            if (error) {
-                // Show error to your customer
-                const errorElement = document.getElementById('card-errors');
-                errorElement.textContent = error.message;
-                submitButton.disabled = false;
-                submitButton.textContent = 'Pay $1.00';
-            } else {
-                if (paymentIntent.status === 'succeeded') {
-                    // Payment succeeded - show success message
-                    alert('Payment successful! Your abstract submission is complete.');
-                    // You might want to submit the form data to your server here
-                    // or redirect to a success page
-                }
-            }
-        } catch (err) {
-            console.error('Payment error:', err);
-            alert('Payment processing failed. Please try again.');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Pay $1.00';
-        }
-    });
-
-    // Function to handle file upload (same as before)
+    // Function to handle file upload
     function uploadFile(inputId) {
         const fileInput = document.getElementById(inputId);
         const uploadStatusElement = document.getElementById(inputId + 'Status');
@@ -1031,7 +912,7 @@
             const file = fileInput.files[0];
             const candidateName = document.getElementById('name').value;
             const confname = document.getElementById('conferencetitle').value;
-            const fileNamePrefix = `abstractfile_${confname}_${candidateName}_${file.name}`;
+            const fileNamePrefix = abstractfile_${confname}_${candidateName}_${file.name};
 
             const fr = new FileReader();
             fr.fileName = fileNamePrefix;
