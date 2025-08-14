@@ -40,5 +40,11 @@
     "eventName": "Big Data & Analytics Research Conference",
     "cost": 950,
     "eventDescription": "Advanced conference on data science, analytics, visualization, and computational methods for researchers working with large-scale datasets."
-  }
+  },
+  {
+   "eventId": "RS2025Nano",
+    "eventName": "Nano technology 2025",
+    "cost": 399,
+    "eventDescription": "Leading international conference bringing together researchers, academics, and industry experts to present cutting-edge developments in Nanotechnology."
+  }, 
 ]
