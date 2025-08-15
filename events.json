@@ -43,8 +43,74 @@
   },
   {
    "eventId": "RS2025Nano",
-    "eventName": "Nano technology 2025",
+    "eventName": "Infectious Disease Conference 2025",
     "cost": 399,
     "eventDescription": "Leading international conference bringing together researchers, academics, and industry experts to present cutting-edge developments in Nanotechnology."
+  },
+  {
+   "eventId": "RS2025Neuro",
+    "eventName": "Neurophysiology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Leading international conference bringing together researchers, academics, and industry experts to present cutting-edge developments in Neurophysiology."
+  },
+  {
+   "eventId": "RS2025IDS",
+    "eventName": "Neurophysiology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Infectious Disease."
+  },
+  {
+   "eventId": "RS2025Nursing",
+    "eventName": "Nursing Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Nursing."
+  },
+  {
+   "eventId": "RS2025WP",
+    "eventName": "World Pharma 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of World Pharma."
+  },
+  {
+   "eventId": "RS2025DM",
+    "eventName": "Dermatology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Dermatology."
+  },
+  {
+   "eventId": "RS2025DT",
+    "eventName": "World Dentistry Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of World Dentistry."
+  },
+  {
+   "eventId": "RS2025ND",
+    "eventName": "World Nutrition & Dietetics 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of World Nutrition & Dietetics."
+  },
+  {
+   "eventId": "RS2025DH",
+    "eventName": "International Conference on Digital Health 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of International Conference on Digital Health."
+  },
+  {
+   "eventId": "RS2025DH",
+    "eventName": "International Conference on Digital Health 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of International Conference on Digital Health."
+  },
+  {
+   "eventId": "RS2025CS&DP",
+    "eventName": "Cyber security and Data privacy 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Cyber security and Data privacy."
+  },
+  {
+   "eventId": "RS2025AI-HC",
+    "eventName": "AI in Healthcare 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of AI in Healthcare."
   }
 ]
