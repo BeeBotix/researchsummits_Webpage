@@ -3,6 +3,1168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abstract Submission - Nursing 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="./Logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=GBP"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --background: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--background);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+         nav.scrolled {
+      padding: 0.75rem 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--gradient);
+      color: var(--white);
+      padding: 8rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      color: var(--white);
+    }
+
+    .event-details {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .detail strong {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 4rem 0;
+      font-weight: bold;
+    }
+
+    /* Info Cards */
+    .info-cards {
+      margin-bottom: 4rem;
+      font-weight: bold;
+    }
+
+    .highlight-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .highlight-card h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .highlight-card p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    /* Submission Form */
+    .submission-form {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 4rem;
+    }
+
+    .submission-form h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-upload {
+      background-color: var(--secondary);
+      color: white;
+      margin-top: 0.5rem;
+    }
+
+    .btn-upload:hover {
+      opacity: 0.9;
+    }
+
+    .upload-status {
+      display: inline-block;
+      margin-left: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .file-input {
+      margin-top: 0.5rem;
+    }
+
+    .file-input::file-selector-button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      border: 1px solid var(--border);
+      background-color: white;
+      cursor: pointer;
+      font-size: 0.875rem;
+      margin-right: 1rem;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 0.5rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+    }
+
+    /* PayPal Button */
+    .paypal-button-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Stripe Button */
+    .stripe-button-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .footer-section h3 {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icons a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary);
+    }
+
+    .social-icons i {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Countdown Timer Styles */
+    .countdown {
+      --number-color: hsl(0 0% 25%);
+      --text-color: hsl(0 0% 25%);
+      --dot-color: hsl(0, 0%, 10%);
+      --dot-color-remaining: hsl(240, 100%, 50%);
+      --dot-color-active: hsl(0, 100%, 50%);
+      font-family: system-ui, sans-serif;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: min(60rem, 100%);
+      margin-inline: auto;
+      container: inline-size;
+      margin-bottom: 4rem;
+    }
+
+    .countdown > .part {
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+    }
+
+    .countdown > .part > .remaining {
+      grid-area: 1/1;
+      color: hsl(0 0% 100%);
+      display: grid;
+      text-align: center;
+      font-size: 4cqi;
+    }
+
+    .countdown > .part > .remaining > .number {
+      color: var(--number-color);
+    }
+
+    .countdown > .part > .remaining > .text {
+      color: var(--text-color);
+      text-transform: uppercase;
+      font-size: 0.5em;
+    }
+
+    .countdown > .part > .dot-container {
+      grid-area: 1/1;
+      height: 100%;
+      width: 4%;
+      rotate: calc(360deg / var(--dots) * var(--dot-idx));
+    }
+
+    .countdown > .part > .dot-container > .dot {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      transition: background-color 0.25s;
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"] {
+      background-color: var(--dot-color-remaining);
+    }
+
+    .countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+      background-color: var(--dot-color-active);
+    }
+
+    .tracks-grid,
+    .guidelines-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .submission-form {
+      padding: 1.5rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-radius: 0.5rem;
+      min-width: 200px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: var(--text-light);
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .nav-links a {
+      color: var(--primary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 6rem 0 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .event-details {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Stripe Element Styles */
+.StripeElement {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: white;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.StripeElement--focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.StripeElement--invalid {
+  border-color: #dc3545;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-payment-container {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+}
+
+
+/* Mobile Menu */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .logo span {
+      display: none;
+    }
+
+    /* Hero Adjustments */
+    .hero h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1rem;
+    }
+
+    /* Countdown Adjustments */
+    .countdown {
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .countdown > .part > .remaining {
+      font-size: 6cqi;
+    }
+
+    /* Pricing Table Adjustments */
+    .pricing-table {
+      overflow-x: auto;
+    }
+
+    .pricing-table table {
+      min-width: 600px;
+    }
+
+    /* Footer Adjustments */
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    /* Section Content Padding */
+    .section-content {
+      padding: 1rem;
+    }
+
+    /* Event Details */
+    .event-details {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Further Mobile Optimizations */
+    .container {
+      padding: 0 1rem;
+    }
+
+    .hero {
+      padding: 6rem 0 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .speaker-card {
+      padding: 1rem;
+    }
+
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-group">
+        <img src="rsummits.png" alt="Research Summits Logo" class="logo-main" width="60" height="60">
+        <img src="cmelogo.png" alt="CME Accredited Logo" class="logo-cme" width="80" height="60">
+      </div>
+      <span class="logo-text">Nursing 2025</span>
+    </a>
+      <div class="nav-links">
+        <a href="conf5.html">Home</a>
+        <a href="abstract_submit_conf5.html" class="active">Submit Abstract</a>
+        <a href="reg_conf5.html">Register</a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn">Program</a>
+          <div class="dropdown-content">
+            <a href="sp.pdf" target="_blank">Scientific Program</a>
+            <a href="broch.pdf" target="_blank">Download Brochure</a>
+            <a href="final_prog.pdf" target="_blank">Final Program</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Submit Your Abstract</h1>
+      <p class="subtitle">Share your research at the forefront of Nursing</p>
+      <div class="event-details">
+        <div class="detail">
+          <strong>Submission Deadline</strong>
+          <span>October 7, 2025</span>
+        </div>
+        <div class="detail">
+          <strong>Conference Dates</strong>
+          <span>October 27&28, 2025</span>
+        </div>
+        <div class="detail">
+          <strong>Location</strong>
+          <span>Virtual Conference</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+     <section class="info-cards">
+  <div class="card highlight-card">
+    <h2>Early Bird Submission Open</h2>
+    <p>Submit before October 7th to get priority review and presentation slots!</p>
+    <!-- Countdown Timer -->
+    <div class="countdown" data-target-date="2025-10-26 00:00:00"></div>
+  </div>
+</section>
+      </section>
+
+      <section class="submission-form">
+        <h2>Abstract Submission Form</h2>
+        <form id="abstractForm" class="form-container" enctype="multipart/form-data">
+          <input type="hidden" id="conferencetitle" name="conferencetitle" value="Neurophysiology">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <select name="Title" id="title" required>
+              <option value="" disabled selected>Select your title</option>
+              <option value="Dr">Dr</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Ms">Ms</option>
+              <option value="Prof">Prof</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="Name" id="name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="Email" id="email" placeholder="Enter your email address" required>
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" name="Country" id="country" placeholder="Enter your country" required>
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp Number</label>
+            <input type="tel" name="WhatsAppNum" id="whatsapp" placeholder="Enter your WhatsApp number" required>
+          </div>
+
+          <div class="form-group">
+            <label for="paymentAmount">Enter Your Amount (£)</label>
+            <input type="number" name="paymentAmount" id="paymentAmount" min="1" step="0.01" placeholder="Enter your amount" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="fileUpload">Upload File</label>
+            <input type="file" class="file-input" id="fileUpload" name="fileUpload" >
+            <button type="button" class="btn btn-upload" onclick="uploadFile('fileUpload')">Upload</button>
+            <span id="fileUploadStatus" class="upload-status"></span>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" id="submitButton" class="btn-submit">Submit Abstract</button>
+            <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
+          </div>
+        </form>
+      </section>
+
+      <section class="guidelines">
+        <h2>Submission Guidelines</h2>
+        <div class="guidelines-grid">
+          <div class="guideline-card">
+            <h3>Format Requirements</h3>
+            <ul>
+              <li>Abstract length: 300 words maximum</li>
+              <li>File format: PDF only</li>
+              <li>Font: Times New Roman, 12pt</li>
+              <li>Spacing: Double-spaced</li>
+            </ul>
+          </div>
+          <div class="guideline-card">
+            <h3>Content Structure</h3>
+            <ul>
+              <li>Background</li>
+              <li>Methods</li>
+              <li>Results</li>
+              <li>Conclusions</li>
+            </ul>
+          </div>
+          <div class="guideline-card">
+            <h3>Important Notes</h3>
+            <ul>
+              <li>Original research only</li>
+              <li>No previously published work</li>
+              <li>Clear methodology required</li>
+              <li>References in APA format</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
+        </div>
+        <p>Advancing research through global collaboration since 2010.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+       <h3>Contact Info</h3>
+          <ul class="contact-info">
+            <li>Email: support@researchsummits.com</li>
+            <li>Phone: +442081913434</li>
+            <li>Support: 24/7 Available</li>
+          </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+    </footer>
+
+ 
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Function to handle form submission
+    document.getElementById('abstractForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get the payment amount
+        const paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+        
+        if (paymentAmount <= 0) {
+            alert('Please enter a valid payment amount before submitting.');
+            return;
+        }
+
+        // Disable the submit button to prevent multiple submissions
+        const submitButton = document.getElementById('submitButton');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        // Collect form data
+        const formData = new FormData(this);
+
+        // Submit form data using AJAX
+        $.ajax({
+            url: 'https://script.google.com/macros/s/AKfycbxZHcvCWFXYbCzVgpzgvxeL_w_zuo6toOoLX3Rr0AXbLmRs9uIOwIB2XLdmprtE5ttG/exec',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log('Form submitted successfully:', response);
+                
+                // Show success status
+                document.getElementById('submissionStatus').style.display = 'inline';
+                
+                // Redirect to payment gateway with the amount
+                /*const paymentUrl = `https://web-payment-server.web.app/payment/RS2025AI?cost=${paymentAmount.toFixed(2)}`;
+                window.location.href = paymentUrl;*/
+               const paymentUrl = `https://web-payment-server.web.app/payment/RS2025AI?cost=${paymentAmount.toFixed(2)}&currency=GBP`;
+    window.location.href = paymentUrl;
+            },
+            error: function(xhr, status, error) {
+                console.error('Form submission error:', error);
+                alert('Form submission failed. Please try again.');
+
+                // Re-enable the submit button if submission fails
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Abstract';
+            }
+        });
+    });
+
+    // Function to handle file upload
+    function uploadFile(inputId) {
+        const fileInput = document.getElementById(inputId);
+        const uploadStatusElement = document.getElementById(inputId + 'Status');
+
+        if (fileInput?.files?.length > 0) {
+            const file = fileInput.files[0];
+            const candidateName = document.getElementById('name').value;
+            const confname = document.getElementById('conferencetitle').value;
+            const fileNamePrefix = `abstractfile_${confname}_${candidateName}_${file.name}`;
+
+            const fr = new FileReader();
+            fr.fileName = fileNamePrefix;
+
+            fr.onload = function(e) {
+                const data = {
+                    fileData: e.target.result.replace(/^.*,/, ''),
+                    mimeType: e.target.result.match(/^.*(?=;)/)[0],
+                    fileName: fr.fileName
+                };
+
+                uploadStatusElement.innerHTML = 'Uploading... <div class="loading"></div>';
+
+                $.ajax({
+                    url: 'https://script.google.com/macros/s/AKfycbxB0JGB8__daiP0YlFm8mNcSGGp3AyzaYXSfDyqGfXd1vOD9sz28t1X7JggwHUtN7UQNw/exec',
+                    method: 'POST',
+                    data: data,
+                    success: function(response) {
+                        uploadStatusElement.textContent = '✓ Uploaded successfully';
+                        uploadStatusElement.style.color = 'var(--success-color)';
+                    },
+                    error: function(xhr, status, error) {
+                        uploadStatusElement.textContent = '✕ Upload failed';
+                        uploadStatusElement.style.color = 'var(--danger-color)';
+                        console.error('Upload error:', error);
+                    }
+                });
+            };
+
+            fr.readAsDataURL(file);
+        } else {
+            console.error('No file selected or file input not found');
+        }
+    }
+</script>
+
+<script>
+  const countdownEls = document.querySelectorAll(".countdown");
+  countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
+
+  function createCountdown(countdownEl) {
+    const target = new Date(
+      new Date(countdownEl.dataset.targetDate).toLocaleString("en")
+    );
+    const parts = {
+      days: { text: ["days", "day"], dots: 30 },
+      hours: { text: ["hours", "hour"], dots: 24 },
+      minutes: { text: ["minutes", "minute"], dots: 60 },
+      seconds: { text: ["seconds", "second"], dots: 60 },
+    };
+
+    Object.entries(parts).forEach(([key, value]) => {
+      const partEl = document.createElement("div");
+      partEl.classList.add("part", key);
+      partEl.style.setProperty("--dots", value.dots);
+      value.element = partEl;
+
+      const remainingEl = document.createElement("div");
+      remainingEl.classList.add("remaining");
+      remainingEl.innerHTML = `
+        <span class="number"></span>
+        <span class="text"></span>
+      `;
+      partEl.append(remainingEl);
+
+      for (let i = 0; i < value.dots; i++) {
+        const dotContainerEl = document.createElement("div");
+        dotContainerEl.style.setProperty("--dot-idx", i);
+        dotContainerEl.classList.add("dot-container");
+        const dotEl = document.createElement("div");
+        dotEl.classList.add("dot");
+        dotContainerEl.append(dotEl);
+        partEl.append(dotContainerEl);
+      }
+      countdownEl.append(partEl);
+    });
+
+    getRemainingTime(target, parts);
+  }
+
+  function getRemainingTime(target, parts, first = true) {
+    const now = new Date();
+    if (first) console.log({ target, now });
+    const remaining = {};
+    let seconds = Math.floor((target - now) / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    hours = hours - days * 24;
+    minutes = minutes - days * 24 * 60 - hours * 60;
+    seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
+
+    Object.entries({ days, hours, minutes, seconds }).forEach(([key, value]) => {
+      const remaining = parts[key].element.querySelector(".number");
+      const text = parts[key].element.querySelector(".text");
+      remaining.innerText = value;
+      text.innerText = parts[key].text[Number(value == 1)];
+      const dots = parts[key].element.querySelectorAll(".dot");
+      dots.forEach((dot, idx) => {
+        dot.dataset.active = idx <= value;
+        dot.dataset.lastactive = idx == value;
+      });
+    });
+
+    if (now <= target) {
+      window.requestAnimationFrame(() => {
+        getRemainingTime(target, parts, false);
+      });
+    }
+  }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = '<i data-lucide="menu"></i>';
+    document.querySelector('.navbar .container').appendChild(mobileMenuBtn);
+    
+    const navLinks = document.querySelector('.nav-links');
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  });
+</script>
+
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    lucide.createIcons();
+  });
+</script>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abstract Submission - Nursing Conference 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -610,8 +1772,8 @@
       </a>
       <div class="nav-links">
         <a href="conf5.html">Home</a>
-        <a href="abstract_submit_conf1.html" class="active">Submit Abstract</a>
-        <a href="reg_conf1.html">Register</a>
+        <a href="abstract_submit_conf5.html" class="active">Submit Abstract</a>
+        <a href="reg_conf5.html">Register</a>
         <div class="dropdown">
           <a href="#" class="dropbtn">Program</a>
           <div class="dropdown-content">
