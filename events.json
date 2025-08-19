@@ -106,5 +106,11 @@
     "eventName": "AI in Healthcare 2025",
     "cost": 399,
     "eventDescription": "Share your research at the forefront of AI in Healthcare."
+  },
+  {
+   "eventId": "RS2025AM",
+    "eventName": "Alternative Medicine Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Alternative Medicine Conference."
   }
 ]
