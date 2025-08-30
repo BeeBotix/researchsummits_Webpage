@@ -112,5 +112,11 @@
     "eventName": "Alternative Medicine Conference 2025",
     "cost": 399,
     "eventDescription": "Share your research at the forefront of Alternative Medicine Conference."
+  },,
+  {
+   "eventId": "RS2025RE",
+    "eventName": "Renewal Energy Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Renewal Energy Conference."
   }
 ]
