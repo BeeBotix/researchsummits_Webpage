@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="./Logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AVfp7IbCzZJRAZUYAzVurLj88y2JFogGw6O6b1VOoPsbpdZs184M5hPYCrv-RKVOBBTKrBFnxeiVUQTW&currency=GBP"></script>
   <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
@@ -301,21 +301,14 @@
 
     /* PayPal Button */
     .paypal-button-container {
-      display: none;
       margin-top: 2rem;
       text-align: center;
     }
 
     /* Stripe Button */
     .stripe-button-container {
-      display: none;
       margin-top: 2rem;
       text-align: center;
-    }
-
-    /* Style for the discount checkbox */
-    .form-group label input[type="checkbox"] {
-      margin-right: 8px;
     }
 
     /* Footer */
@@ -596,18 +589,132 @@
   box-shadow: var(--shadow);
   margin-top: 2rem;
 }
+
+
+/* Mobile Menu */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .logo span {
+      display: none;
+    }
+
+    /* Hero Adjustments */
+    .hero h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1rem;
+    }
+
+    /* Countdown Adjustments */
+    .countdown {
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .countdown > .part > .remaining {
+      font-size: 6cqi;
+    }
+
+    /* Pricing Table Adjustments */
+    .pricing-table {
+      overflow-x: auto;
+    }
+
+    .pricing-table table {
+      min-width: 600px;
+    }
+
+    /* Footer Adjustments */
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    /* Section Content Padding */
+    .section-content {
+      padding: 1rem;
+    }
+
+    /* Event Details */
+    .event-details {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Further Mobile Optimizations */
+    .container {
+      padding: 0 1rem;
+    }
+
+    .hero {
+      padding: 6rem 0 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .speaker-card {
+      padding: 1rem;
+    }
+
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+  }
+
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-       <a href="index.html" class="logo">
-        <img src="rsummits.png" alt="Toxicology Conference: 2025 Logo" width="60" height="60">
-      </a>
-      <a href="abstract_submit_conf15.html" class="logo">
-              <img src="cmelogo.png" alt="Toxicology Conference 2025 Logo" width="80" height="60">
-        <span>Toxicology Conference 2025</span>
-      </a>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-group">
+        <img src="rsummits.png" alt="Research Summits Logo" class="logo-main" width="60" height="60">
+        <img src="cmelogo.png" alt="CME Accredited Logo" class="logo-cme" width="80" height="60">
+      </div>
+      <span class="logo-text">Toxicology Conference</span>
+    </a>
       <div class="nav-links">
         <a href="conf15.html">Home</a>
         <a href="abstract_submit_conf15.html" class="active">Submit Abstract</a>
@@ -632,11 +739,11 @@
       <div class="event-details">
         <div class="detail">
           <strong>Submission Deadline</strong>
-          <span>October 25th, 2025</span>
+          <span>October 26, 2025</span>
         </div>
         <div class="detail">
           <strong>Conference Dates</strong>
-          <span>November 06-07, 2025</span>
+          <span>November 12, 2025</span>
         </div>
         <div class="detail">
           <strong>Location</strong>
@@ -651,9 +758,9 @@
      <section class="info-cards">
   <div class="card highlight-card">
     <h2>Early Bird Submission Open</h2>
-    <p>Submit before October 25th to get priority review and presentation slots!</p>
+    <p>Submit before October 26th to get priority review and presentation slots!</p>
     <!-- Countdown Timer -->
-    <div class="countdown" data-target-date="2025-11-05 00:00:00"></div>
+    <div class="countdown" data-target-date="2025-11-11 00:00:00"></div>
   </div>
 </section>
       </section>
@@ -661,7 +768,7 @@
       <section class="submission-form">
         <h2>Abstract Submission Form</h2>
         <form id="abstractForm" class="form-container" enctype="multipart/form-data">
-          <input type="hidden" id="conferencetitle" name="conferencetitle" value="Nursing">
+          <input type="hidden" id="conferencetitle" name="conferencetitle" value="Toxicology">
           <div class="form-group">
             <label for="title">Title</label>
             <select name="Title" id="title" required>
@@ -696,53 +803,22 @@
           </div>
 
           <div class="form-group">
+            <label for="paymentAmount">Enter Your Amount (£)</label>
+            <input type="number" name="paymentAmount" id="paymentAmount" min="1" step="0.01" placeholder="Enter your amount" required>
+          </div>
+
+          <div class="form-group">
             <label class="form-label required" for="fileUpload">Upload File</label>
             <input type="file" class="file-input" id="fileUpload" name="fileUpload" >
             <button type="button" class="btn btn-upload" onclick="uploadFile('fileUpload')">Upload</button>
             <span id="fileUploadStatus" class="upload-status"></span>
           </div>
 
-      <div class="form-group">
-  <label style="display: flex; align-items: center; gap: 8px;">
-    
-    Request Discount (Check if you're applying for a scholarship or financial aid)
-    <input type="checkbox" id="requestDiscount" name="requestDiscount">
-  </label>
-  <div id="discountInput" style="display: none; margin-top: 10px;">
-    <label for="discountCode">Discount Code/Price</label>
-    <input type="text" id="discountCode" name="discountCode" placeholder="Enter discount code or amount">
-    <small style="display: block; color: var(--text-light); margin-top: 5px;">
-      If you have a discount code or special price, please enter it here
-    </small>
-  </div>
-</div>
-
           <div class="form-group">
             <button type="submit" id="submitButton" class="btn-submit">Submit Abstract</button>
             <span id="submissionStatus" style="display: none; color: green; margin-left: 10px;">✓ Submitted</span>
           </div>
         </form>
-
-        <!-- PayPal Button Container -->
-        <div id="paypal-button-container" class="paypal-button-container" style="display: none;">
-          <p>Please complete your payment to finalize your submission.</p>
-        </div>
-
-        <!-- Stripe Button Container -->
-        <div id="stripe-payment-container" class="stripe-payment-container" style="display: none;">
-  <p>Please complete your payment to finalize your submission via stripe:</p>
-  
-  <!-- Stripe Card Element -->
-  <div class="form-group">
-    <label for="card-element">Credit/Debit Card Details</label>
-    <div id="card-element" class="StripeElement">
-      <!-- Stripe will insert the card elements here -->
-    </div>
-    <div id="card-errors" role="alert" style="color: #dc3545; margin-top: 0.5rem;"></div>
-  </div>
-  
-  <button id="stripe-pay-button" class="btn-submit">Pay $1.00</button>
-</div>
       </section>
 
       <section class="guidelines">
@@ -851,54 +927,20 @@
   </div>
     </footer>
 
+ 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    // Initialize Stripe
-    const stripe = Stripe('pk_live_51QzHEqL8PncHyD1HQDreXipg4hUcjWx5LYEfYeJWvYNhQ4r313n5wQmgcj9Snpc5Or23ee5rBXGBE5vLBfzxHmBY00xF4BYTqZ');
-    const elements = stripe.elements();
-
-    // Create and mount Stripe card element
-    const cardElement = elements.create('card', {
-        style: {
-            base: {
-                fontSize: '16px',
-                color: '#32325d',
-                fontFamily: '"Inter", sans-serif',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
-            },
-            invalid: {
-                color: '#dc3545'
-            }
-        }
-    });
-    cardElement.mount('#card-element');
-
-    // Handle real-time validation errors from the card Element
-    cardElement.on('change', function(event) {
-        const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    // Handle discount checkbox change
-    document.getElementById('requestDiscount').addEventListener('change', function() {
-        const discountInput = document.getElementById('discountInput');
-        discountInput.style.display = this.checked ? 'block' : 'none';
-        
-        // Show/hide payment options
-        const showPayment = !this.checked;
-        document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-        document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
-    });
-
     // Function to handle form submission
     document.getElementById('abstractForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
+
+        // Get the payment amount
+        const paymentAmount = parseFloat(document.getElementById('paymentAmount').value) || 0;
+        
+        if (paymentAmount <= 0) {
+            alert('Please enter a valid payment amount before submitting.');
+            return;
+        }
 
         // Disable the submit button to prevent multiple submissions
         const submitButton = document.getElementById('submitButton');
@@ -917,43 +959,15 @@
             contentType: false,
             success: function(response) {
                 console.log('Form submitted successfully:', response);
-
-                // Change the submit button to "Submitted"
-                submitButton.textContent = 'Submit Abstract';
-                submitButton.style.backgroundColor = 'gray';
-                submitButton.disabled = true;
-
-                // Show the "Submitted" status
+                
+                // Show success status
                 document.getElementById('submissionStatus').style.display = 'inline';
-
-                // Show payment options only if discount is not requested
-                const showPayment = !document.getElementById('requestDiscount').checked;
-                document.getElementById('paypal-button-container').style.display = showPayment ? 'block' : 'none';
-                document.getElementById('stripe-payment-container').style.display = showPayment ? 'block' : 'none';
-
-                // Initialize PayPal button if showing
-                if (showPayment) {
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: '1.00' // Set the payment amount
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('Payment completed by ' + details.payer.name.given_name);
-                            });
-                        },
-                        onError: function(err) {
-                            console.error('PayPal Error:', err);
-                            alert('Payment failed. Please try again.');
-                        }
-                    }).render('#paypal-button-container');
-                }
+                
+                // Redirect to payment gateway with the amount
+                /*const paymentUrl = `https://web-payment-server.web.app/payment/RS2025AI?cost=${paymentAmount.toFixed(2)}`;
+                window.location.href = paymentUrl;*/
+               const paymentUrl = `https://web-payment-server.web.app/payment/RS2025Neuro?cost=${paymentAmount.toFixed(2)}&currency=GBP`;
+    window.location.href = paymentUrl;
             },
             error: function(xhr, status, error) {
                 console.error('Form submission error:', error);
@@ -966,63 +980,7 @@
         });
     });
 
-    // Handle Stripe payment submission
-    document.getElementById('stripe-pay-button').addEventListener('click', async function(e) {
-        e.preventDefault();
-        
-        const submitButton = document.getElementById('stripe-pay-button');
-        submitButton.disabled = true;
-        submitButton.textContent = 'Processing...';
-        
-        // First, we need to get a payment intent client secret from your server
-        // This is just a placeholder - you'll need to implement this server-side
-        try {
-            const response = await fetch('YOUR_SERVER_ENDPOINT_TO_CREATE_PAYMENT_INTENT', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    amount: 100, // amount in cents
-                    currency: 'usd'
-                })
-            });
-            
-            const { clientSecret } = await response.json();
-            
-            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value
-                    }
-                }
-            });
-
-            if (error) {
-                // Show error to your customer
-                const errorElement = document.getElementById('card-errors');
-                errorElement.textContent = error.message;
-                submitButton.disabled = false;
-                submitButton.textContent = 'Pay $1.00';
-            } else {
-                if (paymentIntent.status === 'succeeded') {
-                    // Payment succeeded - show success message
-                    alert('Payment successful! Your abstract submission is complete.');
-                    // You might want to submit the form data to your server here
-                    // or redirect to a success page
-                }
-            }
-        } catch (err) {
-            console.error('Payment error:', err);
-            alert('Payment processing failed. Please try again.');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Pay $1.00';
-        }
-    });
-
-    // Function to handle file upload (same as before)
+    // Function to handle file upload
     function uploadFile(inputId) {
         const fileInput = document.getElementById(inputId);
         const uploadStatusElement = document.getElementById(inputId + 'Status');
@@ -1067,7 +1025,8 @@
         }
     }
 </script>
-  <script>
+
+<script>
   const countdownEls = document.querySelectorAll(".countdown");
   countdownEls.forEach((countdownEl) => createCountdown(countdownEl));
 
@@ -1142,25 +1101,51 @@
     }
   }
 </script>
-  <!-- Tawk.to Live Chat -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function() {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      lucide.createIcons();
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = '<i data-lucide="menu"></i>';
+    document.querySelector('.navbar .container').appendChild(mobileMenuBtn);
+    
+    const navLinks = document.querySelector('.nav-links');
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
-  </script>
-    <script>
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  });
+</script>
+
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    lucide.createIcons();
+  });
+</script>
+
+<script>
   window.addEventListener('scroll', function() {
     const nav = document.querySelector('nav');
     const logo = document.querySelector('.logo-image');
@@ -1173,7 +1158,6 @@
     }
   });
 </script>
-
 
 </body>
 </html>
