@@ -1,507 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>QR Code Scanner / Reader</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      box-sizing: border-box;
+      text-align: center;
+      background: rgb(128 0 0 / 66%);
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 5px;
+    }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-        }
+    .container h1 {
+      color: #ffffff;
+    }
 
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .section {
+      background-color: #ffffff;
+      padding: 50px 30px;
+      border: 1.5px solid #b2b2b2;
+      border-radius: 0.25em;
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
+    }
 
-        .scanner-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto 20px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+    #my-qr-reader {
+      padding: 20px !important;
+      border: 1.5px solid #b2b2b2 !important;
+      border-radius: 8px;
+    }
 
-        #video {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            background: #000;
-        }
+    #my-qr-reader img[alt="Info icon"] {
+      display: none;
+    }
 
-        .scanner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-        }
+    #my-qr-reader img[alt="Camera based scan"] {
+      width: 100px !important;
+      height: 100px !important;
+    }
 
-        .scanner-frame {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            border: 3px solid #00ff88;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
+    button {
+      padding: 10px 20px;
+      border: 1px solid #b2b2b2;
+      outline: none;
+      border-radius: 0.25em;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      background-color: #008000ad;
+      transition: 0.3s background-color;
+    }
 
-        .scanner-frame::before,
-        .scanner-frame::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 3px solid #00ff88;
-        }
+    button:hover {
+      background-color: #008000;
+    }
 
-        .scanner-frame::before {
-            top: -3px;
-            left: -3px;
-            border-right: none;
-            border-bottom: none;
-            border-radius: 10px 0 0 0;
-        }
+    #html5-qrcode-anchor-scan-type-change {
+      text-decoration: none !important;
+      color: #1d9bf0;
+    }
 
-        .scanner-frame::after {
-            bottom: -3px;
-            right: -3px;
-            border-left: none;
-            border-top: none;
-            border-radius: 0 0 10px 0;
-        }
+    video {
+      width: 100% !important;
+      border: 1px solid #b2b2b2 !important;
+      border-radius: 0.25em;
+    }
 
-        .controls {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .status {
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .status.ready {
-            background: rgba(0, 255, 136, 0.1);
-            color: #00aa55;
-            border: 2px solid rgba(0, 255, 136, 0.3);
-        }
-
-        .status.error {
-            background: rgba(255, 0, 0, 0.1);
-            color: #cc0000;
-            border: 2px solid rgba(255, 0, 0, 0.3);
-        }
-
-        .result {
-            background: rgba(0, 255, 136, 0.1);
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            text-align: left;
-            word-break: break-all;
-            display: none;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result h3 {
-            color: #00aa55;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .result p {
-            color: #333;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .copy-btn {
-            background: #00aa55;
-            margin-top: 10px;
-            font-size: 14px;
-            padding: 8px 16px;
-        }
-
-        .copy-btn:hover {
-            background: #008844;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            #video {
-                height: 250px;
-            }
-
-            .scanner-frame {
-                width: 150px;
-                height: 150px;
-            }
-        }
-    </style>
+    #result {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      word-wrap: break-word;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>📱 QR Scanner</h1>
-        
-        <div class="scanner-container">
-            <video id="video" playsinline></video>
-            <div class="scanner-overlay">
-                <div class="scanner-frame"></div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <button id="startBtn">Start Scanner</button>
-            <button id="stopBtn" disabled>Stop Scanner</button>
-        </div>
-
-        <div id="status" class="status">Click "Start Scanner" to begin</div>
-
-        <div id="result" class="result">
-            <h3>🎯 QR Code Detected!</h3>
-            <p id="resultText"></p>
-            <button class="copy-btn" onclick="copyToClipboard()">📋 Copy</button>
-        </div>
+  <div class="container">
+    <h1>Scan QR Codes</h1>
+    <div class="section">
+      <div id="my-qr-reader"></div>
+      <p id="result">Scanned result will appear here...</p>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.js"></script>
-    <script>
-        const video = document.getElementById('video');
-        const startBtn = document.getElementById('startBtn');
-        const stopBtn = document.getElementById('stopBtn');
-        const status = document.getElementById('status');
-        const result = document.getElementById('result');
-        const resultText = document.getElementById('resultText');
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script>
+    function domReady(fn) {
+      if (document.readyState === "complete" || document.readyState === "interactive") {
+        setTimeout(fn, 1000);
+      } else {
+        document.addEventListener("DOMContentLoaded", fn);
+      }
+    }
 
-        let stream = null;
-        let scanning = false;
-        let animationId = null;
+    domReady(function () {
+      function onScanSuccess(decodeText, decodeResult) {
+        document.getElementById("result").innerText = "✅ Your QR Code: " + decodeText;
+        console.log("Decoded result:", decodeResult);
+        htmlscanner.clear(); // stop scanning once a QR code is detected
+      }
 
-        // Initialize the scanner
-        startBtn.addEventListener('click', startScanner);
-        stopBtn.addEventListener('click', stopScanner);
-
-        async function startScanner() {
-            try {
-                // Request camera access
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: { 
-                        facingMode: 'environment', // Use back camera if available
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    }
-                });
-
-                video.srcObject = stream;
-                video.play();
-
-                startBtn.disabled = true;
-                stopBtn.disabled = false;
-                scanning = true;
-
-                updateStatus('Camera ready - Point at QR code', 'ready');
-
-                // Start scanning when video is ready
-                video.addEventListener('loadedmetadata', () => {
-                    scanQRCode();
-                });
-
-            } catch (error) {
-                console.error('Camera access error:', error);
-                updateStatus('Camera access denied or not available', 'error');
-            }
-        }
-
-        function stopScanner() {
-            scanning = false;
-            
-            if (stream) {
-                stream.getTracks().forEach(track => track.stop());
-                stream = null;
-            }
-
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-            }
-
-            video.srcObject = null;
-            startBtn.disabled = false;
-            stopBtn.disabled = true;
-            
-            updateStatus('Scanner stopped', '');
-            hideResult();
-        }
-
-        function scanQRCode() {
-            if (!scanning) return;
-
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-                if (code) {
-                    showResult(code.data);
-                    updateStatus('QR Code found!', 'ready');
-                } else {
-                    updateStatus('Scanning... Point camera at QR code', 'ready');
-                }
-            }
-
-            animationId = requestAnimationFrame(scanQRCode);
-        }
-
-        function showResult(data) {
-            resultText.textContent = data;
-            result.style.display = 'block';
-            
-            // Add a subtle success animation
-            result.style.animation = 'none';
-            setTimeout(() => {
-                result.style.animation = 'slideIn 0.3s ease';
-            }, 10);
-
-            // Handle different types of QR code content
-            handleQRCodeContent(data);
-        }
-
-        function handleQRCodeContent(data) {
-            // Check if it's a URL
-            if (isValidURL(data)) {
-                // Show a redirect option for URLs
-                showRedirectOption(data);
-                // Auto-redirect after 3 seconds (optional)
-                setTimeout(() => {
-                    window.open(data, '_blank');
-                }, 3000);
-            } else if (data.startsWith('tel:')) {
-                // Handle phone numbers
-                window.location.href = data;
-            } else if (data.startsWith('mailto:')) {
-                // Handle email addresses
-                window.location.href = data;
-            } else if (data.startsWith('sms:')) {
-                // Handle SMS
-                window.location.href = data;
-            } else if (isWiFiConfig(data)) {
-                // Handle WiFi configuration
-                showWiFiInfo(data);
-            }
-        }
-
-        function isValidURL(string) {
-            try {
-                new URL(string);
-                return string.startsWith('http://') || string.startsWith('https://');
-            } catch (_) {
-                return false;
-            }
-        }
-
-        function isWiFiConfig(data) {
-            return data.startsWith('WIFI:');
-        }
-
-        function showRedirectOption(url) {
-            const redirectDiv = document.createElement('div');
-            redirectDiv.innerHTML = `
-                <div style="margin-top: 15px; padding: 15px; background: rgba(0, 123, 255, 0.1); border: 2px solid rgba(0, 123, 255, 0.3); border-radius: 10px;">
-                    <p style="color: #0066cc; font-weight: 600; margin-bottom: 10px;">🌐 URL Detected!</p>
-                    <p style="color: #333; margin-bottom: 15px;">Auto-redirecting in 3 seconds...</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button onclick="window.open('${url}', '_blank')" style="background: #0066cc; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px;">Open Now</button>
-                        <button onclick="this.parentElement.parentElement.remove()" style="background: #666; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            result.appendChild(redirectDiv);
-        }
-
-        function showWiFiInfo(data) {
-            const wifiData = parseWiFiConfig(data);
-            const wifiDiv = document.createElement('div');
-            wifiDiv.innerHTML = `
-                <div style="margin-top: 15px; padding: 15px; background: rgba(0, 200, 100, 0.1); border: 2px solid rgba(0, 200, 100, 0.3); border-radius: 10px;">
-                    <p style="color: #00aa55; font-weight: 600; margin-bottom: 10px;">📶 WiFi Configuration</p>
-                    <p style="color: #333;"><strong>Network:</strong> ${wifiData.ssid}</p>
-                    ${wifiData.password ? `<p style="color: #333;"><strong>Password:</strong> ${wifiData.password}</p>` : ''}
-                    <p style="color: #333;"><strong>Security:</strong> ${wifiData.security || 'Open'}</p>
-                </div>
-            `;
-            result.appendChild(wifiDiv);
-        }
-
-        function parseWiFiConfig(data) {
-            const wifi = {};
-            const parts = data.substring(5).split(';'); // Remove 'WIFI:' prefix
-            
-            parts.forEach(part => {
-                const [key, value] = part.split(':');
-                if (key && value) {
-                    switch(key) {
-                        case 'S':
-                            wifi.ssid = value;
-                            break;
-                        case 'P':
-                            wifi.password = value;
-                            break;
-                        case 'T':
-                            wifi.security = value;
-                            break;
-                    }
-                }
-            });
-            
-            return wifi;
-        }
-
-        function hideResult() {
-            result.style.display = 'none';
-            // Clear any additional content that was added
-            const extraDivs = result.querySelectorAll('div:not([id])');
-            extraDivs.forEach(div => div.remove());
-        }
-
-        function updateStatus(message, type) {
-            status.textContent = message;
-            status.className = `status ${type}`;
-        }
-
-        function copyToClipboard() {
-            const text = resultText.textContent;
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showTemporaryMessage('Copied to clipboard!');
-                });
-            } else {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showTemporaryMessage('Copied to clipboard!');
-            }
-        }
-
-        function showTemporaryMessage(message) {
-            const originalText = status.textContent;
-            const originalClass = status.className;
-            
-            updateStatus(message, 'ready');
-            
-            setTimeout(() => {
-                status.textContent = originalText;
-                status.className = originalClass;
-            }, 2000);
-        }
-
-        // Handle page visibility changes
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && scanning) {
-                stopScanner();
-            }
-        });
-
-        // Clean up on page unload
-        window.addEventListener('beforeunload', () => {
-            if (stream) {
-                stream.getTracks().forEach(track => track.stop());
-            }
-        });
-    </script>
+      let htmlscanner = new Html5QrcodeScanner(
+        "my-qr-reader",
+        { fps: 10, qrbox: 250 }
+      );
+      htmlscanner.render(onScanSuccess);
+    });
+  </script>
 </body>
+
 </html>
