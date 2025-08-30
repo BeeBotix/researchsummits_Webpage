@@ -352,10 +352,106 @@
             setTimeout(() => {
                 result.style.animation = 'slideIn 0.3s ease';
             }, 10);
+
+            // Handle different types of QR code content
+            handleQRCodeContent(data);
+        }
+
+        function handleQRCodeContent(data) {
+            // Check if it's a URL
+            if (isValidURL(data)) {
+                // Show a redirect option for URLs
+                showRedirectOption(data);
+                // Auto-redirect after 3 seconds (optional)
+                setTimeout(() => {
+                    window.open(data, '_blank');
+                }, 3000);
+            } else if (data.startsWith('tel:')) {
+                // Handle phone numbers
+                window.location.href = data;
+            } else if (data.startsWith('mailto:')) {
+                // Handle email addresses
+                window.location.href = data;
+            } else if (data.startsWith('sms:')) {
+                // Handle SMS
+                window.location.href = data;
+            } else if (isWiFiConfig(data)) {
+                // Handle WiFi configuration
+                showWiFiInfo(data);
+            }
+        }
+
+        function isValidURL(string) {
+            try {
+                new URL(string);
+                return string.startsWith('http://') || string.startsWith('https://');
+            } catch (_) {
+                return false;
+            }
+        }
+
+        function isWiFiConfig(data) {
+            return data.startsWith('WIFI:');
+        }
+
+        function showRedirectOption(url) {
+            const redirectDiv = document.createElement('div');
+            redirectDiv.innerHTML = `
+                <div style="margin-top: 15px; padding: 15px; background: rgba(0, 123, 255, 0.1); border: 2px solid rgba(0, 123, 255, 0.3); border-radius: 10px;">
+                    <p style="color: #0066cc; font-weight: 600; margin-bottom: 10px;">🌐 URL Detected!</p>
+                    <p style="color: #333; margin-bottom: 15px;">Auto-redirecting in 3 seconds...</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button onclick="window.open('${url}', '_blank')" style="background: #0066cc; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px;">Open Now</button>
+                        <button onclick="this.parentElement.parentElement.remove()" style="background: #666; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px;">Cancel</button>
+                    </div>
+                </div>
+            `;
+            result.appendChild(redirectDiv);
+        }
+
+        function showWiFiInfo(data) {
+            const wifiData = parseWiFiConfig(data);
+            const wifiDiv = document.createElement('div');
+            wifiDiv.innerHTML = `
+                <div style="margin-top: 15px; padding: 15px; background: rgba(0, 200, 100, 0.1); border: 2px solid rgba(0, 200, 100, 0.3); border-radius: 10px;">
+                    <p style="color: #00aa55; font-weight: 600; margin-bottom: 10px;">📶 WiFi Configuration</p>
+                    <p style="color: #333;"><strong>Network:</strong> ${wifiData.ssid}</p>
+                    ${wifiData.password ? `<p style="color: #333;"><strong>Password:</strong> ${wifiData.password}</p>` : ''}
+                    <p style="color: #333;"><strong>Security:</strong> ${wifiData.security || 'Open'}</p>
+                </div>
+            `;
+            result.appendChild(wifiDiv);
+        }
+
+        function parseWiFiConfig(data) {
+            const wifi = {};
+            const parts = data.substring(5).split(';'); // Remove 'WIFI:' prefix
+            
+            parts.forEach(part => {
+                const [key, value] = part.split(':');
+                if (key && value) {
+                    switch(key) {
+                        case 'S':
+                            wifi.ssid = value;
+                            break;
+                        case 'P':
+                            wifi.password = value;
+                            break;
+                        case 'T':
+                            wifi.security = value;
+                            break;
+                    }
+                }
+            });
+            
+            return wifi;
         }
 
         function hideResult() {
             result.style.display = 'none';
+            // Clear any additional content that was added
+            const extraDivs = result.querySelectorAll('div:not([id])');
+            extraDivs.forEach(div => div.remove());
         }
 
         function updateStatus(message, type) {
