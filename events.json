@@ -118,5 +118,119 @@
     "eventName": "Renewal Energy Conference 2025",
     "cost": 399,
     "eventDescription": "Share your research at the forefront of Renewal Energy Conference."
+  },
+  {
+   "eventId": "RS2025O&G",
+    "eventName": "Oil & Gas Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Oil & Gas Conference."
+  },
+  {
+   "eventId": "RS2025Derm",
+    "eventName": "Dermatology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Dermatology Conference."
+  },
+  {
+   "eventId": "RS2025WH",
+    "eventName": "Women health Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Women health Conference."
+  },
+  {
+   "eventId": "RS2025Tox",
+    "eventName": "Toxicology 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Toxicology Conference."
+  },
+  {
+   "eventId": "RS2025ENT",
+    "eventName": "ENT & Speech Pathology 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of ENT & Speech Pathology Conference."
+  },
+  {
+   "eventId": "RS2025DMGB",
+    "eventName": "ENT & Speech Pathology 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Digital marketing, Global Business, Entrepreneurship Conference."
+  },
+  {
+   "eventId": "RS2025Endo",
+    "eventName": "Endocrinology & Diabetes 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Endocrinology & Diabetes Conference."
+  },
+  {
+   "eventId": "RS2025Ortho",
+    "eventName": "Osteoporosis & Orthopedic Surgery 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Osteoporosis & Orthopedic Conference."
+  },
+  {
+   "eventId": "RS2025ADBD",
+    "eventName": "Alzheimer's,Dementia and Brain Disorders 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Alzheimer's,Dementia and Brain Disorders Conference."
+  },
+  {
+   "eventId": "RS2025ADBD",
+    "eventName": "Obesity Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Obesity Conference."
+  },
+  {
+   "eventId": "RS2025Onco",
+    "eventName": "Oncology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Oncology Conference."
+  },
+  {
+   "eventId": "RS2025Opht",
+    "eventName": "Ophthalmology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Ophthalmology Conference."
+  },
+  {
+   "eventId": "RS2025Vac",
+    "eventName": "Vaccine Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Vaccine Conference."
+  },
+  {
+   "eventId": "RS2025Car",
+    "eventName": "Cardiology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Cardiology Conference."
+  },
+  {
+   "eventId": "RS2025Mic",
+    "eventName": "Microbiology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Microbiology Conference."
+  },
+  {
+   "eventId": "RS2025Sur",
+    "eventName": "Surgery Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Surgery Conference."
+  },
+  {
+   "eventId": "RS2025Nep",
+    "eventName": "Nephrology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Nephrology Conference."
+  },,
+  {
+   "eventId": "RS2025Hep",
+    "eventName": "Hepatology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Hepatology Conference."
+  },
+  {
+   "eventId": "RS2025Gas",
+    "eventName": "Gastroenterology Conference 2025",
+    "cost": 399,
+    "eventDescription": "Share your research at the forefront of Gastroenterology Conference."
   }
 ]
