@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ResearchSummits</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="./Logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #f59e0b;
+      --text: #0f172a;
+      --text-light: #000000;
+      --background: #ffffff;
+      --background-alt: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--background);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 1.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.75rem 0;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-image {
+      height: 100px;
+      width: auto;
+      transition: height 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.125rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .logo-image {
+    height: 100px;
+    transition: all 0.3s ease;
+  }
+
+  nav.scrolled .logo-image {
+    height: 40px;
+  }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0.5rem 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      padding: 0.75rem 1.5rem;
+      color: var(--text-light);
+      display: block;
+      transition: all 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* About Hero Section */
+    .about-hero {
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
+                  url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80') center/cover;
+      color: white;
+      padding: 8rem 0;
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #e2e8f0;
+    }
+
+    /* About Content Section */
+    .about-content {
+      padding: 6rem 0;
+      background: var(--background-alt);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+       text-align: justify;
+  text-justify: inter-word;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 6rem 0;
+      background: var(--background);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .stat-item p {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .footer-section h3 {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+    }
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu-btn{
+      display: none;
+    }
+
+@media (max-width: 768px) {
+      /* Navigation adjustments */
+      .nav-content {
+        padding: 0 1rem;
+      }
+      
+      .logo-image {
+        height: 60px !important;
+      }
+
+      /* Hamburger menu */
+      .mobile-menu-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: var(--background-alt);
+      }
+
+     nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 1.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.75rem 0;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-image {
+      height: 100px;
+      width: auto;
+      transition: height 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.125rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .logo-image {
+    height: 100px;
+    transition: all 0.3s ease;
+  }
+
+  nav.scrolled .logo-image {
+    height: 40px;
+  }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0.5rem 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      padding: 0.75rem 1.5rem;
+      color: var(--text-light);
+      display: block;
+      transition: all 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* About Hero Section */
+    .about-hero {
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)),
+                  url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80') center/cover;
+      color: white;
+      padding: 8rem 0;
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #e2e8f0;
+    }
+
+    /* About Content Section */
+    .about-content {
+      padding: 6rem 0;
+      background: var(--background-alt);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+       text-align: justify;
+  text-justify: inter-word;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 6rem 0;
+      background: var(--background);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .stat-item p {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+
+    /* Footer */
+    .footer {
+      background: var(--text);
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .footer-section h3 {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+    }
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #94a3b8; /* Light gray color for icons */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--primary); /* Change to primary color on hover */
+}
+
+.social-icons i {
+  width: 24px;
+  height: 24px;
+}
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+  
+     /* Mobile Navigation Styles */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+
+  /* Add hamburger menu button */
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding: 0 1rem; /* Reduced padding for mobile */
+}
+
+@media (max-width: 768px) {
+  /* Add these mobile-specific fixes */
+  .container {
+    padding: 0 1rem !important;
+  }
+
+  .about-grid,
+  .stats-grid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-image img,
+  .stat-item {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Fix for mobile menu overflow */
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+/* Add this to prevent horizontal overflow in all elements */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+    
+    </style>
+</head>
+<body>
+ <nav>
+   
+        
+      <div class="container nav-content">
+      <a href="index.html" class="logo">
+        <img src="rsummits.png" alt="Research Summits Logo" class="logo-image">
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+      </button>
+      <div class="nav-links" id="navLinks">
+      <a href="index.html">
+        <i data-lucide="home"></i>
+        Home
+      </a>
+      <a href="about.html">
+        <i data-lucide="info"></i>
+        About
+      </a>
+      <a href="conferences.html">
+        <i data-lucide="calendar-days"></i>
+        Conferences
+      </a>
+      <a href="members-area.html">
+        <i data-lucide="users"></i>
+        Membership
+      </a>
+      <a href="deals.html">
+        <i data-lucide="badge-percent"></i>
+        Deals
+      </a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">
+          <i data-lucide="clipboard-list"></i>
+          Registration
+        </a>
+        <div class="dropdown-content">
+          <a href="reg_conf1.html">Neurophysiology</a>
+          <a href="reg_conf2.html">Infectious Diseases</a>
+          <a href="reg_conf3.html">Artificial Intelligence</a>
+          <a href="reg_conf4.html">Oil and Gas</a>
+        </div>
+      </div>
+      <a href="contact.html">
+        <i data-lucide="mail"></i>
+        Contact
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Footer Logo and Description -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Research Summits Logo" class="logo-image">
+          <span>Research Summits</span>
+        </div>
+        <p>Advancing research through global collaboration.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Guidelines</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter and Social Icons -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Stay updated with our latest conferences and research opportunities.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/research-summits-3aa4a3356" target="_blank" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter">
+            <i data-lucide="twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/your-profile" target="_blank" aria-label="Instagram">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/your-profile" target="_blank" aria-label="Facebook">
+            <i data-lucide="facebook"></i>
+          </a>
+          <a href="https://youtube.com/@researchsummits?si=7Y9IKtsRi0hUJRSP" target="_blank" aria-label="YouTube">
+            <i data-lucide="youtube"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Research Summits. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/67d26a4c1b4a481910a00dc9/1im6uuev5';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.animate').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+  <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    const logo = document.querySelector('.logo-image');
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
+  <script>
+    // Improved mobile menu handling
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const body = document.body;
+
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+      body.classList.toggle('menu-open');
+      lucide.createIcons();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-content')) {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+
+    // Close menu when clicking nav links
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+
+    // Handle dropdown menus on mobile
+    document.querySelectorAll('.dropdown > a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = e.target.closest('.dropdown');
+          dropdown.classList.toggle('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
